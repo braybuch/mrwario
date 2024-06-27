@@ -3,6 +3,7 @@ package coal;
 import org.lwjgl.*;
 import org.lwjgl.glfw.*;
 import org.lwjgl.opengl.*;
+import util.Time;
 
 import static org.lwjgl.glfw.Callbacks.glfwFreeCallbacks;
 import static org.lwjgl.glfw.GLFW.*;
@@ -13,9 +14,12 @@ public class Window {
     private final int width, height;
     private final String title;
     private long windowPointer;
-    private static Window window = null;
-    private float r, g, b, a;
+    public float r, g, b, a;
     private boolean fadeToBlack = false;
+
+    private static Window window = null;
+
+    private static Scene currentScene = null;
 
     private Window(){
         this.width = 1920;
@@ -25,6 +29,20 @@ public class Window {
         g = 1;
         b = 1;
         a = 1;
+    }
+
+    public static void changeScene(int newScene){
+        switch(newScene){
+            case 0:
+                currentScene = new LevelEditorScene();
+                break;
+            case 1:
+                currentScene = new LevelScene();
+                break;
+            default:
+                assert false : "Unknown scene ";
+                break;
+        }
     }
 
     public static Window get(){
@@ -92,10 +110,16 @@ public class Window {
         // creates the GLCapabilities instance and makes the OpenGL
         // bindings available for use.
         GL.createCapabilities();
+
+        Window.changeScene(0);
     }
 
 
     private void loop(){
+        float startTime = Time.getTime();
+        float endTime = Time.getTime();
+        float deltaTime = -1.0f;
+
         while(!glfwWindowShouldClose(windowPointer)){
             // Poll events
             glfwPollEvents();
@@ -103,18 +127,15 @@ public class Window {
             glClearColor(r, g, b, a);
             glClear(GL_COLOR_BUFFER_BIT);
 
-            if (KeyListener.isKeyPressed(GLFW_KEY_SPACE)){
-                fadeToBlack = true;
-            }
-
-            if (fadeToBlack){
-                r = Math.max(r - 0.01f, 0);
-                g = Math.max(g - 0.01f, 0);
-                b = Math.max(b - 0.01f, 0);
-                a = Math.max(a - 0.01f, 0);
+            if (deltaTime >= 0.0f){
+                currentScene.update(deltaTime);
             }
 
             glfwSwapBuffers(windowPointer);
+
+            endTime = Time.getTime();
+            deltaTime = endTime - startTime;
+            startTime = endTime;
         }
     }
 

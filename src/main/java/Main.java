@@ -5,5 +5,4 @@ public class Main {
         Window window = Window.get();
         window.run();
     }
-
 }
