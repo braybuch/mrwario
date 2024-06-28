@@ -6,6 +6,10 @@ public class Transform {
     public Vector2f position;
     public Vector2f scale;
 
+    public String toString(){
+        return position.x + " " + position.y + ", " + scale.x + " " + scale.y;
+    }
+
     public Transform(){
         init(new Vector2f(), new Vector2f());
     }

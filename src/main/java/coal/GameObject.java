@@ -9,6 +9,10 @@ public class GameObject {
     private List<Component> components;
     public Transform transform;
 
+    public String toString(){
+        return String.format("%s is at %s", name, transform.toString());
+    }
+
     public GameObject(){
         init("", new Transform());
     }
