@@ -34,9 +34,12 @@ public class RenderBatch {
     private SpriteRenderer[] sprites;
     private int numSprites;
     private boolean hasRoomForSprites;
+
     private float[] vertices;
+
     private int[] texSlots = { 0, 1, 2, 3, 4, 5, 6, 7 };
     private List<Texture> textures;
+
     private int vaoID, vboID;
     private int maxBatchSize;
     private Shader shader;
@@ -69,7 +72,7 @@ public class RenderBatch {
         // Create and upload the indices buffer
         int eboID = glGenBuffers();
         int[] indices = generateIndices();
-        glBindBuffer(GL_ARRAY_BUFFER, eboID);
+        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, eboID);
         glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices, GL_STATIC_DRAW);
 
         // Enable the buffer attribute pointers
