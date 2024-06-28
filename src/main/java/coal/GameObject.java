@@ -6,15 +6,28 @@ import java.util.List;
 public class GameObject {
 
     private String name;
-
     private List<Component> components;
+    public Transform transform;
+
+    public GameObject(){
+        init("", new Transform());
+    }
 
     public GameObject(String name) {
+        init(name, new Transform());
+    }
+
+    public GameObject(String name, Transform transform) {
+        init(name, transform);
+    }
+
+    private void init(String name, Transform transform){
         this.name = name;
+        this.transform = transform;
         this.components = new ArrayList<>();
     }
 
-    public <T extends Component> T getComponents(Class<T> componentClass) {
+    public <T extends Component> T getComponent(Class<T> componentClass) {
         for (Component c : components) {
             if (componentClass.isAssignableFrom(c.getClass())) {
                 try {

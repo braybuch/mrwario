@@ -120,29 +120,35 @@ public class Window {
 
 
     private void loop(){
+
+        // Init timing variables
         float startTime = Time.getTime();
         float endTime = Time.getTime();
         float deltaTime = -1.0f;
 
-        while(!glfwWindowShouldClose(windowPointer)){
+        while(!glfwWindowShouldClose(windowPointer)){// Until close window event
             // Poll events
             glfwPollEvents();
 
+            // Paint window white
             glClearColor(r, g, b, a);
             glClear(GL_COLOR_BUFFER_BIT);
 
+            // Update scene
             if (deltaTime >= 0.0f){
                 currentScene.update(deltaTime);
             }
 
             glfwSwapBuffers(windowPointer);
 
+            // Establish delta time
             endTime = Time.getTime();
             deltaTime = endTime - startTime;
             startTime = endTime;
         }
     }
 
-
-
+    public static Scene getScene(){
+        return get().currentScene;
+    }
 }
