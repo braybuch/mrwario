@@ -1,5 +1,6 @@
 package coal;
 
+import org.joml.Vector2f;
 import org.lwjgl.BufferUtils;
 import renderer.Shader;
 
@@ -61,8 +62,9 @@ public class LevelEditorScene extends Scene {
 
     @Override
     public void init() {
+        this.camera = new Camera(new Vector2f());
         defaultShader = new Shader("assets/shaders/default.glsl");
-        defaultShader.compile();
+        defaultShader.compileAndLink();
 
         /*
             Generate VAO, VBO, EBO buffer objects and send to GPU
@@ -104,7 +106,8 @@ public class LevelEditorScene extends Scene {
     @Override
     public void update(float deltaTime) {
         defaultShader.use();
-
+        defaultShader.uploadMat4f("uProjection", camera.getProjectionMatrix());
+        defaultShader.uploadMat4f("uView", camera.getViewMatrix());
         // Bind the VAO
         glBindVertexArray(vaoID);
 
