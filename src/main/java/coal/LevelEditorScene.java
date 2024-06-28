@@ -9,6 +9,9 @@ import util.AssetPool;
 
 public class LevelEditorScene extends Scene {
 
+    private GameObject obj1;
+    private Spritesheet sprites;
+
     public LevelEditorScene() {
 
     }
@@ -20,7 +23,7 @@ public class LevelEditorScene extends Scene {
 
         Spritesheet sprites = AssetPool.getSpritesheet("assets/textures/characters.png");
 
-        GameObject obj1 = new GameObject("Object 1", new Transform(new Vector2f(100, 100), new Vector2f(256, 256)));
+        obj1 = new GameObject("Object 1", new Transform(new Vector2f(100, 100), new Vector2f(256, 256)));
         obj1.addComponent(new SpriteRenderer(sprites.getSprite(0)));
         addGameObjectToScene(obj1);
 
@@ -36,8 +39,22 @@ public class LevelEditorScene extends Scene {
                         16, 16, 10, 0));
     }
 
+    private int spriteIndex = 0;
+    private float spriteFlipTime = 0.2f;
+    private float spriteFlipTimeLeft = 0.0f;
+
     @Override
     public void update(float deltaTime) {
+        spriteFlipTimeLeft -= deltaTime;
+        if (spriteFlipTimeLeft <= 0){
+            spriteFlipTimeLeft = spriteFlipTime;
+            spriteIndex++;
+            if (spriteIndex > 4){
+                spriteIndex = 0;
+            }
+            obj1.getComponent(SpriteRenderer.class).setSprite(sprites.getSprite(spriteIndex));
+        }
+        obj1.transform.position.x += 10*deltaTime;
         for (GameObject g : gameObjects){
             g.update(deltaTime);
         }
