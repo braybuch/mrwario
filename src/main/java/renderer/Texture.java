@@ -11,6 +11,7 @@ import static org.lwjgl.stb.STBImage.*;
 public class Texture {
     private String filepath;
     private int texID;
+    private int width, height;
 
     public Texture(String filepath){
         this.filepath = filepath;
@@ -44,6 +45,11 @@ public class Texture {
         ByteBuffer image = stbi_load(filepath, width, height, channels, 0);
 
         if (image != null) {
+            // Store size of image from buffer
+            this.width = width.get(0);
+            this.height = height.get(0);
+
+            // Check if image has alpha
             if (channels.get(0) == 3) {// RGB
                 glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width.get(0), height.get(0), 0, GL_RGB, GL_UNSIGNED_BYTE, image);
             } else if (channels.get(0) == 4) { // RGBA
@@ -64,5 +70,13 @@ public class Texture {
 
     public void unbind(){
         glBindTexture(GL_TEXTURE_2D, 0);
+    }
+
+    public int width(){
+        return width;
+    }
+
+    public int height(){
+        return height;
     }
 }
