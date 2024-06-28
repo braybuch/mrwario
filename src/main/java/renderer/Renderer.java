@@ -24,10 +24,13 @@ public class Renderer {
     private void add(SpriteRenderer sprite) {
         boolean added = false;
         for (RenderBatch b : batches){
-            if (b.hasRoom()){
-                b.addSprite(sprite);
-                added = true;
-                break;
+            if (b.hasRoomForSprites()){
+                Texture texture = sprite.getTexture();
+                if (texture == null || (b.hasTexture(texture) || b.hasRoomForTextures())) {
+                    b.addSprite(sprite);
+                    added = true;
+                    break;
+                }
             }
         }
 

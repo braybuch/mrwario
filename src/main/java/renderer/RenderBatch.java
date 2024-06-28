@@ -226,7 +226,16 @@ public class RenderBatch {
         elements[offSetArrayIndex + 5] = offset + 1;
     }
 
-    public boolean hasRoom(){
+    public boolean hasRoomForSprites(){
         return hasRoomForSprites;
+    }
+
+    public boolean hasRoomForTextures(){
+        final int MAX_GPU_TEXTURE_SLOTS = 8;
+        return textures.size() < MAX_GPU_TEXTURE_SLOTS;
+    }
+
+    public boolean hasTexture(Texture texture){
+        return textures.contains(texture);
     }
 }
