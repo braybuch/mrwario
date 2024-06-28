@@ -3,6 +3,7 @@ package coal;
 import components.SpriteRenderer;
 import org.joml.Vector2f;
 import org.joml.Vector4f;
+import util.AssetPool;
 
 public class LevelEditorScene extends Scene {
 
@@ -30,6 +31,13 @@ public class LevelEditorScene extends Scene {
                 addGameObjectToScene(g);
             }
         }
+
+        loadResources();
+    }
+
+    private void loadResources() {
+        AssetPool.getShader("assets/shaders/default.glsl");
+
     }
 
     @Override

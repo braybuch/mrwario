@@ -21,6 +21,8 @@ public class Shader {
     private String filePath;
 
     public Shader(String filepath){
+        System.out.println("Hello OpenGL v" + glGetString(GL_VERSION));
+        System.out.println("Hello GLSL v" + glGetString(GL_SHADING_LANGUAGE_VERSION));
         this.filePath = filepath;
         try {
             String source = new String(Files.readAllBytes(Paths.get(filePath)));
@@ -173,5 +175,11 @@ public class Shader {
         int varLocation = glGetUniformLocation(shaderProgramID, varName);
         use();
         glUniform1i(varLocation, slot);
+    }
+
+    public void uploadIntArray(String varName, int[] array){
+        int varLocation = glGetUniformLocation(shaderProgramID, varName);
+        use();
+        glUniform1iv(varLocation, array);
     }
 }

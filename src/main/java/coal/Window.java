@@ -3,7 +3,6 @@ package coal;
 import org.lwjgl.Version;
 import org.lwjgl.glfw.GLFWErrorCallback;
 import org.lwjgl.opengl.GL;
-import util.Time;
 
 import static org.lwjgl.glfw.Callbacks.glfwFreeCallbacks;
 import static org.lwjgl.glfw.GLFW.*;
@@ -25,9 +24,9 @@ public class Window {
         this.width = 1920;
         this.height = 1080;
         this.title = "Mwrario";
-        r = 1;
-        g = 1;
-        b = 1;
+        r = 0;
+        g = 0;
+        b = 0;
         a = 1;
     }
 
@@ -58,7 +57,7 @@ public class Window {
     }
 
     public void run(){
-        System.out.println("Hello LWJGL " + Version.getVersion());
+        System.out.println("Hello LWJGL v" + Version.getVersion());
         init();
         loop();
 
@@ -122,8 +121,8 @@ public class Window {
     private void loop(){
 
         // Init timing variables
-        float startTime = Time.getTime();
-        float endTime = Time.getTime();
+        float startTime = (float)glfwGetTime();
+        float endTime;
         float deltaTime = -1.0f;
 
         while(!glfwWindowShouldClose(windowPointer)){// Until close window event
@@ -142,7 +141,7 @@ public class Window {
             glfwSwapBuffers(windowPointer);
 
             // Establish delta time
-            endTime = Time.getTime();
+            endTime = (float)glfwGetTime();
             deltaTime = endTime - startTime;
             startTime = endTime;
         }
