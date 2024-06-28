@@ -4,6 +4,7 @@ import coal.GameObject;
 import components.SpriteRenderer;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Renderer {
@@ -24,7 +25,7 @@ public class Renderer {
     private void add(SpriteRenderer sprite) {
         boolean added = false;
         for (RenderBatch b : batches){
-            if (b.hasRoomForSprites()){
+            if (b.hasRoomForSprites() && b.zIndex() == sprite.gameObject.zIndex()){
                 Texture texture = sprite.getTexture();
                 if (texture == null || (b.hasTexture(texture) || b.hasRoomForTextures())) {
                     b.addSprite(sprite);
@@ -35,10 +36,12 @@ public class Renderer {
         }
 
         if (!added){// Create a new render batch
-            RenderBatch newBatch = new RenderBatch(MAX_BATCH_SIZE);
+            RenderBatch newBatch = new RenderBatch(MAX_BATCH_SIZE, sprite.gameObject.zIndex());
             newBatch.start();
             batches.add(newBatch);
             newBatch.addSprite(sprite);
+            // Make sure zIndices are drawn in correct order
+            Collections.sort(batches);
         }
     }
 

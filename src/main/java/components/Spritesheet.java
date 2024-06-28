@@ -18,6 +18,7 @@ public class Spritesheet {
         // Get bottom left corner of top left sprite
         int     currentX = 0,
                 currentY = texture.height() - spriteHeight;
+
         for (int i = 0; i < numSprites; i++){
             // Get normalized sprite coordinates
             float   topY    = (currentY + spriteHeight) / (float)texture.height(),
