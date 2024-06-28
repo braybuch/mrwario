@@ -15,22 +15,14 @@ public class LevelEditorScene extends Scene {
     public void init() {
         camera = new Camera(new Vector2f());
 
-        int xOffset = 10, yOffset = 10;
-        float totalWidth = (float)(600.0f - xOffset * 2.0f);
-        float totalHeight = (float)(300.0f - yOffset * 2.0f);
-        float sizeX = totalWidth / 100.0f;
-        float sizeY = totalHeight / 100.0f;
+        GameObject obj1 = new GameObject("Object 1", new Transform(new Vector2f(100, 100), new Vector2f(256, 256)));
+        obj1.addComponent(new SpriteRenderer(AssetPool.getTexture("assets/textures/mario.png")));
+        addGameObjectToScene(obj1);
 
-        for (int x = 0; x < 100; x++){
-            for (int y = 0; y < 100; y++){
-                float xPos = xOffset + (x * sizeX);
-                float yPos = yOffset + (y * sizeY);
+        GameObject obj2 = new GameObject("Object 1", new Transform(new Vector2f(400, 100), new Vector2f(256, 256)));
+        obj2.addComponent(new SpriteRenderer(AssetPool.getTexture("assets/textures/goomba.png")));
+        addGameObjectToScene(obj2);
 
-                GameObject g = new GameObject("obj" + x + "" + y, new Transform(new Vector2f(xPos, yPos), new Vector2f(sizeX, sizeY)));
-                g.addComponent(new SpriteRenderer(new Vector4f(xPos / totalWidth, yPos / totalHeight, 1, 1)));
-                addGameObjectToScene(g);
-            }
-        }
 
         loadResources();
     }
