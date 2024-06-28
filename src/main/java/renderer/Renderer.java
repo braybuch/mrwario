@@ -40,8 +40,7 @@ public class Renderer {
             newBatch.start();
             batches.add(newBatch);
             newBatch.addSprite(sprite);
-            // Make sure zIndices are drawn in correct order
-            Collections.sort(batches);
+            Collections.sort(batches);// Make sure zIndices are drawn in correct order
         }
     }
 

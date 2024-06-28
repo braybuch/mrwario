@@ -10,9 +10,10 @@ import static org.lwjgl.opengl.GL11.*;
 import static org.lwjgl.system.MemoryUtil.NULL;
 
 public class Window {
-    private final int width, height;
+    private int width, height;
     private final String title;
     private long windowPointer;
+    private ImGuiLayer imguiLayer;
     public float r, g, b, a;
     private boolean fadeToBlack = false;
 
@@ -97,6 +98,10 @@ public class Window {
         glfwSetMouseButtonCallback(windowPointer, MouseListener::mouseButtonCallback);
         glfwSetScrollCallback(windowPointer, MouseListener::mouseScrollCallback);
         glfwSetKeyCallback(windowPointer, KeyListener::keyCallback);
+        glfwSetWindowSizeCallback(windowPointer, (w, newWidth, newHeight) -> {
+            Window.get().setWidth(newWidth);
+            Window.get().setHeight(newHeight);
+        });
 
         // Make OpenGL context current
         glfwMakeContextCurrent(windowPointer);
@@ -119,6 +124,10 @@ public class Window {
         // Setup alpha channel
         glEnable(GL_BLEND);
         glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
+
+        // Assign imgui layer
+        imguiLayer = new ImGuiLayer(windowPointer);
+        imguiLayer.initImGui();
 
         Window.changeScene(0);
     }
@@ -144,6 +153,8 @@ public class Window {
                 currentScene.update(deltaTime);
             }
 
+            imguiLayer.update(deltaTime);
+
             glfwSwapBuffers(windowPointer);
 
             // Establish delta time
@@ -155,5 +166,21 @@ public class Window {
 
     public static Scene getScene(){
         return get().currentScene;
+    }
+
+    public int getHeight(){
+        return get().height;
+    }
+
+    public int getWidth(){
+        return get().width;
+    }
+
+    public void setHeight(int height){
+        Window.get().height = height;
+    }
+
+    public void setWidth(int width){
+        Window.get().width = width;
     }
 }

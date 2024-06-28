@@ -21,8 +21,16 @@ tasks.test {
 val lwjglVersion = "3.3.3"
 val jomlVersion = "1.10.6"
 val lwjglNatives = "natives-windows"
+val imguiVersion = "1.86.11"
 
 dependencies {
+    // IMGUI
+    implementation("io.github.spair:imgui-java-binding:$imguiVersion")
+    implementation("io.github.spair:imgui-java-lwjgl3:$imguiVersion")
+    runtimeOnly("io.github.spair:imgui-java-natives-windows:$imguiVersion")
+
+
+    // LWJGL
     implementation(platform("org.lwjgl:lwjgl-bom:$lwjglVersion"))
 
     implementation("org.lwjgl", "lwjgl")
