@@ -1,5 +1,7 @@
 package coal;
 
+import components.FontRenderer;
+import components.SpriteRenderer;
 import org.joml.Vector2f;
 import org.lwjgl.BufferUtils;
 import renderer.Shader;
@@ -59,12 +61,20 @@ public class LevelEditorScene extends Scene {
 
     private Texture testTexture;
 
+    GameObject testObj;
+
     public LevelEditorScene() {
 
     }
 
     @Override
     public void init() {
+        System.out.println("Creating test object");
+        this.testObj = new GameObject("Test Object");
+        this.testObj.addComponent(new SpriteRenderer());
+        this.testObj.addComponent(new FontRenderer());
+        this.addGameObjectToScene(this.testObj);
+
         this.camera = new Camera(new Vector2f());
         defaultShader = new Shader("assets/shaders/default.glsl");
         defaultShader.compileAndLink();
@@ -144,5 +154,9 @@ public class LevelEditorScene extends Scene {
         glBindVertexArray(0);
 
         defaultShader.detach();
+
+        for (GameObject g : gameObjects){
+            g.update(deltaTime);
+        }
     }
 }
