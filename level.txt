@@ -1,14 +1,15 @@
 [
   {
+    "uid": 0,
     "name": "Object 1",
     "components": [
       {
         "type": "components.SpriteRenderer",
         "properties": {
           "colour": {
-            "x": 0.5674937,
-            "y": 0.15050785,
-            "z": 0.5719298,
+            "x": 1.0,
+            "y": 0.0,
+            "z": 0.0,
             "w": 1.0
           },
           "sprite": {
@@ -32,7 +33,8 @@
                 "y": 1.0
               }
             ]
-          }
+          },
+          "uid": 0
         }
       },
       {
@@ -44,7 +46,21 @@
             "x": 0.0,
             "y": 0.5,
             "z": 0.0
-          }
+          },
+          "uid": 1
+        }
+      },
+      {
+        "type": "components.RigidBody",
+        "properties": {
+          "colliderType": 0,
+          "friction": 0.8,
+          "velocity": {
+            "x": 0.0,
+            "y": 0.5,
+            "z": 0.0
+          },
+          "uid": 3
         }
       }
     ],
@@ -61,6 +77,7 @@
     "zIndex": 4
   },
   {
+    "uid": 1,
     "name": "Object 2",
     "components": [
       {
@@ -99,7 +116,8 @@
                 "y": 0.14285715
               }
             ]
-          }
+          },
+          "uid": 2
         }
       }
     ],
@@ -114,555 +132,5 @@
       }
     },
     "zIndex": 2
-  },
-  {
-    "name": "Sprite_Object_Gen",
-    "components": [
-      {
-        "type": "components.SpriteRenderer",
-        "properties": {
-          "colour": {
-            "x": 1.0,
-            "y": 1.0,
-            "z": 1.0,
-            "w": 1.0
-          },
-          "sprite": {
-            "width": 16.0,
-            "height": 16.0,
-            "texture": {
-              "filepath": "assets/textures/sheet.png",
-              "textureID": 2,
-              "width": 160,
-              "height": 112
-            },
-            "textureCoords": [
-              {
-                "x": 0.7,
-                "y": 0.71428573
-              },
-              {
-                "x": 0.7,
-                "y": 0.5714286
-              },
-              {
-                "x": 0.6,
-                "y": 0.5714286
-              },
-              {
-                "x": 0.6,
-                "y": 0.71428573
-              }
-            ]
-          }
-        }
-      }
-    ],
-    "transform": {
-      "position": {
-        "x": 336.0,
-        "y": 458.13336
-      },
-      "scale": {
-        "x": 64.0,
-        "y": 64.0
-      }
-    },
-    "zIndex": 0
-  },
-  {
-    "name": "Sprite_Object_Gen",
-    "components": [
-      {
-        "type": "components.SpriteRenderer",
-        "properties": {
-          "colour": {
-            "x": 1.0,
-            "y": 1.0,
-            "z": 1.0,
-            "w": 1.0
-          },
-          "sprite": {
-            "width": 16.0,
-            "height": 16.0,
-            "texture": {
-              "filepath": "assets/textures/sheet.png",
-              "textureID": 2,
-              "width": 160,
-              "height": 112
-            },
-            "textureCoords": [
-              {
-                "x": 0.7,
-                "y": 0.5714286
-              },
-              {
-                "x": 0.7,
-                "y": 0.42857143
-              },
-              {
-                "x": 0.6,
-                "y": 0.42857143
-              },
-              {
-                "x": 0.6,
-                "y": 0.5714286
-              }
-            ]
-          }
-        }
-      }
-    ],
-    "transform": {
-      "position": {
-        "x": 598.6667,
-        "y": 150.75557
-      },
-      "scale": {
-        "x": 64.0,
-        "y": 64.0
-      }
-    },
-    "zIndex": 0
-  },
-  {
-    "name": "Sprite_Object_Gen",
-    "components": [
-      {
-        "type": "components.SpriteRenderer",
-        "properties": {
-          "colour": {
-            "x": 1.0,
-            "y": 1.0,
-            "z": 1.0,
-            "w": 1.0
-          },
-          "sprite": {
-            "width": 16.0,
-            "height": 16.0,
-            "texture": {
-              "filepath": "assets/textures/sheet.png",
-              "textureID": 2,
-              "width": 160,
-              "height": 112
-            },
-            "textureCoords": [
-              {
-                "x": 1.0,
-                "y": 0.14285715
-              },
-              {
-                "x": 1.0,
-                "y": 0.0
-              },
-              {
-                "x": 0.9,
-                "y": 0.0
-              },
-              {
-                "x": 0.9,
-                "y": 0.14285715
-              }
-            ]
-          }
-        }
-      }
-    ],
-    "transform": {
-      "position": {
-        "x": 438.6667,
-        "y": 361.06668
-      },
-      "scale": {
-        "x": 64.0,
-        "y": 64.0
-      }
-    },
-    "zIndex": 0
-  },
-  {
-    "name": "Sprite_Object_Gen",
-    "components": [
-      {
-        "type": "components.SpriteRenderer",
-        "properties": {
-          "colour": {
-            "x": 1.0,
-            "y": 1.0,
-            "z": 1.0,
-            "w": 1.0
-          },
-          "sprite": {
-            "width": 16.0,
-            "height": 16.0,
-            "texture": {
-              "filepath": "assets/textures/sheet.png",
-              "textureID": 2,
-              "width": 160,
-              "height": 112
-            },
-            "textureCoords": [
-              {
-                "x": 0.9,
-                "y": 0.2857143
-              },
-              {
-                "x": 0.9,
-                "y": 0.14285715
-              },
-              {
-                "x": 0.8,
-                "y": 0.14285715
-              },
-              {
-                "x": 0.8,
-                "y": 0.2857143
-              }
-            ]
-          }
-        }
-      }
-    ],
-    "transform": {
-      "position": {
-        "x": 602.6666,
-        "y": 217.33334
-      },
-      "scale": {
-        "x": 64.0,
-        "y": 64.0
-      }
-    },
-    "zIndex": 0
-  },
-  {
-    "name": "Sprite_Object_Gen",
-    "components": [
-      {
-        "type": "components.SpriteRenderer",
-        "properties": {
-          "colour": {
-            "x": 1.0,
-            "y": 1.0,
-            "z": 1.0,
-            "w": 1.0
-          },
-          "sprite": {
-            "width": 16.0,
-            "height": 16.0,
-            "texture": {
-              "filepath": "assets/textures/sheet.png",
-              "textureID": 2,
-              "width": 160,
-              "height": 112
-            },
-            "textureCoords": [
-              {
-                "x": 0.1,
-                "y": 1.0
-              },
-              {
-                "x": 0.1,
-                "y": 0.85714287
-              },
-              {
-                "x": 0.0,
-                "y": 0.85714287
-              },
-              {
-                "x": 0.0,
-                "y": 1.0
-              }
-            ]
-          }
-        }
-      }
-    ],
-    "transform": {
-      "position": {
-        "x": 661.3333,
-        "y": 334.93335
-      },
-      "scale": {
-        "x": 64.0,
-        "y": 64.0
-      }
-    },
-    "zIndex": 0
-  },
-  {
-    "name": "Sprite_Object_Gen",
-    "components": [
-      {
-        "type": "components.SpriteRenderer",
-        "properties": {
-          "colour": {
-            "x": 1.0,
-            "y": 1.0,
-            "z": 1.0,
-            "w": 1.0
-          },
-          "sprite": {
-            "width": 16.0,
-            "height": 16.0,
-            "texture": {
-              "filepath": "assets/textures/sheet.png",
-              "textureID": 2,
-              "width": 160,
-              "height": 112
-            },
-            "textureCoords": [
-              {
-                "x": 0.8,
-                "y": 1.0
-              },
-              {
-                "x": 0.8,
-                "y": 0.85714287
-              },
-              {
-                "x": 0.7,
-                "y": 0.85714287
-              },
-              {
-                "x": 0.7,
-                "y": 1.0
-              }
-            ]
-          }
-        }
-      }
-    ],
-    "transform": {
-      "position": {
-        "x": 662.0,
-        "y": 399.02225
-      },
-      "scale": {
-        "x": 64.0,
-        "y": 64.0
-      }
-    },
-    "zIndex": 0
-  },
-  {
-    "name": "Sprite_Object_Gen",
-    "components": [
-      {
-        "type": "components.SpriteRenderer",
-        "properties": {
-          "colour": {
-            "x": 1.0,
-            "y": 1.0,
-            "z": 1.0,
-            "w": 1.0
-          },
-          "sprite": {
-            "width": 16.0,
-            "height": 16.0,
-            "texture": {
-              "filepath": "assets/textures/sheet.png",
-              "textureID": 2,
-              "width": 160,
-              "height": 112
-            },
-            "textureCoords": [
-              {
-                "x": 0.8,
-                "y": 0.42857143
-              },
-              {
-                "x": 0.8,
-                "y": 0.2857143
-              },
-              {
-                "x": 0.7,
-                "y": 0.2857143
-              },
-              {
-                "x": 0.7,
-                "y": 0.42857143
-              }
-            ]
-          }
-        }
-      }
-    ],
-    "transform": {
-      "position": {
-        "x": 679.3333,
-        "y": 455.02228
-      },
-      "scale": {
-        "x": 64.0,
-        "y": 64.0
-      }
-    },
-    "zIndex": 0
-  },
-  {
-    "name": "Sprite_Object_Gen",
-    "components": [
-      {
-        "type": "components.SpriteRenderer",
-        "properties": {
-          "colour": {
-            "x": 1.0,
-            "y": 1.0,
-            "z": 1.0,
-            "w": 1.0
-          },
-          "sprite": {
-            "width": 16.0,
-            "height": 16.0,
-            "texture": {
-              "filepath": "assets/textures/sheet.png",
-              "textureID": 2,
-              "width": 160,
-              "height": 112
-            },
-            "textureCoords": [
-              {
-                "x": 1.0,
-                "y": 0.14285715
-              },
-              {
-                "x": 1.0,
-                "y": 0.0
-              },
-              {
-                "x": 0.9,
-                "y": 0.0
-              },
-              {
-                "x": 0.9,
-                "y": 0.14285715
-              }
-            ]
-          }
-        }
-      }
-    ],
-    "transform": {
-      "position": {
-        "x": 441.33334,
-        "y": 362.93338
-      },
-      "scale": {
-        "x": 64.0,
-        "y": 64.0
-      }
-    },
-    "zIndex": 0
-  },
-  {
-    "name": "Sprite_Object_Gen",
-    "components": [
-      {
-        "type": "components.SpriteRenderer",
-        "properties": {
-          "colour": {
-            "x": 1.0,
-            "y": 1.0,
-            "z": 1.0,
-            "w": 1.0
-          },
-          "sprite": {
-            "width": 16.0,
-            "height": 16.0,
-            "texture": {
-              "filepath": "assets/textures/sheet.png",
-              "textureID": 2,
-              "width": 160,
-              "height": 112
-            },
-            "textureCoords": [
-              {
-                "x": 0.9,
-                "y": 0.2857143
-              },
-              {
-                "x": 0.9,
-                "y": 0.14285715
-              },
-              {
-                "x": 0.8,
-                "y": 0.14285715
-              },
-              {
-                "x": 0.8,
-                "y": 0.2857143
-              }
-            ]
-          }
-        }
-      }
-    ],
-    "transform": {
-      "position": {
-        "x": 700.6666,
-        "y": 284.53336
-      },
-      "scale": {
-        "x": 64.0,
-        "y": 64.0
-      }
-    },
-    "zIndex": 0
-  },
-  {
-    "name": "Sprite_Object_Gen",
-    "components": [
-      {
-        "type": "components.SpriteRenderer",
-        "properties": {
-          "colour": {
-            "x": 1.0,
-            "y": 1.0,
-            "z": 1.0,
-            "w": 1.0
-          },
-          "sprite": {
-            "width": 16.0,
-            "height": 16.0,
-            "texture": {
-              "filepath": "assets/textures/sheet.png",
-              "textureID": 2,
-              "width": 160,
-              "height": 112
-            },
-            "textureCoords": [
-              {
-                "x": 0.6,
-                "y": 0.5714286
-              },
-              {
-                "x": 0.6,
-                "y": 0.42857143
-              },
-              {
-                "x": 0.5,
-                "y": 0.42857143
-              },
-              {
-                "x": 0.5,
-                "y": 0.5714286
-              }
-            ]
-          }
-        }
-      }
-    ],
-    "transform": {
-      "position": {
-        "x": 603.3334,
-        "y": 353.60004
-      },
-      "scale": {
-        "x": 64.0,
-        "y": 64.0
-      }
-    },
-    "zIndex": 0
   }
 ]

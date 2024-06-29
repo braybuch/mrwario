@@ -29,6 +29,7 @@ public class LevelEditorScene extends Scene {
 
         if (loadedLevel){
             activeGameObject = gameObjects.get(0);
+            activeGameObject.addComponent(new RigidBody());
             return;
         }
 
