@@ -8,27 +8,18 @@ import org.joml.Vector3f;
  * This class represents a camera object
  */
 public class Camera {
-
-    /**
-     * The matrix that defines the camera's projection transformation
-     */
+    /** The matrix that defines the camera's projection transformation */
     private Matrix4f projectionMatrix;
-    /**
-     * The matrix that defines the camera's view transformation
-     */
+    /** The matrix that defines the camera's view transformation */
     private Matrix4f viewMatrix;
-    /**
-     * The inverse of the projection matrix, used for transforming coordinates from screen space back to world space
-     */
+    /** The inverse of the projection matrix, used for transforming coordinates from screen space back to world space */
     private Matrix4f inverseProjectionMatrix;
-    /**
-     * The inverse of the view matrix, used for transforming coordinates from screen space back to world space
-     */
+    /** The inverse of the view matrix, used for transforming coordinates from screen space back to world space */
     private Matrix4f inverseViewMatrix;
-    /**
-     * the 2D position of the camera in world space
-     */
-    public Vector2f position;
+    /** the 2D position of the camera in world space */
+    private Vector2f position;
+    /** the size of the projection */
+    private Vector2f projectionSize = new Vector2f(32.0f * 40.0f, 32.0f * 21.0f);
 
     /**
      * Constructor initializes to the given position then handles the rest
@@ -96,12 +87,31 @@ public class Camera {
     }
 
     /**
+     * Get the 2d position of the camera
+     *
+     * @return the position
+     */
+    public Vector2f getPosition() {
+        return position;
+    }
+
+    /**
+     * Get the projection size
+     *
+     * @return the projection size
+     */
+    public Vector2f getProjectionSize() {
+        return projectionSize;
+    }
+
+    /**
      * Move projection
      */
     public void adjustProjection() {
         projectionMatrix.identity();
-        projectionMatrix.ortho(0.0f, 32.0f * 40.0f, 0.0f, 32.0f * 21.0f, 0.0f, 100.0f);
+        projectionMatrix.ortho(0.0f, projectionSize.x, 0.0f, projectionSize.y, 0.0f, 100.0f);
         projectionMatrix.invert(inverseProjectionMatrix);
     }
+
 
 }

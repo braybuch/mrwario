@@ -6,12 +6,10 @@ import org.joml.Vector3f;
 import util.AssetPool;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import static org.lwjgl.opengl.GL15.*;
 import static org.lwjgl.opengl.GL20.*;
-import static org.lwjgl.opengl.GL20.glDisableVertexAttribArray;
 import static org.lwjgl.opengl.GL30.glBindVertexArray;
 import static org.lwjgl.opengl.GL30.glGenVertexArrays;
 
@@ -56,7 +54,7 @@ public class DebugDraw {
         glEnableVertexAttribArray(1);
 
         // Increase line width
-        glLineWidth(4.0f);
+        glLineWidth(2.0f);
     }
 
     /**
@@ -107,7 +105,7 @@ public class DebugDraw {
 
         // Bind vertices to gpu
         glBindBuffer(GL_ARRAY_BUFFER, vboID);
-        glBufferSubData(GL_ARRAY_BUFFER, 0, Arrays.copyOfRange(vertexArray, 0, lines.size() * 6 * 2));
+        glBufferData(GL_ARRAY_BUFFER, vertexArray.clone(), GL_DYNAMIC_DRAW);
 
         // Use the shader
         shader.use();
@@ -115,12 +113,12 @@ public class DebugDraw {
         shader.uploadMatrix4("uView", Window.get().getScene().getCamera().getViewMatrix());
 
         // Bind the vertex array object to the gpu
-        glBindVertexArray(vboID);
+        glBindVertexArray(vaoID);
         glEnableVertexAttribArray(0);
         glEnableVertexAttribArray(1);
 
         // Draw the batch
-        glDrawArrays(GL_LINES, 0, lines.size() * 6 * 2);
+        glDrawArrays(GL_LINES, 0, lines.size());
 
         // Free
         glDisableVertexAttribArray(0);

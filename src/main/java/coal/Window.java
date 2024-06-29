@@ -180,7 +180,7 @@ public class Window {
         glfwWindowHint(GLFW_MAXIMIZED, GLFW_FALSE);
 
         // Create the window
-        windowPointer = glfwCreateWindow(this.width, this.height, this.title, NULL, NULL);
+        windowPointer = glfwCreateWindow(width, height, title, NULL, NULL);
         if (windowPointer == NULL) {
             throw new IllegalStateException("Failed to create the GLFW window");
         }
