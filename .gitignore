@@ -47,9 +47,6 @@ src/main/resources/
 # Ignore test output
 test-results/
 
-# Ignore any local configuration 
-init.ini
-
 # Ignore any personal IDE settings
 .settings/
 
