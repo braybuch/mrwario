@@ -153,7 +153,7 @@ public class Window {
                 currentScene.update(deltaTime);
             }
 
-            imguiLayer.update(deltaTime);
+            imguiLayer.update(deltaTime, currentScene);
 
             glfwSwapBuffers(windowPointer);
 

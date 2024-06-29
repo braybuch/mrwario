@@ -8,6 +8,11 @@ public abstract class Component {
 
     }
 
-    public abstract void update(Float deltaTime);
+    public void update(Float deltaTime){
 
+    }
+
+    public void imgui() {
+
+    }
 }

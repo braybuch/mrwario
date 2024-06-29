@@ -41,6 +41,11 @@ public class SpriteRenderer extends Component{
         }
     }
 
+    @Override
+    public void imgui(){
+        
+    }
+
     public Vector4f getColour() {
         return colour;
     }
