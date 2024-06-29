@@ -3,6 +3,7 @@ package components;
 import coal.GameObject;
 import coal.MouseListener;
 import coal.Window;
+import util.Settings;
 
 import static org.lwjgl.glfw.GLFW.GLFW_MOUSE_BUTTON_LEFT;
 
@@ -38,6 +39,11 @@ public class MouseControls extends Component{
         if (holdingObject != null){
             holdingObject.transform.position.x = MouseListener.getOrthoX() - MOUSE_OFFSET;
             holdingObject.transform.position.y = MouseListener.getOrthoY() - MOUSE_OFFSET;
+
+            // Snap position to grid
+            holdingObject.transform.position.x = (int)(holdingObject.transform.position.x / Settings.GRID_WIDTH) * Settings.GRID_WIDTH;
+            holdingObject.transform.position.y = (int)(holdingObject.transform.position.y / Settings.GRID_HEIGHT) * Settings.GRID_HEIGHT;
+
 
             if (MouseListener.mouseButtonDown(GLFW_MOUSE_BUTTON_LEFT)) {
                 place();
