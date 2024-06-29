@@ -14,7 +14,6 @@ import renderer.DebugDraw;
 import util.AssetPool;
 
 public class LevelEditorScene extends Scene {
-
     private GameObject obj1;
     private Spritesheet sprites;
     private MouseControls mouseControls = new MouseControls();
@@ -96,8 +95,8 @@ public class LevelEditorScene extends Scene {
         float windowX2 = windowPos.x + windowSize.x;
         for (int i = 0; i < sprites.size(); i++) {
             Sprite sprite = sprites.getSprite(i);
-            float spriteWidth = sprite.width() * 4;
-            float spriteHeight = sprite.height() * 4;
+            float spriteWidth = sprite.getWidth() * 4;
+            float spriteHeight = sprite.getHeight() * 4;
             int textureID = sprite.getTextureID();
             Vector2f[] textureCoords = sprite.getTextureCoords();
 

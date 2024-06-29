@@ -6,15 +6,29 @@ import coal.Window;
 
 import static org.lwjgl.glfw.GLFW.GLFW_MOUSE_BUTTON_LEFT;
 
+/**
+ * This component provides mouse controls
+ */
 public class MouseControls extends Component{
+    /** the object held by the mouse */
     GameObject holdingObject = null;
 
+    /**
+     * Attach the object to the mouse
+     *
+     * @param object the object to attach to the mouse
+     */
     public void pickupObject(GameObject object){
         holdingObject = object;
         Window.get().getScene().addGameObjectToScene(object);
     }
 
+    /**
+     * Put the object down
+     */
     public void place(){
+        // For now the object is printed, then destroyed
+        System.out.println(holdingObject.toString());
         holdingObject = null;
     }
 

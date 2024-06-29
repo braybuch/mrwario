@@ -23,19 +23,27 @@ public class ImGuiLayer {
      */
     private final ImGuiImplGlfw imGuiGlfw = new ImGuiImplGlfw();
 
+    /** The c style pointer to the window object in memory */
     private final long windowPointer;
 
-    // Mouse cursors provided by GLFW
+    /** Mouse cursors provided by org.lwjgl.glfw.GLFW */
     private final long[] mouseCursors = new long[ImGuiMouseCursor.COUNT];
 
-    // LWJGL3 renderer (SHOULD be initialized)
+    /** LWJGL3 renderer (SHOULD be initialized) */
     private final ImGuiImplGl3 imGuiGl3 = new ImGuiImplGl3();
 
+    /**
+     * Constructor to initialize with a window
+     *
+     * @param glfwWindow the pointer to the window
+     */
     public ImGuiLayer(long glfwWindow) {
         this.windowPointer = glfwWindow;
     }
 
-    // Initialize Dear ImGui.
+    /**
+     * Initialize Dear ImGui.
+     */
     public void initImGui() {
         // IMPORTANT!!
         // This line is critical for Dear ImGui to work.
@@ -191,6 +199,12 @@ public class ImGuiLayer {
         imGuiGlfw.init(windowPointer, true);
     }
 
+    /**
+     * To be called on every update
+     *
+     * @param dt the time since last update
+     * @param scene the scene to update gui
+     */
     public void update(float dt, Scene scene) {
         startFrame(dt);
 
@@ -207,8 +221,8 @@ public class ImGuiLayer {
 
     private void startFrame(final float deltaTime) {
         // Get window properties and mouse position
-        float[] winWidth = {Window.get().width()};
-        float[] winHeight = {Window.get().height()};
+        float[] winWidth = {Window.get().getWidth()};
+        float[] winHeight = {Window.get().getHeight()};
         double[] mousePosX = {0};
         double[] mousePosY = {0};
         glfwGetCursorPos(windowPointer, mousePosX, mousePosY);

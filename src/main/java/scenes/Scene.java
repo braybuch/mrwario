@@ -18,21 +18,45 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * This class represents a scene object.
+ */
 public abstract class Scene {
+    /** the renderer to use for the scene */
     protected Renderer renderer = new Renderer();
+    /** the camera to use for the scene */
     protected Camera camera;
+    /** represents if the application has begun updating yet */
     private boolean isRunning = false;
+    /** the list of game objects in the scene */
     protected List<GameObject> gameObjects = new ArrayList<>();
+    /** if the level has been loaded yet */
     protected boolean loadedLevel = false;
-    /**
-     * The game object you're inspecting in a window
-     */
+    /** the game object you've selected in the inspector */
     protected GameObject activeGameObject = null;
 
+    /**
+     * Optional default constructor.
+     */
     public Scene() {}
 
+    /**
+     * Get the camera.
+     *
+     * @return the camera
+     */
+    public Camera getCamera() {
+        return camera;
+    }
+
+    /**
+     * Optional method.
+     */
     public void init() {}
 
+    /**
+     * Begin rendering and running the scene.
+     */
     public void start() {
         for (GameObject g : gameObjects) {
             g.start();
@@ -41,22 +65,32 @@ public abstract class Scene {
         isRunning = true;
     }
 
-    public void addGameObjectToScene(GameObject g) {
+    /**
+     * Put new object in the scene.
+     *
+     * @param gameObject the new object to be added
+     */
+    public void addGameObjectToScene(GameObject gameObject) {
         if (!isRunning) {
-            gameObjects.add(g);
+            gameObjects.add(gameObject);
         } else {
-            gameObjects.add(g);
-            g.start();
-            renderer.add(g);
+            gameObjects.add(gameObject);
+            gameObject.start();
+            renderer.add(gameObject);
         }
     }
 
+    /**
+     * To be called every frame
+     *
+     * @param deltaTime time elapsed since last frame
+     */
     public abstract void update(float deltaTime);
 
-    public Camera camera() {
-        return camera;
-    }
-
+    /**
+     *
+     */
+    // TODO what
     public void sceneImgui(){
         if (activeGameObject != null) {
             ImGui.begin("Inspector");
@@ -71,6 +105,9 @@ public abstract class Scene {
 
     }
 
+    /**
+     * Serialize objects
+     */
     public void saveExit(){
         Gson gson = new GsonBuilder()
                 .setPrettyPrinting()
@@ -87,6 +124,9 @@ public abstract class Scene {
         }
     }
 
+    /**
+     * Deserialize objects
+     */
     public void load(){
         Gson gson = new GsonBuilder()
                 .setPrettyPrinting()

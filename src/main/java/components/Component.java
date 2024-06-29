@@ -8,11 +8,29 @@ import org.joml.Vector4f;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 
+/**
+ * This class represents a component that can be added to a game object
+ */
 public abstract class Component {
+    /** the number of UIDs handed out across all components */
     private static int ID_COUNTER = 0;
+    /** this objects unique id */
     private int uid = -1;
-
+    /** the game object that contains this component */
     public transient GameObject gameObject = null;
+
+    /**
+     * Get the UID
+     *
+     * @return the UID
+     */
+    public int getUid() {
+        return uid;
+    }
+
+    public static void init(int maxId){
+        ID_COUNTER = maxId;
+    }
 
     public void start(){
 
@@ -84,17 +102,14 @@ public abstract class Component {
         }
     }
 
+    /**
+     * Make a unique identifier for this object
+     */
     public void generateID(){
         if (uid == -1){
             uid = ID_COUNTER++;
         }
     }
 
-    public int getUid() {
-        return uid;
-    }
 
-    public static void init(int maxId){
-        ID_COUNTER = maxId;
-    }
 }

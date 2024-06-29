@@ -15,44 +15,72 @@ import static org.lwjgl.opengl.GL20.*;
 import static org.lwjgl.opengl.GL30.glBindVertexArray;
 import static org.lwjgl.opengl.GL30.glGenVertexArrays;
 
+/**
+ * This class renders by batch for improved frame rates
+ */
 public class RenderBatch implements Comparable<RenderBatch> {
     // Vertex format
     // - - -
     // Position           Colour                            Texture coords      Texture ID
     // float, float,      float, float, float, float,       float, float,       float
 
-    private final int   POS_SIZE = 2,
-                        COLOUR_SIZE = 4,
-                        TEX_COORDS_SIZE = 2,
-                        TEX_ID_SIZE = 1,
-                        POS_OFFSET = 0,
-                        COLOUR_OFFSET = POS_OFFSET + POS_SIZE * Float.BYTES,
-                        TEX_COORDS_OFFSET = COLOUR_OFFSET + COLOUR_SIZE * Float.BYTES,
-                        TEX_ID_OFFSET = TEX_COORDS_OFFSET + TEX_COORDS_SIZE * Float.BYTES,
-                        VERTEX_SIZE = 9,
-                        VERTEX_SIZE_BYTES = VERTEX_SIZE * Float.BYTES;
-
-    private final SpriteRenderer[] sprites;
+    /** Size of the position attribute (2 floats) */
+    private final int POS_SIZE = 2;
+    /** Size of the colour attribute (4 floats) */
+    private final int COLOUR_SIZE = 4;
+    /** Size of the texture coordinates attribute (2 floats) */
+    private final int TEX_COORDS_SIZE = 2;
+    /** Size of the texture ID attribute (1 float) */
+    private final int TEX_ID_SIZE = 1;
+    /** Offset of the position attribute (0 bytes) */
+    private final int POS_OFFSET = 0;
+    /** Offset of the colour attribute */
+    private final int COLOUR_OFFSET = POS_OFFSET + POS_SIZE * Float.BYTES;
+    /** Offset of the texture coordinates attribute */
+    private final int TEX_COORDS_OFFSET = COLOUR_OFFSET + COLOUR_SIZE * Float.BYTES;
+    /** Offset of the texture ID attribute */
+    private final int TEX_ID_OFFSET = TEX_COORDS_OFFSET + TEX_COORDS_SIZE * Float.BYTES;
+    /** Total size of a vertex (9 floats) */
+    private final int VERTEX_SIZE = 9;
+    /** Total size of a vertex in bytes */
+    private final int VERTEX_SIZE_BYTES = VERTEX_SIZE * Float.BYTES;
+    /** The default shader to use */
+    private final String DEFAULT_SHADER = "assets/shaders/default.glsl";
+    /** Array to store sprites in the batch */
+    private final SpriteRenderer[] spriteRenderers;
+    /** Number of sprites currently in the batch */
     private int numSprites;
+    /** Flag indicating if there is room for more sprites in the batch */
     private boolean hasRoomForSprites;
-
+    /** Array to store vertex data */
     private final float[] vertices;
-
+    /** Texture slots for the batch */
     private final int[] texSlots = { 0, 1, 2, 3, 4, 5, 6, 7 };
+    /** List to store textures used in the batch */
     private final List<Texture> textures;
-
-    private int vaoID, vboID;
+    /** Vertex Array Object ID */
+    private int vaoID;
+    /** Vertex Buffer Object ID */
+    private int vboID;
+    /** Maximum number of sprites in the batch */
     private final int maxBatchSize;
+    /** Shader used for rendering */
     private final Shader shader;
+    /** z-index for sorting render batches */
     private final int zIndex;
 
+    /**
+     * Constructor declaring batch size and z-index for the batch
+     *
+     * @param maxBatchSize the max size of the batch
+     * @param zIndex the layer order to render the batch
+     */
     public RenderBatch(int maxBatchSize, int zIndex) {
-        this.zIndex = zIndex;
-
-        // Set batch size and init shader and sprites
-        shader = AssetPool.getShader("assets/shaders/default.glsl");
-        sprites = new SpriteRenderer[maxBatchSize];
+        // Set batch size, zIndex, and init shader and sprites
         this.maxBatchSize = maxBatchSize;
+        this.zIndex = zIndex;
+        shader = AssetPool.getShader(DEFAULT_SHADER);
+        spriteRenderers = new SpriteRenderer[this.maxBatchSize];
 
         // Init vertices (4 vertex quads)
         vertices = new float[maxBatchSize * 4 * VERTEX_SIZE];
@@ -61,6 +89,50 @@ public class RenderBatch implements Comparable<RenderBatch> {
         numSprites = 0;
         hasRoomForSprites = true;
         textures = new ArrayList<>();
+    }
+
+
+    /**
+     * Get if there's room for more sprites
+     *
+     * @return true if there's room for more sprites, or false
+     */
+    public boolean hasRoomForSprites(){
+        return hasRoomForSprites;
+    }
+
+    /**
+     * Get if there's room for more textures
+     *
+     * @return true if there's room for more textures, or false
+     */
+    public boolean hasRoomForTextures(){
+        final int MAX_GPU_TEXTURE_SLOTS = 8;
+        return textures.size() < MAX_GPU_TEXTURE_SLOTS;
+    }
+
+    /**
+     * Get if the list already contains a given texture
+     *
+     * @param texture the texture to check
+     * @return true if the list contains the texture, or false
+     */
+    public boolean hasTexture(Texture texture){
+        return textures.contains(texture);
+    }
+
+    /**
+     * Get the zIndex of the batch
+     *
+     * @return the zIndex of the batch
+     */
+    public int getZIndex(){
+        return zIndex;
+    }
+
+    @Override
+    public int compareTo(@NotNull RenderBatch o) {
+        return Integer.compare(this.zIndex, o.zIndex);
     }
 
     public void start(){
@@ -93,39 +165,47 @@ public class RenderBatch implements Comparable<RenderBatch> {
         glEnableVertexAttribArray(3);
     }
 
-    public void addSprite(SpriteRenderer sprite){
+    /**
+     * Add a spriteRenderer to the batch
+     *
+     * @param spriteRenderer the SpriteRenderer to add
+     */
+    public void addSprite(SpriteRenderer spriteRenderer){
         // Get index and add sprite
         int index = numSprites;
-        sprites[index] = sprite;
+        spriteRenderers[index] = spriteRenderer;
         numSprites++;
 
         // If sprite has a texture, and it's not on the list, add it
-        if (sprite.getTexture() != null){
-            if (!textures.contains(sprite.getTexture())){
-                textures.add(sprite.getTexture());
+        if (spriteRenderer.getTexture() != null){
+            if (!textures.contains(spriteRenderer.getTexture())){
+                textures.add(spriteRenderer.getTexture());
             }
         }
 
-        // Add properties to local vertices array
+        // Add spriteRenderer's properties to local vertices array
         loadVertexProperties(index);
 
+        // Check if there's room for more sprites
         if (numSprites >= maxBatchSize){
             hasRoomForSprites = false;
         }
     }
 
+    /**
+     * Draw the batch
+     */
     public void render(){
-        // Check if sprites need to be rebuffered
+        // Check if sprites need to be re-buffered
         boolean rebufferData = false;
         for (int i = 0; i < numSprites; i++){
-            SpriteRenderer sprite = sprites[i];
-            if (sprite.isDirty()) {
+            SpriteRenderer spriteRenderer = spriteRenderers[i];
+            if (spriteRenderer.getIsDirty()) {
                 loadVertexProperties(i);
-                sprite.clean();
+                spriteRenderer.setIsDirty(false);
                 rebufferData = true;
             }
         }
-
         if (rebufferData){
             glBindBuffer(GL_ARRAY_BUFFER, vboID);
             glBufferSubData(GL_ARRAY_BUFFER, 0, vertices);
@@ -133,8 +213,8 @@ public class RenderBatch implements Comparable<RenderBatch> {
 
         // Use the shader
         shader.use();
-        shader.uploadMatrix4("uProjection", Window.get().getScene().camera().getProjectionMatrix());
-        shader.uploadMatrix4("uView", Window.get().getScene().camera().getViewMatrix());
+        shader.uploadMatrix4("uProjection", Window.get().getScene().getCamera().getProjectionMatrix());
+        shader.uploadMatrix4("uView", Window.get().getScene().getCamera().getViewMatrix());
 
         // Bind textures list to graphics card slots
         for (int i = 0; i < textures.size(); i++){
@@ -142,7 +222,6 @@ public class RenderBatch implements Comparable<RenderBatch> {
             textures.get(i).bind();
         }
         shader.uploadIntArray("uTextures", texSlots);
-
         glBindVertexArray(vaoID);
         glEnableVertexAttribArray(0);
         glEnableVertexAttribArray(1);
@@ -154,29 +233,35 @@ public class RenderBatch implements Comparable<RenderBatch> {
         glDisableVertexAttribArray(0);
         glDisableVertexAttribArray(1);
         glBindVertexArray(0);
-
         for (int i = 0; i < textures.size(); i++){
             textures.get(i).unbind();
         }
         shader.detach();
     }
 
-    private void loadVertexProperties(int index){
-        SpriteRenderer sprite = sprites[index];
+    /**
+     * Load properties of given spriteRenderer into vertex array
+     *
+     * @param spriteRendererIndex the index of the spriteRenderer you want to pair to the vertex array
+     */
+    private void loadVertexProperties(int spriteRendererIndex){
+        SpriteRenderer spriteRenderer = spriteRenderers[spriteRendererIndex];
 
         // Find offset within array (4 vertices per sprite
-        int offset = index * 4 * VERTEX_SIZE;
+        int offset = spriteRendererIndex * 4 * VERTEX_SIZE;
 
-        Vector4f colour = sprite.getColour();
-        Vector2f[] texCoords = sprite.getTexCoords();
+        // Set colour and texture coordinates
+        Vector4f colour = spriteRenderer.getColour();
+        Vector2f[] texCoords = spriteRenderer.getTexCoords();
 
+        // Set texture ID
         int texID = 0;
         // [0, tex, tex, tex]
         // Zero index is reserved for painting colour
-        if (sprite.getTexture() != null){
+        if (spriteRenderer.getTexture() != null){
             for (int i = 0; i < textures.size(); i++){
-                if (textures.get(i) == sprite.getTexture()){
-                    texID = i + 1;
+                if (textures.get(i) == spriteRenderer.getTexture()){
+                    texID = i + 1;// Preserve zero index for painting colours
                     break;
                 }
             }
@@ -194,8 +279,8 @@ public class RenderBatch implements Comparable<RenderBatch> {
             }
 
             // Load position
-            vertices[offset] = sprite.gameObject.transform.position.x + (xAdd * sprite.gameObject.transform.scale.x);
-            vertices[offset + 1] = sprite.gameObject.transform.position.y + (yAdd * sprite.gameObject.transform.scale.y);
+            vertices[offset] = spriteRenderer.gameObject.transform.position.x + (xAdd * spriteRenderer.gameObject.transform.scale.x);
+            vertices[offset + 1] = spriteRenderer.gameObject.transform.position.y + (yAdd * spriteRenderer.gameObject.transform.scale.y);
 
             // Load colour
             vertices[offset + 2] = colour.x;
@@ -213,13 +298,18 @@ public class RenderBatch implements Comparable<RenderBatch> {
             // Move to next vertex
             offset += VERTEX_SIZE;
         }
-
-
     }
 
+    /**
+     * Generates the indices for rendering quads.
+     * Each quad is made up of 2 triangles, requiring 6 indices.
+     *
+     * @return An array of indices for the quads.
+     */
     private int[] generateIndices() {
         // 6 indices per quad (3 per triangle)
         int[] elements = new int[6 * maxBatchSize];
+        // Populate the elements array with indices for each quad
         for (int i = 0; i < maxBatchSize; i++) {
             loadElementIndices(elements, i);
         }
@@ -227,6 +317,12 @@ public class RenderBatch implements Comparable<RenderBatch> {
         return elements;
     }
 
+    /**
+     * Loads the element indices for a specific quad into the elements array.
+     *
+     * @param elements The array to load the indices into.
+     * @param index The index of the quad.
+     */
     private void loadElementIndices(int[] elements, int index) {
         int offSetArrayIndex = 6 * index;
         int offset = 4 * index;
@@ -242,25 +338,4 @@ public class RenderBatch implements Comparable<RenderBatch> {
         elements[offSetArrayIndex + 5] = offset + 1;
     }
 
-    public boolean hasRoomForSprites(){
-        return hasRoomForSprites;
-    }
-
-    public boolean hasRoomForTextures(){
-        final int MAX_GPU_TEXTURE_SLOTS = 8;
-        return textures.size() < MAX_GPU_TEXTURE_SLOTS;
-    }
-
-    public boolean hasTexture(Texture texture){
-        return textures.contains(texture);
-    }
-
-    public int zIndex(){
-        return zIndex;
-    }
-
-    @Override
-    public int compareTo(@NotNull RenderBatch o) {
-        return Integer.compare(this.zIndex, o.zIndex);
-    }
 }

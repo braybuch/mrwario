@@ -1,6 +1,5 @@
 package coal;
 
-import org.lwjgl.Version;
 import org.lwjgl.glfw.GLFWErrorCallback;
 import org.lwjgl.opengl.GL;
 import renderer.DebugDraw;
@@ -13,30 +12,121 @@ import static org.lwjgl.glfw.GLFW.*;
 import static org.lwjgl.opengl.GL11.*;
 import static org.lwjgl.system.MemoryUtil.NULL;
 
+/**
+ * This class provides singleton access to the window object, and thus, the gpu.
+ */
 public class Window {
+    /**
+     * size of the window
+     */
     private int width, height;
+    /**
+     * name of the window
+     */
     private final String title;
+    /**
+     * the variable holding the C style pointer to the window in memory
+     */
     private long windowPointer;
+    /**
+     * the interface with the gui
+     */
     private ImGuiLayer imguiLayer;
+    /**
+     * colour value
+     */
     public float r, g, b, a;
-    private final boolean fadeToBlack = false;
-
+    /**
+     * window singleton
+     */
     private static Window window = null;
-
+    /**
+     * currently running scene
+     */
     private static Scene currentScene = null;
 
-    private Window(){
+
+    /**
+     * Default constructor sets up window with standard settings.
+     */
+    private Window() {
         this.width = 1920;
         this.height = 1080;
         this.title = "Mwrario";
+        // Colour normalized 0-1
         r = 1;
         g = 1;
         b = 1;
         a = 1;
     }
 
-    public static void changeScene(int newScene){
-        switch(newScene){
+    /**
+     * This method returns a singleton of the class.
+     *
+     * @return the private window instance
+     */
+    public static Window get() {
+        // If singleton does not yet exist, make a new one
+        if (Window.window == null) {
+            Window.window = new Window();
+        }
+
+        return Window.window;
+    }
+
+    /**
+     * Get the width of the window.
+     *
+     * @return the width of the window
+     */
+    public int getWidth() {
+        return Window.get().width;
+    }
+
+    /**
+     * Set the width of the window.
+     *
+     * @param width the new width of the window
+     */
+    public void setWidth(int width) {
+        Window.get().width = width;
+    }
+
+    /**
+     * Get the height of the window.
+     *
+     * @return the height of the window
+     */
+    public int getHeight() {
+        return Window.get().height;
+    }
+
+    /**
+     * Set the height of the window.
+     *
+     * @param height the new height of the window
+     */
+    public void setHeight(int height) {
+        Window.get().height = height;
+    }
+
+    /**
+     * Get the current scene.
+     *
+     * @return the current scene
+     */
+    public Scene getScene() {
+        return currentScene;
+    }
+
+    /**
+     * Load passed scene.
+     *
+     * @param newScene index of the new scene
+     */
+    public static void setScene(int newScene) {
+        // TODO Pass the whole scene, not just an index
+        switch (newScene) {
             case 0:
                 currentScene = new LevelEditorScene();
                 break;
@@ -53,16 +143,11 @@ public class Window {
         currentScene.start();
     }
 
-    public static Window get(){
-        if (Window.window == null){
-            Window.window = new Window();
-        }
-
-        return Window.window;
-    }
-
-    public void run(){
-        System.out.println("Hello LWJGL v" + Version.getVersion());
+    /**
+     * This method acts as the public interface to begin running this window
+     */
+    public void run() {
+        // Initialize and loop
         init();
         loop();
 
@@ -76,12 +161,15 @@ public class Window {
 
     }
 
-    private void init(){
+    /**
+     * This method configures the window and loads it
+     */
+    private void init() {
         // Setup error callback
         GLFWErrorCallback.createPrint(System.err).set();
 
         // Initialize GLFW
-        if (!glfwInit()){
+        if (!glfwInit()) {
             throw new IllegalStateException("Unable to initialize GLFW");
         }
 
@@ -93,7 +181,7 @@ public class Window {
 
         // Create the window
         windowPointer = glfwCreateWindow(this.width, this.height, this.title, NULL, NULL);
-        if (windowPointer == NULL){
+        if (windowPointer == NULL) {
             throw new IllegalStateException("Failed to create the GLFW window");
         }
 
@@ -133,23 +221,25 @@ public class Window {
         imguiLayer = new ImGuiLayer(windowPointer);
         imguiLayer.initImGui();
 
-        Window.changeScene(0);
+        Window.setScene(0);
     }
 
-
-    private void loop(){
+    /**
+     * This method provides an update loop with non-framerate dependant time
+     */
+    private void loop() {
 
         // Init timing variables
-        float startTime = (float)glfwGetTime();
+        float startTime = (float) glfwGetTime();
         float endTime;
         float deltaTime = -1.0f;
 
-
-
-        while(!glfwWindowShouldClose(windowPointer)){// Until close window event
+        // Do until close window event
+        while (!glfwWindowShouldClose(windowPointer)) {
             // Poll events
             glfwPollEvents();
 
+            // Draw debug line
             DebugDraw.beginFrame();
 
             // Paint window white
@@ -157,41 +247,24 @@ public class Window {
             glClear(GL_COLOR_BUFFER_BIT);
 
             // Update scene
-            if (deltaTime >= 0.0f){
+            if (deltaTime >= 0.0f) {
                 DebugDraw.draw();
                 currentScene.update(deltaTime);
             }
 
+            // Update gui
             imguiLayer.update(deltaTime, currentScene);
 
+            // Swap shown frame buffer with last rendered buffer
             glfwSwapBuffers(windowPointer);
 
             // Establish delta time
-            endTime = (float)glfwGetTime();
+            endTime = (float) glfwGetTime();
             deltaTime = endTime - startTime;
             startTime = endTime;
         }
 
+        // Serialize objects
         currentScene.saveExit();
-    }
-
-    public Scene getScene(){
-        return currentScene;
-    }
-
-    public int height(){
-        return get().height;
-    }
-
-    public int width(){
-        return get().width;
-    }
-
-    public void setHeight(int height){
-        Window.get().height = height;
-    }
-
-    public void setWidth(int width){
-        Window.get().width = width;
     }
 }

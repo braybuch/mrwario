@@ -72,9 +72,9 @@ public class MouseListener {
     public static float getOrthoX(){
         // Normalize current mouse position to world-space x
         float currentX = getX();
-        currentX = (currentX / (float) Window.get().width()) * 2.0f - 1.0f;
+        currentX = (currentX / (float) Window.get().getWidth()) * 2.0f - 1.0f;
         Vector4f tmp = new Vector4f(currentX, 0, 0, 1);
-        tmp.mul(Window.get().getScene().camera().getInverseProjectionMatrix().mul(Window.get().getScene().camera().getInverseViewMatrix()));
+        tmp.mul(Window.get().getScene().getCamera().getInverseProjectionMatrix().mul(Window.get().getScene().getCamera().getInverseViewMatrix()));
         currentX = tmp.x;
 
         return currentX;
@@ -82,10 +82,10 @@ public class MouseListener {
 
     public static float getOrthoY(){
         // Normalize current mouse position to world-space x
-        float currentY = Window.get().height() - getY();
-        currentY = (currentY / (float) Window.get().height()) * 2.0f - 1.0f;
+        float currentY = Window.get().getHeight() - getY();
+        currentY = (currentY / (float) Window.get().getHeight()) * 2.0f - 1.0f;
         Vector4f tmp = new Vector4f(0, currentY, 0, 1);
-        tmp.mul(Window.get().getScene().camera().getInverseProjectionMatrix().mul(Window.get().getScene().camera().getInverseViewMatrix()));
+        tmp.mul(Window.get().getScene().getCamera().getInverseProjectionMatrix().mul(Window.get().getScene().getCamera().getInverseViewMatrix()));
         currentY = tmp.y;
 
         return currentY;

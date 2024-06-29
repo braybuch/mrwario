@@ -11,21 +11,32 @@ import java.nio.file.Paths;
 import static org.lwjgl.opengl.GL11.GL_FALSE;
 import static org.lwjgl.opengl.GL20.*;
 
+/**
+ * This class interfaces with the GPU to provide shaders
+ */
 public class Shader {
-
+    /** the ID of the shader program */
     private int shaderProgramID;
+    /** whether the shader is being used */
     private boolean beingUsed = false;
-
+    /** the source code of the vertex shader */
     private String vertexSource;
+    /** the source code of the fragment shader */
     private String fragmentSource;
+    /** the filepath to the shader source */
     private final String filePath;
 
+    /**
+     * Constructor to initialize all fields
+     *
+     * @param filepath the relative path to the file from the root
+     */
     public Shader(String filepath){
-        System.out.println("Hello OpenGL v" + glGetString(GL_VERSION));
-        System.out.println("Hello GLSL v" + glGetString(GL_SHADING_LANGUAGE_VERSION));
         this.filePath = filepath;
         try {
-            String source = new String(Files.readAllBytes(Paths.get(filePath)));
+            // Copy source code
+            String source = new String(Files.readAllBytes(Paths.get(this.filePath)));
+            // Split on '#type [vertex/fragment]' fake preprocessor directive
             String[] splitString = source.split("(#type)( )+([a-zA-Z]+)");
 
             // Find the first pattern after #type
@@ -61,6 +72,9 @@ public class Shader {
         }
     }
 
+    /**
+     * Compile and link the shader to the gpu
+     */
     public void compileAndLink(){
         int vertexID, fragmentID;
 
@@ -112,6 +126,9 @@ public class Shader {
         }
     }
 
+    /**
+     * Load the shader to the gpu
+     */
     public void use(){
         if (!beingUsed) {
             // Bind shader program
@@ -120,11 +137,20 @@ public class Shader {
         }
     }
 
+    /**
+     * Unload the shader from the gpu
+     */
     public void detach(){
         glUseProgram(0);
         beingUsed = false;
     }
 
+    /**
+     * Uploads a 4x4 matrix to the shader program.
+     *
+     * @param varName The name of the uniform variable in the shader.
+     * @param mat4 The Matrix4f object to upload.
+     */
     public void uploadMatrix4(String varName, Matrix4f mat4){
         int varLocation = glGetUniformLocation(shaderProgramID, varName);
         use();

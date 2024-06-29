@@ -15,19 +15,28 @@ import static org.lwjgl.opengl.GL20.glDisableVertexAttribArray;
 import static org.lwjgl.opengl.GL30.glBindVertexArray;
 import static org.lwjgl.opengl.GL30.glGenVertexArrays;
 
+/**
+ * This class will draw lines added to it
+ */
 public class DebugDraw {
+    /** The maximum number of lines that can be drawn */
     private static int MAX_LINES = 500;
-
+    /** the list of lines */
     private static List<Line2D> lines = new ArrayList<>();
-
-    // 6 floats per vertex, 2 vertices per line
+    /** the array of vertices, where there's 6 floats per vertex and 2 vertices per line */
     private static float[] vertexArray = new float[MAX_LINES * 6 * 2];
+    /** The straight line shader */
     private static Shader shader = AssetPool.getShader("assets/shaders/debugLine2D.glsl");
-
-    private static int vaoID, vboID;
-
+    /** The vertex array ID */
+    private static int vaoID;
+    /** The vertex buffer ID */
+    private static int vboID;
+    /** Whether this has started yet */
     private static boolean started = false;
 
+    /**
+     * Bind to the gpu
+     */
     public static void start() {
         // Generate the vertex array object
         vaoID = glGenVertexArrays();
@@ -50,7 +59,9 @@ public class DebugDraw {
         glLineWidth(4.0f);
     }
 
-
+    /**
+     * Check if each line should be rendered this frame
+     */
     public static void beginFrame() {
         // Check and see if we need to remove any lines
         if (!started) {
@@ -67,6 +78,9 @@ public class DebugDraw {
         }
     }
 
+    /**
+     * Draw lines
+     */
     public static void draw() {
         // Draw the lines
         if (lines.size() <= 0) return;
@@ -97,8 +111,8 @@ public class DebugDraw {
 
         // Use the shader
         shader.use();
-        shader.uploadMatrix4("uProjection", Window.get().getScene().camera().getProjectionMatrix());
-        shader.uploadMatrix4("uView", Window.get().getScene().camera().getViewMatrix());
+        shader.uploadMatrix4("uProjection", Window.get().getScene().getCamera().getProjectionMatrix());
+        shader.uploadMatrix4("uView", Window.get().getScene().getCamera().getViewMatrix());
 
         // Bind the vertex array object to the gpu
         glBindVertexArray(vboID);
@@ -115,13 +129,36 @@ public class DebugDraw {
         shader.detach();
     }
 
+    /**
+     * Add a line to draw
+     *
+     * @param from the position to start
+     * @param to the position to end
+     */
     public static void addLine2D(Vector2f from, Vector2f to) {
+        // Draw in blue by default
         addLine2D(from, to, new Vector3f(0, 1, 0), 1);
     }
+
+    /**
+     * Add a line to draw
+     *
+     * @param from the position to start
+     * @param to the position to end
+     * @param colour the colour to draw
+     */
     public static void addLine2D(Vector2f from, Vector2f to, Vector3f colour) {
         addLine2D(from, to, colour, 1);
     }
 
+    /**
+     * Add a line to draw
+     *
+     * @param from the position to start
+     * @param to the position to end
+     * @param colour the colour to draw
+     * @param lifetime the... in frame-seconds to draw the line
+     */
     public static void addLine2D(Vector2f from, Vector2f to, Vector3f colour, int lifetime){
         if (lines.size() >= MAX_LINES) return;
         DebugDraw.lines.add(new Line2D(from, to, colour, lifetime));
