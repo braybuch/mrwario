@@ -9,9 +9,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class AssetPool {
-    private static Map<String, Shader> shaders = new HashMap<>();
-    private static Map<String, Texture> textures = new HashMap<>();
-    private static Map<String, Spritesheet> spritesheets = new HashMap<>();
+    private static final Map<String, Shader> shaders = new HashMap<>();
+    private static final Map<String, Texture> textures = new HashMap<>();
+    private static final Map<String, Spritesheet> spritesheets = new HashMap<>();
 
     /**
      * Return the shader or create and return the new reference
@@ -56,9 +56,7 @@ public class AssetPool {
 
     public static Spritesheet getSpritesheet(String resource){
         File file = new File(resource);
-        if(!AssetPool.spritesheets.containsKey(file.getAbsolutePath())){
-            assert false : "Error, tried to acccess spritesheet not been added to the asset pool";
-        }
+        assert AssetPool.spritesheets.containsKey(file.getAbsolutePath()) : "Error, tried to acccess spritesheet not been added to the asset pool";
         return AssetPool.spritesheets.getOrDefault(file.getAbsolutePath(), null);
     }
 }

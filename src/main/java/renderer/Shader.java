@@ -18,7 +18,7 @@ public class Shader {
 
     private String vertexSource;
     private String fragmentSource;
-    private String filePath;
+    private final String filePath;
 
     public Shader(String filepath){
         System.out.println("Hello OpenGL v" + glGetString(GL_VERSION));

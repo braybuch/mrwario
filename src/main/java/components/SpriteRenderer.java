@@ -9,7 +9,7 @@ import renderer.Texture;
 
 public class SpriteRenderer extends Component{
 
-    private Vector4f colour = new Vector4f(1, 1, 1, 1);
+    private final Vector4f colour = new Vector4f(1, 1, 1, 1);
     private Sprite sprite = new Sprite();
 
     private transient Transform lastTransform;

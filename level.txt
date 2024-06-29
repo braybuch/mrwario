@@ -12,6 +12,8 @@
             "w": 0.49411765
           },
           "sprite": {
+            "width": 0.0,
+            "height": 0.0,
             "textureCoords": [
               {
                 "x": 1.0,
@@ -71,9 +73,11 @@
             "w": 1.0
           },
           "sprite": {
+            "width": 0.0,
+            "height": 0.0,
             "texture": {
               "filepath": "assets/textures/blendImage2.png",
-              "texID": 3,
+              "textureID": 0,
               "width": 256,
               "height": 256
             },
@@ -124,6 +128,8 @@
             "w": 1.0
           },
           "sprite": {
+            "width": 0.0,
+            "height": 0.0,
             "textureCoords": [
               {
                 "x": 1.0,
@@ -171,9 +177,11 @@
             "w": 1.0
           },
           "sprite": {
+            "width": 0.0,
+            "height": 0.0,
             "texture": {
               "filepath": "assets/textures/blendImage2.png",
-              "texID": 3,
+              "textureID": 0,
               "width": 256,
               "height": 256
             },
@@ -224,6 +232,8 @@
             "w": 1.0
           },
           "sprite": {
+            "width": 0.0,
+            "height": 0.0,
             "textureCoords": [
               {
                 "x": 1.0,
@@ -271,9 +281,11 @@
             "w": 1.0
           },
           "sprite": {
+            "width": 0.0,
+            "height": 0.0,
             "texture": {
               "filepath": "assets/textures/blendImage2.png",
-              "texID": 3,
+              "textureID": 0,
               "width": 256,
               "height": 256
             },

@@ -8,8 +8,8 @@ import java.util.List;
 
 public class Spritesheet {
 
-    private Texture texture;
-    private List<Sprite> sprites;
+    private final Texture texture;
+    private final List<Sprite> sprites;
 
     public Spritesheet(Texture texture, int spriteWidth, int spriteHeight, int numSprites, int spacing){
         sprites = new ArrayList<Sprite>();
@@ -38,6 +38,8 @@ public class Spritesheet {
             Sprite sprite = new Sprite();
             sprite.setTexture(this.texture);
             sprite.setTextureCoords(textureCoords);
+            sprite.setWidth(spriteWidth);
+            sprite.setHeight(spriteHeight);
             sprites.add(sprite);
 
             // Increment x
@@ -52,5 +54,9 @@ public class Spritesheet {
 
     public Sprite getSprite(int index){
         return sprites.get(index);
+    }
+
+    public int size() {
+        return sprites.size();
     }
 }

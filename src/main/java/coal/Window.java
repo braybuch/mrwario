@@ -15,7 +15,7 @@ public class Window {
     private long windowPointer;
     private ImGuiLayer imguiLayer;
     public float r, g, b, a;
-    private boolean fadeToBlack = false;
+    private final boolean fadeToBlack = false;
 
     private static Window window = null;
 
@@ -169,7 +169,8 @@ public class Window {
     }
 
     public static Scene getScene(){
-        return get().currentScene;
+        get();
+        return currentScene;
     }
 
     public int getHeight(){

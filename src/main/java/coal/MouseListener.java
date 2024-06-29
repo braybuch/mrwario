@@ -1,5 +1,7 @@
 package coal;
 
+import org.joml.Vector4f;
+
 import static org.lwjgl.glfw.GLFW.GLFW_PRESS;
 import static org.lwjgl.glfw.GLFW.GLFW_RELEASE;
 
@@ -7,7 +9,7 @@ public class MouseListener {
     private static MouseListener instance;
     private double scrollX, scrollY;
     private double xPos, yPos, lastY, lastX;
-    private boolean mouseButtonPressed[] = new boolean[3];
+    private final boolean[] mouseButtonPressed = new boolean[3];
     private boolean isDragging;
 
     private MouseListener() {
@@ -66,6 +68,28 @@ public class MouseListener {
 
     public static float getY(){
         return (float)get().yPos;
+    }
+
+    public static float getOrthoX(){
+        // Normalize current mouse position to world-space x
+        float currentX = getX();
+        currentX = (currentX / (float) Window.get().getWidth()) * 2.0f - 1.0f;
+        Vector4f tmp = new Vector4f(currentX, 0, 0, 1);
+        tmp.mul(Window.get().getScene().camera().getInverseProjectionMatrix().mul(Window.get().getScene().camera().getViewMatrix()));
+        currentX = tmp.x;
+
+        return currentX;
+    }
+
+    public static float getOrthoY(){
+        // Normalize current mouse position to world-space x
+        float currentY = getY();
+        currentY = (currentY / (float) Window.get().getHeight()) * 2.0f - 1.0f;
+        Vector4f tmp = new Vector4f(0, currentY, 0, 1);
+        tmp.mul(Window.get().getScene().camera().getInverseProjectionMatrix().mul(Window.get().getScene().camera().getViewMatrix()));
+        currentY = tmp.y;
+
+        return currentY;
     }
 
     public static float getDeltaX(){

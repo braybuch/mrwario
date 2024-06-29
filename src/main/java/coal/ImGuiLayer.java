@@ -22,7 +22,7 @@ public class ImGuiLayer {
      */
     private final ImGuiImplGlfw imGuiGlfw = new ImGuiImplGlfw();
 
-    private long windowPointer;
+    private final long windowPointer;
 
     // Mouse cursors provided by GLFW
     private final long[] mouseCursors = new long[ImGuiMouseCursor.COUNT];
