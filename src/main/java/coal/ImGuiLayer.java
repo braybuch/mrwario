@@ -17,7 +17,7 @@ import static org.lwjgl.glfw.GLFW.*;
 
 public class ImGuiLayer {
 
-    private long glfwWindow;
+    private long windowPointer;
 
     // Mouse cursors provided by GLFW
     private final long[] mouseCursors = new long[ImGuiMouseCursor.COUNT];
@@ -26,7 +26,7 @@ public class ImGuiLayer {
     private final ImGuiImplGl3 imGuiGl3 = new ImGuiImplGl3();
 
     public ImGuiLayer(long glfwWindow) {
-        this.glfwWindow = glfwWindow;
+        this.windowPointer = glfwWindow;
     }
 
     // Initialize Dear ImGui.
@@ -86,7 +86,7 @@ public class ImGuiLayer {
         // ------------------------------------------------------------
         // GLFW callbacks to handle user input
 
-        glfwSetKeyCallback(glfwWindow, (w, key, scancode, action, mods) -> {
+        glfwSetKeyCallback(windowPointer, (w, key, scancode, action, mods) -> {
             if (action == GLFW_PRESS) {
                 io.setKeysDown(key, true);
             } else if (action == GLFW_RELEASE) {
@@ -99,13 +99,13 @@ public class ImGuiLayer {
             io.setKeySuper(io.getKeysDown(GLFW_KEY_LEFT_SUPER) || io.getKeysDown(GLFW_KEY_RIGHT_SUPER));
         });
 
-        glfwSetCharCallback(glfwWindow, (w, c) -> {
+        glfwSetCharCallback(windowPointer, (w, c) -> {
             if (c != GLFW_KEY_DELETE) {
                 io.addInputCharacter(c);
             }
         });
 
-        glfwSetMouseButtonCallback(glfwWindow, (w, button, action, mods) -> {
+        glfwSetMouseButtonCallback(windowPointer, (w, button, action, mods) -> {
             final boolean[] mouseDown = new boolean[5];
 
             mouseDown[0] = button == GLFW_MOUSE_BUTTON_1 && action != GLFW_RELEASE;
@@ -121,7 +121,7 @@ public class ImGuiLayer {
             }
         });
 
-        glfwSetScrollCallback(glfwWindow, (w, xOffset, yOffset) -> {
+        glfwSetScrollCallback(windowPointer, (w, xOffset, yOffset) -> {
             io.setMouseWheelH(io.getMouseWheelH() + (float) xOffset);
             io.setMouseWheel(io.getMouseWheel() + (float) yOffset);
         });
@@ -129,14 +129,14 @@ public class ImGuiLayer {
         io.setSetClipboardTextFn(new ImStrConsumer() {
             @Override
             public void accept(final String s) {
-                glfwSetClipboardString(glfwWindow, s);
+                glfwSetClipboardString(windowPointer, s);
             }
         });
 
         io.setGetClipboardTextFn(new ImStrSupplier() {
             @Override
             public String get() {
-                final String clipboardString = glfwGetClipboardString(glfwWindow);
+                final String clipboardString = glfwGetClipboardString(windowPointer);
                 if (clipboardString != null) {
                     return clipboardString;
                 } else {
@@ -188,7 +188,7 @@ public class ImGuiLayer {
         float[] winHeight = {Window.get().getHeight()};
         double[] mousePosX = {0};
         double[] mousePosY = {0};
-        glfwGetCursorPos(glfwWindow, mousePosX, mousePosY);
+        glfwGetCursorPos(windowPointer, mousePosX, mousePosY);
 
         // We SHOULD call those methods to update Dear ImGui state for the current frame
         final ImGuiIO io = ImGui.getIO();
@@ -199,8 +199,8 @@ public class ImGuiLayer {
 
         // Update the mouse cursor
         final int imguiCursor = ImGui.getMouseCursor();
-        glfwSetCursor(glfwWindow, mouseCursors[imguiCursor]);
-        glfwSetInputMode(glfwWindow, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
+        glfwSetCursor(windowPointer, mouseCursors[imguiCursor]);
+        glfwSetInputMode(windowPointer, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
     }
 
     private void endFrame() {

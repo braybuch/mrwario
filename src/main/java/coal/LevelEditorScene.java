@@ -1,5 +1,6 @@
 package coal;
 
+import components.RigidBody;
 import components.Sprite;
 import components.SpriteRenderer;
 import components.Spritesheet;
@@ -23,6 +24,7 @@ public class LevelEditorScene extends Scene {
         camera = new Camera(new Vector2f());
 
         if (loadedLevel){
+            activeGameObject = gameObjects.get(0);
             return;
         }
 
@@ -32,6 +34,7 @@ public class LevelEditorScene extends Scene {
         SpriteRenderer obj1Sprite = new SpriteRenderer();
         obj1Sprite.setColour(new Vector4f(1, 0, 0, 1));
         obj1.addComponent(obj1Sprite);
+        obj1.addComponent(new RigidBody());
         addGameObjectToScene(obj1);
         activeGameObject = obj1;
 
@@ -51,7 +54,6 @@ public class LevelEditorScene extends Scene {
 
     @Override
     public void update(float deltaTime) {
-        obj1.transform.position.x += 10 * deltaTime;
         for (GameObject g : gameObjects) {
             g.update(deltaTime);
         }
