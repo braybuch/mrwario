@@ -3,7 +3,7 @@ package components;
 import org.joml.Vector3f;
 import org.joml.Vector4f;
 
-public class RigidBody extends Component {
+public class Rigidbody extends Component {
     private final int colliderType = 0;
     private final float friction = 0.8f;
     public Vector3f velocity = new Vector3f(0, 0.5f, 0);

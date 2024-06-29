@@ -3,6 +3,7 @@ package coal;
 import org.lwjgl.Version;
 import org.lwjgl.glfw.GLFWErrorCallback;
 import org.lwjgl.opengl.GL;
+import renderer.DebugDraw;
 import scenes.LevelEditorScene;
 import scenes.LevelScene;
 import scenes.Scene;
@@ -28,9 +29,9 @@ public class Window {
         this.width = 1920;
         this.height = 1080;
         this.title = "Mwrario";
-        r = 0;
-        g = 0;
-        b = 0;
+        r = 1;
+        g = 1;
+        b = 1;
         a = 1;
     }
 
@@ -149,12 +150,15 @@ public class Window {
             // Poll events
             glfwPollEvents();
 
+            DebugDraw.beginFrame();
+
             // Paint window white
             glClearColor(r, g, b, a);
             glClear(GL_COLOR_BUFFER_BIT);
 
             // Update scene
             if (deltaTime >= 0.0f){
+                DebugDraw.draw();
                 currentScene.update(deltaTime);
             }
 
