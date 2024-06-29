@@ -1,14 +1,21 @@
 package editor;
 
+import coal.MouseListener;
 import coal.Window;
 import imgui.ImGui;
 import imgui.ImVec2;
 import imgui.flag.ImGuiWindowFlags;
+import org.joml.Vector2f;
 
 /**
  * This window contains the game view
  */
 public class GameViewWindow {
+    private static float leftX;
+    private static float rightX;
+    private static float topY;
+    private static float bottomY;
+
     public static void imgui(){
         // Create game viewport
         ImGui.begin("Game Viewport", ImGuiWindowFlags.NoScrollbar | ImGuiWindowFlags.NoScrollWithMouse);
@@ -16,9 +23,24 @@ public class GameViewWindow {
         ImVec2 windowPos = getCenteredPositionForViewport(windowSize);
         ImGui.setCursorPos(windowPos.x, windowPos.y);
 
+        // Normalize mouse to viewport
+        ImVec2 topLeft = new ImVec2();
+        ImGui.getCursorScreenPos(topLeft);
+        topLeft.x -= ImGui.getScrollX();
+        topLeft.y -= ImGui.getScrollY();
+        leftX = topLeft.x;
+        bottomY = topLeft.y;
+        rightX = topLeft.x + windowSize.x;
+        topY = topLeft.y + windowSize.y;
+
+
         // Get texture id for frame buffer
         int textureID = Window.get().getFrameBuffer().getTexture().getID();
         ImGui.image(textureID, windowSize.x, windowSize.y, 0, 1, 1, 0);
+
+        // Give mouse listener viewport normalized position
+        MouseListener.setGameViewportPos(new Vector2f(topLeft.x, topLeft.y));
+        MouseListener.setGameViewportSize(new Vector2f(windowSize.x, windowSize.y));
 
         // end
         ImGui.end();
@@ -72,5 +94,9 @@ public class GameViewWindow {
         }
 
         return new ImVec2(aspectWidth, aspectHeight);
+    }
+
+    public static boolean getWantCaptureMouse() {
+        return (MouseListener.getX() >= leftX && MouseListener.getX() <= rightX && MouseListener.getY() >= bottomY && MouseListener.getY() >= topY);
     }
 }
