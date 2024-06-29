@@ -13,6 +13,7 @@ import imgui.callback.ImStrSupplier;
 import imgui.flag.*;
 import imgui.gl3.ImGuiImplGl3;
 import imgui.glfw.ImGuiImplGlfw;
+import imgui.type.ImBoolean;
 import scenes.Scene;
 
 import static org.lwjgl.glfw.GLFW.*;
@@ -56,6 +57,7 @@ public class ImGuiLayer {
         io.setIniFilename("init.ini"); // We don't want to save .ini file
         io.setConfigFlags(ImGuiConfigFlags.NavEnableKeyboard); // Navigation with keyboard
         io.setBackendFlags(ImGuiBackendFlags.HasMouseCursors); // Mouse cursors to display while resizing windows etc.
+        io.setConfigFlags(ImGuiConfigFlags.DockingEnable);
         io.setBackendPlatformName("imgui_java_impl_glfw");
 
         // ------------------------------------------------------------
@@ -211,13 +213,18 @@ public class ImGuiLayer {
         // Magic call to make cursor work before screen is rescaled
         imGuiGlfw.newFrame();
 
+
         // Any Dear ImGui code SHOULD go between ImGui.newFrame()/ImGui.render() methods
         ImGui.newFrame();
+        setupDockspace();
         scene.sceneImgui();
+        ImGui.end();
         ImGui.render();
 
         endFrame();
     }
+
+
 
     private void startFrame(final float deltaTime) {
         // Get window properties and mouse position
@@ -251,5 +258,27 @@ public class ImGuiLayer {
         imGuiGl3.dispose();
         imGuiGlfw.dispose();
         ImGui.destroyContext();
+    }
+
+    private void setupDockspace() {
+        int windowFlags = ImGuiWindowFlags.MenuBar | ImGuiWindowFlags.NoDocking;
+
+        // Start at the top left of the window
+        ImGui.setNextWindowPos(0.0f, 0.0f, ImGuiCond.Always);
+        ImGui.setNextWindowSize(Window.get().getWidth(), Window.get().getHeight());
+
+        // Set properties
+        ImGui.pushStyleVar(ImGuiStyleVar.WindowRounding, 0.0f);
+        ImGui.pushStyleVar(ImGuiStyleVar.WindowBorderSize, 0.0f);
+
+        // Set flags
+        windowFlags |= ImGuiWindowFlags.NoTitleBar | ImGuiWindowFlags.NoCollapse | ImGuiWindowFlags.NoResize | ImGuiWindowFlags.NoMove | ImGuiWindowFlags.NoBringToFrontOnFocus | ImGuiWindowFlags.NoNavFocus;
+
+        // Create the window
+        ImGui.begin("Dock", new ImBoolean(true), windowFlags);
+        ImGui.popStyleVar(2);
+
+        // Create the dock space
+        ImGui.dockSpace(ImGui.getID("Dockspace"));
     }
 }
