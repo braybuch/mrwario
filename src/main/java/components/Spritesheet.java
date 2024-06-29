@@ -35,7 +35,9 @@ public class Spritesheet {
             };
 
             // Create new sprite using the given texture atlas and the calculated coords
-            Sprite sprite = new Sprite(this.texture, textureCoords);
+            Sprite sprite = new Sprite();
+            sprite.setTexture(this.texture);
+            sprite.setTextureCoords(textureCoords);
             sprites.add(sprite);
 
             // Increment x

@@ -8,24 +8,23 @@ import renderer.Texture;
 
 public class SpriteRenderer extends Component{
 
-    private Vector4f colour;
-    private Sprite sprite;
+    private Vector4f colour = new Vector4f(1, 1, 1, 1);
+    private Sprite sprite = new Sprite();
 
-    private Transform lastTransform;
+    private transient Transform lastTransform;
+    private transient boolean dirty;
 
-    private boolean dirty;
-
-    public SpriteRenderer(Vector4f colour) {
-        this.colour = colour;
-        this.sprite = new Sprite(null);
-        dirty = true;
-    }
-
-    public SpriteRenderer(Sprite sprite) {
-        this.sprite = sprite;
-        this.colour = new Vector4f(1, 1, 1, 1);
-        dirty = true;
-    }
+//    public SpriteRenderer(Vector4f colour) {
+//        this.colour = colour;
+//        this.sprite = new Sprite(null);
+//        dirty = true;
+//    }
+//
+//    public SpriteRenderer(Sprite sprite) {
+//        this.sprite = sprite;
+//        this.colour = new Vector4f(1, 1, 1, 1);
+//        dirty = true;
+//    }
 
     @Override
     public void start() {
@@ -43,7 +42,7 @@ public class SpriteRenderer extends Component{
 
     @Override
     public void imgui(){
-        
+
     }
 
     public Vector4f getColour() {
