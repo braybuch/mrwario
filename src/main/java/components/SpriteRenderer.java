@@ -2,6 +2,7 @@ package components;
 
 import coal.Component;
 import coal.Transform;
+import imgui.ImGui;
 import org.joml.Vector2f;
 import org.joml.Vector4f;
 import renderer.Texture;
@@ -13,18 +14,6 @@ public class SpriteRenderer extends Component{
 
     private transient Transform lastTransform;
     private transient boolean dirty = true;
-
-//    public SpriteRenderer(Vector4f colour) {
-//        this.colour = colour;
-//        this.sprite = new Sprite(null);
-//        dirty = true;
-//    }
-//
-//    public SpriteRenderer(Sprite sprite) {
-//        this.sprite = sprite;
-//        this.colour = new Vector4f(1, 1, 1, 1);
-//        dirty = true;
-//    }
 
     @Override
     public void start() {
@@ -42,6 +31,11 @@ public class SpriteRenderer extends Component{
 
     @Override
     public void imgui(){
+        float[] imColour = {colour.x, colour.y, colour.z, colour.w};
+        if (ImGui.colorPicker4("Colour Picker: ", imColour)){
+            colour.set(imColour[0], imColour[1], imColour[2], imColour[3]);
+            dirty = true;
+        }
 
     }
 

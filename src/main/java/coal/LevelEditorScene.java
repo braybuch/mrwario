@@ -38,7 +38,7 @@ public class LevelEditorScene extends Scene {
         addGameObjectToScene(obj1);
         activeGameObject = obj1;
 
-        GameObject obj2 = new GameObject("Object 2", new Transform(new Vector2f(400, 100), new Vector2f(256, 256)), 2);
+        GameObject obj2 = new GameObject("Object 2", new Transform(new Vector2f(800, 100), new Vector2f(256, 256)), 2);
         SpriteRenderer obj2SpriteRenderer = new SpriteRenderer();
         Sprite obj2Sprite = new Sprite();
         obj2Sprite.setTexture(AssetPool.getTexture("assets/textures/blendImage2.png"));

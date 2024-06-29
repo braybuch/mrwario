@@ -12,10 +12,15 @@ import imgui.callback.ImStrConsumer;
 import imgui.callback.ImStrSupplier;
 import imgui.flag.*;
 import imgui.gl3.ImGuiImplGl3;
+import imgui.glfw.ImGuiImplGlfw;
 
 import static org.lwjgl.glfw.GLFW.*;
 
 public class ImGuiLayer {
+    /**
+     * Magic variable that fixes cursor not working properly on initial load
+     */
+    private final ImGuiImplGlfw imGuiGlfw = new ImGuiImplGlfw();
 
     private long windowPointer;
 
@@ -39,7 +44,7 @@ public class ImGuiLayer {
         // Initialize ImGuiIO config
         final ImGuiIO io = ImGui.getIO();
 
-        io.setIniFilename(null); // We don't want to save .ini file
+        io.setIniFilename("init.ini"); // We don't want to save .ini file
         io.setConfigFlags(ImGuiConfigFlags.NavEnableKeyboard); // Navigation with keyboard
         io.setBackendFlags(ImGuiBackendFlags.HasMouseCursors); // Mouse cursors to display while resizing windows etc.
         io.setBackendPlatformName("imgui_java_impl_glfw");
@@ -168,10 +173,16 @@ public class ImGuiLayer {
         // This method SHOULD be called after you've initialized your ImGui configuration (fonts and so on).
         // ImGui context should be created as well.
         imGuiGl3.init("#version 330 core");
+
+        // Magic call to make cursor work before screen is rescaled
+        imGuiGlfw.init(windowPointer, true);
     }
 
     public void update(float dt, Scene scene) {
         startFrame(dt);
+
+        // Magic call to make cursor work before screen is rescaled
+        imGuiGlfw.newFrame();
 
         // Any Dear ImGui code SHOULD go between ImGui.newFrame()/ImGui.render() methods
         ImGui.newFrame();
@@ -212,6 +223,7 @@ public class ImGuiLayer {
     // If you want to clean a room after yourself - do it by yourself
     private void destroyImGui() {
         imGuiGl3.dispose();
+        imGuiGlfw.dispose();
         ImGui.destroyContext();
     }
 }
