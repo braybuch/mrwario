@@ -54,8 +54,8 @@ public class Window {
      * Default constructor sets up window with standard settings.
      */
     private Window() {
-        this.width = 1920;
-        this.height = 1080;
+        this.width = 2240;
+        this.height = 1400;
         this.title = "Mwrario";
         // Colour normalized 0-1
         r = 1;
@@ -148,6 +148,24 @@ public class Window {
     }
 
     /**
+     * Get the frame buffer
+     *
+     * @return the frame buffer
+     */
+    public FrameBuffer getFrameBuffer() {
+        return frameBuffer;
+    }
+
+    /**
+     * Get the target aspect ratio
+     *
+     * @return the target aspect ratio
+     */
+    public float getTargetAspectRatio() {
+        return 16.0f / 9.0f;
+    }
+
+    /**
      * This method acts as the public interface to begin running this window
      */
     public void run() {
@@ -180,8 +198,8 @@ public class Window {
         // Configure GLFW
         glfwDefaultWindowHints();
         glfwWindowHint(GLFW_VISIBLE, GLFW_FALSE);
-        glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE);
-        glfwWindowHint(GLFW_MAXIMIZED, GLFW_FALSE);
+        glfwWindowHint(GLFW_RESIZABLE, GLFW_TRUE);
+        glfwWindowHint(GLFW_MAXIMIZED, GLFW_TRUE);
 
         // Create the window
         windowPointer = glfwCreateWindow(width, height, title, NULL, NULL);
@@ -228,6 +246,7 @@ public class Window {
         // Initiate frame buffer
         // TODO query for monitor size
         frameBuffer = new FrameBuffer(2240, 1400);
+        glViewport(0, 0, 2240, 1400);
 
         Window.setScene(0);
     }
@@ -250,6 +269,8 @@ public class Window {
             // Clean debug lines
             DebugDraw.beginFrame();
 
+            frameBuffer.bind();
+
             // Paint window white
             glClearColor(r, g, b, a);
             glClear(GL_COLOR_BUFFER_BIT);
@@ -260,6 +281,7 @@ public class Window {
                 // Draw debug lines
                 DebugDraw.draw();
             }
+            frameBuffer.unbind();
 
             // Update gui
             imguiLayer.update(deltaTime, currentScene);

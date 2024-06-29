@@ -4,6 +4,7 @@ package coal;
     Source: https://github.com/codingminecraft/MarioYoutube/blob/bee78af5f3334aa8289d8934c54b110d975e2006/src/main/java/jade/ImGuiLayer.java
  */
 
+import editor.GameViewWindow;
 import imgui.ImFontAtlas;
 import imgui.ImFontConfig;
 import imgui.ImGui;
@@ -213,11 +214,12 @@ public class ImGuiLayer {
         // Magic call to make cursor work before screen is rescaled
         imGuiGlfw.newFrame();
 
-
         // Any Dear ImGui code SHOULD go between ImGui.newFrame()/ImGui.render() methods
         ImGui.newFrame();
         setupDockspace();
         scene.sceneImgui();
+        ImGui.showDemoWindow();
+        GameViewWindow.imgui();
         ImGui.end();
         ImGui.render();
 
