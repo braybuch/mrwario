@@ -4,6 +4,7 @@ import coal.Window;
 import org.joml.Vector2f;
 import org.joml.Vector3f;
 import util.AssetPool;
+import util.JMath;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -160,6 +161,125 @@ public class DebugDraw {
     public static void addLine2D(Vector2f from, Vector2f to, Vector3f colour, int lifetime){
         if (lines.size() >= MAX_LINES) return;
         DebugDraw.lines.add(new Line2D(from, to, colour, lifetime));
-
     }
+
+    /**
+     * Add box to draw
+     *
+     * @param center the middle
+     * @param dimensions the width and height
+     * @param rotation the amount of rotation in degrees
+     */
+    public static void addBox2D(Vector2f center, Vector2f dimensions, float rotation) {
+        // Draw in blue by default
+        addBox2D(center, dimensions, rotation, new Vector3f(0, 1, 0), 200);
+    }
+
+    /**
+     * Add box to draw
+     *
+     * @param center the middle
+     * @param dimensions the width and height
+     * @param rotation the amount of rotation in degrees
+     * @param colour the colour
+     */
+    public static void addBox2D(Vector2f center, Vector2f dimensions, float rotation, Vector3f colour) {
+        addBox2D(center, dimensions, rotation, colour, 200);
+    }
+
+    /**
+     * Add box to draw
+     *
+     * @param center the middle
+     * @param dimensions the width and height
+     * @param rotation the amount of rotation in degrees
+     * @param colour the colour
+     * @param lifetime the lifetime in frame-seconds
+     */
+    public static void addBox2D(Vector2f center, Vector2f dimensions, float rotation, Vector3f colour, int lifetime) {
+        // Get bottom left corner
+        Vector2f min = new Vector2f(center).sub(new Vector2f(dimensions).mul(0.5f));
+        // Get top right corner
+        Vector2f max = new Vector2f(center).add(new Vector2f(dimensions).mul(0.5f));
+
+        // Get vertices
+        Vector2f[] vertices = {
+            new Vector2f(min.x, min.y), new Vector2f(min.x, max.y),
+            new Vector2f(max.x, max.y), new Vector2f(max.x, min.y)
+        };
+
+        // Check if they need to be rotated
+        if (rotation != 0.0f){
+            for (Vector2f v : vertices){
+                JMath.rotate(v, rotation, center);
+            }
+        }
+
+        // Draw lines of box
+        addLine2D(vertices[0], vertices[1], colour, lifetime);
+        addLine2D(vertices[0], vertices[3], colour, lifetime);
+        addLine2D(vertices[1], vertices[2], colour, lifetime);
+        addLine2D(vertices[2], vertices[3], colour, lifetime);
+    }
+
+    /**
+     * Add circle to draw
+     *
+     * @param center the middle
+     * @param radius the radius
+     */
+    public static void addCircle2D(Vector2f center, float radius) {
+        // Draw in blue by default
+        addCircle2D(center, radius, new Vector3f(0, 1, 0), 200);
+    }
+
+    /**
+     * Add circle to draw
+     *
+     * @param center the middle
+     * @param radius the radius
+     * @param colour the colour
+     */
+    public static void addCircle2D(Vector2f center, float radius, Vector3f colour) {
+        addCircle2D(center, radius, colour, 200);
+    }
+
+    /**
+     * Add circle to draw
+     *
+     * @param center the middle
+     * @param radius the radius
+     * @param colour the colour
+     * @param lifetime the lifetime in frame-seconds
+     */
+    public static void addCircle2D(Vector2f center, float radius, Vector3f colour, int lifetime) {
+        /*
+            Using the power of lines we will draw a circle
+         */
+
+        // Get number of segments
+        Vector2f[] points = new Vector2f[8];
+        int increment = 360 / points.length;
+        int currentAngle = 0;
+
+        // For each point
+        for (int i = 0; i < points.length; i++) {
+            // get Segment
+            Vector2f tmp = new Vector2f(radius, 0);
+            JMath.rotate(tmp, currentAngle, new Vector2f());
+
+            // Draw line from this point to last point
+            if (i > 0){
+                addLine2D(points[i - 1], points[i], colour, lifetime);
+            }
+            // Increment angle for next iteration
+            currentAngle += increment;
+        }
+
+        // Add final point
+        addLine2D(points[points.length - 1], points[0], colour, lifetime);
+
+        // Congratulations you have drawn what some philosophers would call a circle
+    }
+
 }

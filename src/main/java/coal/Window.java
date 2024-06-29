@@ -239,7 +239,7 @@ public class Window {
             // Poll events
             glfwPollEvents();
 
-            // Draw debug line
+            // Clean debug lines
             DebugDraw.beginFrame();
 
             // Paint window white
@@ -248,8 +248,9 @@ public class Window {
 
             // Update scene
             if (deltaTime >= 0.0f) {
-                DebugDraw.draw();
                 currentScene.update(deltaTime);
+                // Draw debug lines
+                DebugDraw.draw();
             }
 
             // Update gui

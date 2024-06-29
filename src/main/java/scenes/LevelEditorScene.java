@@ -41,7 +41,6 @@ public class LevelEditorScene extends Scene {
         AssetPool.addSpritesheet("assets/textures/sheet.png", new Spritesheet(AssetPool.getTexture("assets/textures/sheet.png"), 16, 16, 70, 0));
     }
 
-    float t = 0.0f;
     @Override
     public void update(float deltaTime) {
         levelEditorStuff.update(deltaTime);
