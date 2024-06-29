@@ -1,17 +1,60 @@
+# Gradle
 .gradle
 build/
+buildSrc/
+
+# Track certain directories to allow building
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**/build/
 !**/src/test/**/build/
 
-### IntelliJ IDEA ###
-.idea/modules.xml
-.idea/jarRepositories.xml
-.idea/compiler.xml
-.idea/libraries/
-*.iws
-*.iml
-*.ipr
-out/
+# IntelliJ
+.idea/
+
+# Track build configrations 
 !**/src/main/**/out/
 !**/src/test/**/out/
+
+# Compiled Java classes
+build/classes/
+build/generated/
+
+# Temporary files
+build/tmp/
+
+# Logs
+hs_err_pid*.log
+
+# ImGui configuration
+imgui.ini
+
+# Operating system-specific files
+*.iml
+*.ipr
+*.iws
+*.swp
+
+# Ignore compiled binaries and generated files
+*.class
+*.jar
+
+# Ignore any sensitive or environment-specific configuration files
+*.properties
+
+# Ignore resources if not relevant to track in version control
+src/main/resources/
+
+# Ignore test output
+test-results/
+
+# Ignore any local configuration 
+init.ini
+
+# Ignore any personal IDE settings
+.settings/
+
+# Ignore any temporary files
+*.tmp
+
+# Ignore any backup files
+*.bak
