@@ -1,6 +1,5 @@
 package components;
 
-import coal.Component;
 import coal.Transform;
 import imgui.ImGui;
 import org.joml.Vector2f;
@@ -21,7 +20,7 @@ public class SpriteRenderer extends Component{
     }
 
     @Override
-    public void update(Float deltaTime) {
+    public void update(float deltaTime) {
         if (!lastTransform.equals(gameObject.transform)) {
             // Transform moved
             gameObject.transform.copy(lastTransform);

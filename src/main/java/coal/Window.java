@@ -3,6 +3,9 @@ package coal;
 import org.lwjgl.Version;
 import org.lwjgl.glfw.GLFWErrorCallback;
 import org.lwjgl.opengl.GL;
+import scenes.LevelEditorScene;
+import scenes.LevelScene;
+import scenes.Scene;
 
 import static org.lwjgl.glfw.Callbacks.glfwFreeCallbacks;
 import static org.lwjgl.glfw.GLFW.*;
@@ -84,8 +87,8 @@ public class Window {
         // Configure GLFW
         glfwDefaultWindowHints();
         glfwWindowHint(GLFW_VISIBLE, GLFW_FALSE);
-        glfwWindowHint(GLFW_RESIZABLE, GLFW_TRUE);
-        glfwWindowHint(GLFW_MAXIMIZED, GLFW_TRUE);
+        glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE);
+        glfwWindowHint(GLFW_MAXIMIZED, GLFW_FALSE);
 
         // Create the window
         windowPointer = glfwCreateWindow(this.width, this.height, this.title, NULL, NULL);
@@ -168,16 +171,15 @@ public class Window {
         currentScene.saveExit();
     }
 
-    public static Scene getScene(){
-        get();
+    public Scene getScene(){
         return currentScene;
     }
 
-    public int getHeight(){
+    public int height(){
         return get().height;
     }
 
-    public int getWidth(){
+    public int width(){
         return get().width;
     }
 

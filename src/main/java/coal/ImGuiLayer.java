@@ -13,6 +13,7 @@ import imgui.callback.ImStrSupplier;
 import imgui.flag.*;
 import imgui.gl3.ImGuiImplGl3;
 import imgui.glfw.ImGuiImplGlfw;
+import scenes.Scene;
 
 import static org.lwjgl.glfw.GLFW.*;
 
@@ -102,6 +103,13 @@ public class ImGuiLayer {
             io.setKeyShift(io.getKeysDown(GLFW_KEY_LEFT_SHIFT) || io.getKeysDown(GLFW_KEY_RIGHT_SHIFT));
             io.setKeyAlt(io.getKeysDown(GLFW_KEY_LEFT_ALT) || io.getKeysDown(GLFW_KEY_RIGHT_ALT));
             io.setKeySuper(io.getKeysDown(GLFW_KEY_LEFT_SUPER) || io.getKeysDown(GLFW_KEY_RIGHT_SUPER));
+
+            if (!io.getWantCaptureKeyboard()){
+                // ImGui didn't want your input
+                KeyListener.keyCallback(w, key, scancode, action, mods);
+            }
+
+
         });
 
         glfwSetCharCallback(windowPointer, (w, c) -> {
@@ -123,6 +131,11 @@ public class ImGuiLayer {
 
             if (!io.getWantCaptureMouse() && mouseDown[1]) {
                 ImGui.setWindowFocus(null);
+            }
+
+            if (!io.getWantCaptureMouse()){
+                // IMGui does not need the mouse event
+                MouseListener.mouseButtonCallback(w, button, action, mods);
             }
         });
 
@@ -187,7 +200,6 @@ public class ImGuiLayer {
         // Any Dear ImGui code SHOULD go between ImGui.newFrame()/ImGui.render() methods
         ImGui.newFrame();
         scene.sceneImgui();
-        ImGui.showDemoWindow();
         ImGui.render();
 
         endFrame();
@@ -195,8 +207,8 @@ public class ImGuiLayer {
 
     private void startFrame(final float deltaTime) {
         // Get window properties and mouse position
-        float[] winWidth = {Window.get().getWidth()};
-        float[] winHeight = {Window.get().getHeight()};
+        float[] winWidth = {Window.get().width()};
+        float[] winHeight = {Window.get().height()};
         double[] mousePosX = {0};
         double[] mousePosY = {0};
         glfwGetCursorPos(windowPointer, mousePosX, mousePosY);

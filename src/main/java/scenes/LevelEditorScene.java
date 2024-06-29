@@ -1,9 +1,10 @@
-package coal;
+package scenes;
 
-import components.RigidBody;
-import components.Sprite;
-import components.SpriteRenderer;
-import components.Spritesheet;
+import coal.Camera;
+import coal.GameObject;
+import coal.Prefabs;
+import coal.Transform;
+import components.*;
 import imgui.ImGui;
 import imgui.ImVec2;
 import org.joml.Vector2f;
@@ -14,6 +15,7 @@ public class LevelEditorScene extends Scene {
 
     private GameObject obj1;
     private Spritesheet sprites;
+    private MouseControls mouseControls = new MouseControls();
 
     public LevelEditorScene() {
 
@@ -38,9 +40,9 @@ public class LevelEditorScene extends Scene {
         addGameObjectToScene(obj1);
         activeGameObject = obj1;
 
-        GameObject obj2 = new GameObject("Object 2", new Transform(new Vector2f(800, 100), new Vector2f(256, 256)), 2);
+        GameObject obj2 = new GameObject("Object 2", new Transform(new Vector2f(400, 100), new Vector2f(256, 256)), 2);
         SpriteRenderer obj2SpriteRenderer = new SpriteRenderer();
-        Sprite obj2Sprite = sprites.getSprite(0);
+        Sprite obj2Sprite = sprites.getSprite(68);
         obj2SpriteRenderer.setSprite(obj2Sprite);
         obj2.addComponent(obj2SpriteRenderer);
         addGameObjectToScene(obj2);
@@ -53,6 +55,8 @@ public class LevelEditorScene extends Scene {
 
     @Override
     public void update(float deltaTime) {
+        mouseControls.update(deltaTime);
+
         for (GameObject g : gameObjects) {
             g.update(deltaTime);
         }
@@ -83,7 +87,9 @@ public class LevelEditorScene extends Scene {
 
             ImGui.pushID(i);
             if(ImGui.imageButton(textureID, spriteWidth, spriteHeight, textureCoords[0].x, textureCoords[0].y, textureCoords[2].x, textureCoords[2].y)) {
-                System.out.println("Button " + i + " clicked");
+                // Generate a game object and attach to the mouse cursor
+                GameObject object = Prefabs.generateSpriteObject(sprite, spriteWidth, spriteHeight);
+                mouseControls.pickupObject(object);
             }
             ImGui.popID();
 

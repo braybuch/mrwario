@@ -1,4 +1,4 @@
-package coal;
+package scenes;
 
 public class LevelScene extends Scene {
     public LevelScene() {

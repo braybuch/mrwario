@@ -1,5 +1,6 @@
-package coal;
+package components;
 
+import coal.GameObject;
 import imgui.ImGui;
 import org.joml.Vector3f;
 import org.joml.Vector4f;
@@ -15,7 +16,7 @@ public abstract class Component {
 
     }
 
-    public void update(Float deltaTime){
+    public void update(float deltaTime){
 
     }
 

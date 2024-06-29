@@ -1,7 +1,5 @@
 package components;
 
-import coal.Component;
-
 public class FontRenderer extends Component {
 
     @Override
@@ -12,7 +10,7 @@ public class FontRenderer extends Component {
     }
 
     @Override
-    public void update(Float deltaTime) {
+    public void update(float deltaTime) {
 
     }
 }

@@ -133,8 +133,8 @@ public class RenderBatch implements Comparable<RenderBatch> {
 
         // Use the shader
         shader.use();
-        shader.uploadMatrix4("uProjection", Window.getScene().camera().getProjectionMatrix());
-        shader.uploadMatrix4("uView", Window.getScene().camera().getViewMatrix());
+        shader.uploadMatrix4("uProjection", Window.get().getScene().camera().getProjectionMatrix());
+        shader.uploadMatrix4("uView", Window.get().getScene().camera().getViewMatrix());
 
         // Bind textures list to graphics card slots
         for (int i = 0; i < textures.size(); i++){

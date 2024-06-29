@@ -1,7 +1,12 @@
-package coal;
+package scenes;
 
+import coal.Camera;
+import coal.GameObject;
+import coal.GameObjectTypeAdapter;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import components.Component;
+import components.ComponentTypeAdapter;
 import imgui.ImGui;
 import renderer.Renderer;
 
