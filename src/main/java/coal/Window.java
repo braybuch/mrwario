@@ -3,6 +3,7 @@ package coal;
 import org.lwjgl.glfw.GLFWErrorCallback;
 import org.lwjgl.opengl.GL;
 import renderer.DebugDraw;
+import renderer.FrameBuffer;
 import scenes.LevelEditorScene;
 import scenes.LevelScene;
 import scenes.Scene;
@@ -44,7 +45,10 @@ public class Window {
      * currently running scene
      */
     private static Scene currentScene = null;
-
+    /**
+     * The frame buffer object
+     */
+    private static FrameBuffer frameBuffer;
 
     /**
      * Default constructor sets up window with standard settings.
@@ -220,6 +224,10 @@ public class Window {
         // Assign imgui layer
         imguiLayer = new ImGuiLayer(windowPointer);
         imguiLayer.initImGui();
+
+        // Initiate frame buffer
+        // TODO query for monitor size
+        frameBuffer = new FrameBuffer(2240, 1400);
 
         Window.setScene(0);
     }

@@ -62,6 +62,14 @@ public class SpriteRenderer extends Component{
     }
 
     /**
+     * Set the texture
+     *
+     * @param texture the texture to set
+     */
+    public void setTexture(Texture texture) {
+        sprite.setTexture(texture);
+    }
+    /**
      * Returns the texture coordinates associated with the current sprite.
      *
      * @return An array of texture coordinates

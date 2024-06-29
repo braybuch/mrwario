@@ -12,19 +12,59 @@ import static org.lwjgl.stb.STBImage.*;
  * This class represents a texture object
  */
 public class Texture {
-    /** the filepath to the image */
+    /**
+     * the filepath to the image
+     */
     private String filepath;
-    /** the id of the texture */
-    private int textureID;
-    /** the size of the texture */
+    /**
+     * the id of the texture
+     */
+    private transient int textureID;
+    /**
+     * the size of the texture
+     */
     private int width, height;
+
+    /**
+     * Construct empty texture
+     */
+    public Texture(){
+        textureID = width = height = -1;
+    }
+
+    /**
+     * Construct texture with a buffer texture of the given size
+     *
+     * @param width the width of the texture
+     * @param height the height of the texture
+     */
+    public Texture(int width, int height) {
+        this.filepath = "Generated";
+
+        // Generate texture on GPU
+        textureID = glGenTextures();
+        glBindTexture(GL_TEXTURE_2D, textureID);
+
+        // Allocate space for buffer
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, 0);
+
+    }
+
+    /**
+     * Get the file path
+     *
+     * @return return the filepath
+     */
+    public String getFilepath() {
+        return filepath;
+    }
 
     /**
      * Get the width
      *
      * @return the width
      */
-    public int getWidth(){
+    public int getWidth() {
         return width;
     }
 
@@ -33,7 +73,7 @@ public class Texture {
      *
      * @return the height
      */
-    public int getHeight(){
+    public int getHeight() {
         return height;
     }
 
@@ -46,12 +86,20 @@ public class Texture {
         return textureID;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (o == null) return false;
+        if (!(o instanceof Texture)) return false;
+        Texture oAsTexture = (Texture) o;
+        return (oAsTexture.getWidth() == this.width) && (oAsTexture.getHeight() == this.height) && (oAsTexture.getID() == this.textureID) && (oAsTexture.getFilepath().equals(this.filepath));
+    }
+
     /**
      * Initialize the texture
      *
      * @param filepath the relative path from the project root to the image file
      */
-    public void init(String filepath){
+    public void init(String filepath) {
         this.filepath = filepath;
 
         // Generate texture on GPU
@@ -105,14 +153,14 @@ public class Texture {
     /**
      * Bind a texture to the gpu
      */
-    public void bind(){
+    public void bind() {
         glBindTexture(GL_TEXTURE_2D, textureID);
     }
 
     /**
      * Unbind a texture from the gpu
      */
-    public void unbind(){
+    public void unbind() {
         glBindTexture(GL_TEXTURE_2D, 0);
     }
 

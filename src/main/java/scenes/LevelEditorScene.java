@@ -30,7 +30,9 @@ public class LevelEditorScene extends Scene {
         sprites = AssetPool.getSpritesheet("assets/textures/sheet.png");
 
         if (loadedLevel){
-            activeGameObject = gameObjects.get(0);
+            if (gameObjects.size() > 0){
+                activeGameObject = gameObjects.get(0);
+            }
             return;
         }
 
@@ -39,6 +41,19 @@ public class LevelEditorScene extends Scene {
     private void loadResources() {
         AssetPool.getShader("assets/shaders/default.glsl");
         AssetPool.addSpritesheet("assets/textures/sheet.png", new Spritesheet(AssetPool.getTexture("assets/textures/sheet.png"), 16, 16, 70, 0));
+
+        // Clear extra textures
+        for (GameObject g : gameObjects){
+            if (g.getComponent(SpriteRenderer.class) != null){
+                // Component has a sprite renderer
+                SpriteRenderer spriteRenderer = g.getComponent(SpriteRenderer.class);
+                if (spriteRenderer.getTexture() != null){
+                    // Set sprite's texture to the copy in the asset pool.
+                    // Java garbage collection will throw away the old copies
+                    spriteRenderer.setTexture(AssetPool.getTexture(spriteRenderer.getTexture().getFilepath()));
+                }
+            }
+        }
     }
 
     @Override

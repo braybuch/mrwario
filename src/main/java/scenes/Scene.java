@@ -116,9 +116,9 @@ public abstract class Scene {
                 .create();
 
         try {
-            // TODO this doesn't read the same thing that is written
             final String JUNK_FILE = "junk-level.txt";
-            FileWriter writer = new FileWriter(JUNK_FILE);
+            final String FILE = "level.txt";
+            FileWriter writer = new FileWriter(FILE);
             writer.write(gson.toJson(gameObjects));
             writer.close();
         } catch (IOException e){
