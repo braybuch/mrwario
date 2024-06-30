@@ -65,8 +65,8 @@
         "properties": {
           "colour": {
             "x": 1.0,
-            "y": 1.0,
-            "z": 1.0,
+            "y": 0.9625468,
+            "z": 0.9625468,
             "w": 1.0
           },
           "sprite": {
@@ -390,6 +390,291 @@
       "position": {
         "x": 256.0,
         "y": 512.0
+      },
+      "scale": {
+        "x": 32.0,
+        "y": 32.0
+      }
+    },
+    "zIndex": 0
+  },
+  {
+    "uid": 8,
+    "name": "Sprite_Object_Gen",
+    "components": [
+      {
+        "type": "components.SpriteRenderer",
+        "properties": {
+          "colour": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 16.0,
+            "height": 16.0,
+            "texture": {
+              "filepath": "assets/textures/sheet.png",
+              "width": 160,
+              "height": 112
+            },
+            "textureCoords": [
+              {
+                "x": 0.1,
+                "y": 1.0
+              },
+              {
+                "x": 0.1,
+                "y": 0.85714287
+              },
+              {
+                "x": 0.0,
+                "y": 0.85714287
+              },
+              {
+                "x": 0.0,
+                "y": 1.0
+              }
+            ],
+            "uid": -1
+          },
+          "uid": 19
+        }
+      }
+    ],
+    "transform": {
+      "position": {
+        "x": 1056.0,
+        "y": 864.0
+      },
+      "scale": {
+        "x": 32.0,
+        "y": 32.0
+      }
+    },
+    "zIndex": 0
+  },
+  {
+    "uid": 9,
+    "name": "Sprite_Object_Gen",
+    "components": [
+      {
+        "type": "components.SpriteRenderer",
+        "properties": {
+          "colour": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 16.0,
+            "height": 16.0,
+            "texture": {
+              "filepath": "assets/textures/sheet.png",
+              "width": 160,
+              "height": 112
+            },
+            "textureCoords": [
+              {
+                "x": 0.1,
+                "y": 1.0
+              },
+              {
+                "x": 0.1,
+                "y": 0.85714287
+              },
+              {
+                "x": 0.0,
+                "y": 0.85714287
+              },
+              {
+                "x": 0.0,
+                "y": 1.0
+              }
+            ],
+            "uid": -1
+          },
+          "uid": 22
+        }
+      }
+    ],
+    "transform": {
+      "position": {
+        "x": 960.0,
+        "y": 864.0
+      },
+      "scale": {
+        "x": 32.0,
+        "y": 32.0
+      }
+    },
+    "zIndex": 0
+  },
+  {
+    "uid": 10,
+    "name": "Sprite_Object_Gen",
+    "components": [
+      {
+        "type": "components.SpriteRenderer",
+        "properties": {
+          "colour": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 16.0,
+            "height": 16.0,
+            "texture": {
+              "filepath": "assets/textures/sheet.png",
+              "width": 160,
+              "height": 112
+            },
+            "textureCoords": [
+              {
+                "x": 0.3,
+                "y": 1.0
+              },
+              {
+                "x": 0.3,
+                "y": 0.85714287
+              },
+              {
+                "x": 0.2,
+                "y": 0.85714287
+              },
+              {
+                "x": 0.2,
+                "y": 1.0
+              }
+            ],
+            "uid": -1
+          },
+          "uid": 25
+        }
+      }
+    ],
+    "transform": {
+      "position": {
+        "x": 320.0,
+        "y": 512.0
+      },
+      "scale": {
+        "x": 32.0,
+        "y": 32.0
+      }
+    },
+    "zIndex": 0
+  },
+  {
+    "uid": 11,
+    "name": "Sprite_Object_Gen",
+    "components": [
+      {
+        "type": "components.SpriteRenderer",
+        "properties": {
+          "colour": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 16.0,
+            "height": 16.0,
+            "texture": {
+              "filepath": "assets/textures/sheet.png",
+              "width": 160,
+              "height": 112
+            },
+            "textureCoords": [
+              {
+                "x": 0.2,
+                "y": 1.0
+              },
+              {
+                "x": 0.2,
+                "y": 0.85714287
+              },
+              {
+                "x": 0.1,
+                "y": 0.85714287
+              },
+              {
+                "x": 0.1,
+                "y": 1.0
+              }
+            ],
+            "uid": -1
+          },
+          "uid": 28
+        }
+      }
+    ],
+    "transform": {
+      "position": {
+        "x": 736.0,
+        "y": 896.0
+      },
+      "scale": {
+        "x": 32.0,
+        "y": 32.0
+      }
+    },
+    "zIndex": 0
+  },
+  {
+    "uid": 12,
+    "name": "Sprite_Object_Gen",
+    "components": [
+      {
+        "type": "components.SpriteRenderer",
+        "properties": {
+          "colour": {
+            "x": 0.8661785,
+            "y": 1.0,
+            "z": 0.20599252,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 16.0,
+            "height": 16.0,
+            "texture": {
+              "filepath": "assets/textures/sheet.png",
+              "width": 160,
+              "height": 112
+            },
+            "textureCoords": [
+              {
+                "x": 0.8,
+                "y": 1.0
+              },
+              {
+                "x": 0.8,
+                "y": 0.85714287
+              },
+              {
+                "x": 0.7,
+                "y": 0.85714287
+              },
+              {
+                "x": 0.7,
+                "y": 1.0
+              }
+            ],
+            "uid": -1
+          },
+          "uid": 31
+        }
+      }
+    ],
+    "transform": {
+      "position": {
+        "x": 320.0,
+        "y": 544.0
       },
       "scale": {
         "x": 32.0,

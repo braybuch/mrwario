@@ -152,7 +152,7 @@ public class ImGuiLayer {
                 ImGui.setWindowFocus(null);
             }
 
-            if (!io.getWantCaptureMouse() || !gameViewWindow.getWantCaptureMouse()){
+            if (!io.getWantCaptureMouse() || gameViewWindow.getWantCaptureMouse()){
                 // IMGui does not need the mouse event
                 MouseListener.mouseButtonCallback(w, button, action, mods);
             }
