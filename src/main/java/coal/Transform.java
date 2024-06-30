@@ -10,6 +10,8 @@ public class Transform {
     public Vector2f position;
     /** the scale of the obejct */
     public Vector2f scale;
+    /** the rotation of the object */
+    public float rotation = 0.0f;
 
     /**
      * Construct default transform

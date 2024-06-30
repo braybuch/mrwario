@@ -4,6 +4,7 @@ import coal.GameObject;
 import coal.Prefabs;
 import coal.Window;
 import editor.PropertiesWindow;
+import org.joml.Vector2f;
 import org.joml.Vector4f;
 import util.Settings;
 
@@ -20,6 +21,9 @@ public class TranslateGizmo extends Component {
     private GameObject activeGameObject = null;
     private PropertiesWindow propertiesWindow;
 
+    private Vector2f xAxisOffset = new Vector2f(36, 9);
+    private Vector2f yAxisOffset = new Vector2f(23, 37);
+
     public TranslateGizmo(Sprite arrowSprite, PropertiesWindow propertiesWindow) {
         // Create translation arrows
         xAxisObject = Prefabs.generateSpriteObject(arrowSprite, 16, 16);
@@ -35,6 +39,10 @@ public class TranslateGizmo extends Component {
 
     @Override
     public void start(){
+        xAxisObject.transform.rotation = 90;
+        yAxisObject.transform.rotation = 180;
+        xAxisObject.setDoSerialize(false);
+        yAxisObject.setDoSerialize(false);
 
     }
 
@@ -43,6 +51,8 @@ public class TranslateGizmo extends Component {
         if (activeGameObject != null) {
             xAxisObject.transform.position.set(activeGameObject.transform.position);
             yAxisObject.transform.position.set(activeGameObject.transform.position);
+            xAxisObject.transform.position.add(xAxisOffset);
+            yAxisObject.transform.position.add(yAxisOffset);
         }
 
         activeGameObject = propertiesWindow.getActiveGameObject();

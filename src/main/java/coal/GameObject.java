@@ -78,6 +78,7 @@ public class GameObject {
         return components;
     }
 
+    private boolean doSerialize = true;
     /**
      * This method returns a human-readable string representation of the contents of this object
      *
@@ -187,6 +188,14 @@ public class GameObject {
         for (Component c : components){
             c.imgui();
         }
+    }
+
+    public void setDoSerialize(boolean doSerialize) {
+        this.doSerialize = doSerialize;
+    }
+
+    public boolean getDoSerialize(){
+        return doSerialize;
     }
 
 }

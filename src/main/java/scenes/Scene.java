@@ -122,7 +122,13 @@ public abstract class Scene {
             final String JUNK_FILE = "junk-level.txt";
             final String FILE = "level.txt";
             FileWriter writer = new FileWriter(FILE);
-            writer.write(gson.toJson(gameObjects));
+            List<GameObject> gameObjectsToSerialize = new ArrayList<>();
+            for (GameObject g : gameObjects) {
+                if (g.getDoSerialize()){
+                    gameObjectsToSerialize.add(g);
+                }
+            }
+            writer.write(gson.toJson(gameObjectsToSerialize));
             writer.close();
         } catch (IOException e) {
             e.printStackTrace();

@@ -13,18 +13,22 @@ public class PropertiesWindow {
     /** the game object you've selected in the inspector */
     private GameObject activeGameObject = null;
     private PickingTexture pickingTexture;
+    private float debounceTime = 0.2f;
 
     public PropertiesWindow (PickingTexture pickingTexture){
         this.pickingTexture = pickingTexture;
     }
 
+
     public void update(float deltaTime, Scene currentScene){
-        if (MouseListener.mouseButtonDown(GLFW_MOUSE_BUTTON_LEFT)) {
+        debounceTime -= deltaTime;
+        if (MouseListener.mouseButtonDown(GLFW_MOUSE_BUTTON_LEFT) && debounceTime < 0) {
             int x = (int)MouseListener.getScreenX();
             int y = (int)MouseListener.getScreenY();
             int gameObjectID = pickingTexture.readPixel(x, y);
             activeGameObject = currentScene.getGameObject(gameObjectID);
             System.out.println(pickingTexture.readPixel(x, y));
+            debounceTime = 0.2f;
         }
     }
 
