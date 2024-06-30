@@ -50,10 +50,10 @@ public class Renderer {
         // Check if there's a render batch with room and on the same zIndex as this spriteRenderer
         boolean added = false;
         for (RenderBatch b : batches){
-            if (b.hasRoomForSprites() && b.getZIndex() == spriteRenderer.gameObject.getZIndex()){
+            if (b.hasRoom() && b.zIndex() == spriteRenderer.gameObject.getZIndex()){
                 // Render batch has room and is on the same zIndex
                 Texture texture = spriteRenderer.getTexture();
-                if (texture == null || (b.hasTexture(texture) || b.hasRoomForTextures())) {
+                if (texture == null || (b.hasTexture(texture) || b.hasTextureRoom())) {
                     // SpriteRenderer has no texture, or the batch has the texture, or it has room
                     b.addSprite(spriteRenderer);
                     added = true;
