@@ -1,14 +1,12 @@
 package scenes;
 
-import coal.Camera;
-import coal.GameObject;
-import coal.Prefabs;
-import coal.Transform;
+import coal.*;
 import components.*;
 import imgui.ImGui;
 import imgui.ImVec2;
 import org.joml.Vector2f;
 import util.AssetPool;
+import util.Settings;
 
 public class LevelEditorScene extends Scene {
     private GameObject obj1;
@@ -22,20 +20,22 @@ public class LevelEditorScene extends Scene {
 
     @Override
     public void init() {
+        loadResources();
+        sprites = AssetPool.getSpritesheet("assets/textures/sheet.png");
+        Spritesheet gizmos = AssetPool.getSpritesheet(Settings.TRANSLATE_TEXTURE);
         camera = new Camera(new Vector2f());
         levelEditorStuff.addComponent(new MouseControls());
         levelEditorStuff.addComponent(new GridLines());
         levelEditorStuff.addComponent(new EditorCamera(camera));
-        loadResources();
+        levelEditorStuff.addComponent((new TranslateGizmo(gizmos.getSprite(0), Window.get().getImguiLayer().getPropertiesWindow())));
         camera.adjustProjection();
-        SpriteRenderer obj1Sprite;
-        sprites = AssetPool.getSpritesheet("assets/textures/sheet.png");
 
     }
 
     private void loadResources() {
         AssetPool.getShader("assets/shaders/default.glsl");
         AssetPool.addSpritesheet("assets/textures/sheet.png", new Spritesheet(AssetPool.getTexture("assets/textures/sheet.png"), 16, 16, 70, 0));
+        AssetPool.addSpritesheet(Settings.TRANSLATE_TEXTURE, new Spritesheet(AssetPool.getTexture(Settings.TRANSLATE_TEXTURE), 16, 16, 1, 0));
 
         // Clear extra textures
         for (GameObject g : gameObjects){
@@ -69,6 +69,10 @@ public class LevelEditorScene extends Scene {
 
     @Override
     public void imgui(){
+        ImGui.begin("Level Editor Stuff)");
+        levelEditorStuff.imgui();
+        ImGui.end();
+
         ImGui.begin("Level Editor");
 
         ImVec2 windowPos = new ImVec2();

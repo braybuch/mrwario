@@ -35,4 +35,8 @@ public class PropertiesWindow {
             ImGui.end();
         }
     }
+
+    public GameObject getActiveGameObject() {
+        return activeGameObject;
+    }
 }

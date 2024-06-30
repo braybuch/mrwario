@@ -321,4 +321,8 @@ public class Window {
         // Serialize objects
         currentScene.saveExit();
     }
+
+    public static ImGuiLayer getImguiLayer() {
+        return get().imguiLayer;
+    }
 }
