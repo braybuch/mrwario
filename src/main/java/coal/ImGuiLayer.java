@@ -5,6 +5,7 @@ package coal;
  */
 
 import editor.GameViewWindow;
+import editor.PropertiesWindow;
 import imgui.ImFontAtlas;
 import imgui.ImFontConfig;
 import imgui.ImGui;
@@ -15,6 +16,7 @@ import imgui.flag.*;
 import imgui.gl3.ImGuiImplGl3;
 import imgui.glfw.ImGuiImplGlfw;
 import imgui.type.ImBoolean;
+import renderer.PickingTexture;
 import scenes.Scene;
 
 import static org.lwjgl.glfw.GLFW.*;
@@ -34,13 +36,19 @@ public class ImGuiLayer {
     /** LWJGL3 renderer (SHOULD be initialized) */
     private final ImGuiImplGl3 imGuiGl3 = new ImGuiImplGl3();
 
+    private PropertiesWindow propertiesWindow;
+
+    private GameViewWindow gameViewWindow;
+
     /**
      * Constructor to initialize with a window
      *
      * @param glfwWindow the pointer to the window
      */
-    public ImGuiLayer(long glfwWindow) {
+    public ImGuiLayer(long glfwWindow, PickingTexture pickingTexture) {
         this.windowPointer = glfwWindow;
+        gameViewWindow = new GameViewWindow();
+        propertiesWindow = new PropertiesWindow(pickingTexture);
     }
 
     /**
@@ -144,7 +152,7 @@ public class ImGuiLayer {
                 ImGui.setWindowFocus(null);
             }
 
-            if (!io.getWantCaptureMouse() || !GameViewWindow.getWantCaptureMouse()){
+            if (!io.getWantCaptureMouse() || !gameViewWindow.getWantCaptureMouse()){
                 // IMGui does not need the mouse event
                 MouseListener.mouseButtonCallback(w, button, action, mods);
             }
@@ -217,9 +225,11 @@ public class ImGuiLayer {
         // Any Dear ImGui code SHOULD go between ImGui.newFrame()/ImGui.render() methods
         ImGui.newFrame();
         setupDockspace();
-        scene.sceneImgui();
+        scene.imgui();
         ImGui.showDemoWindow();
-        GameViewWindow.imgui();
+        gameViewWindow.imgui();
+        propertiesWindow.update(dt, scene);
+        propertiesWindow.imgui();
         ImGui.end();
         ImGui.render();
 

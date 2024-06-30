@@ -7,7 +7,6 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import components.Component;
 import components.ComponentTypeAdapter;
-import imgui.ImGui;
 import renderer.Renderer;
 
 import java.io.FileWriter;
@@ -22,23 +21,32 @@ import java.util.List;
  * This class represents a scene object.
  */
 public abstract class Scene {
-    /** the renderer to use for the scene */
+    /**
+     * the renderer to use for the scene
+     */
     protected Renderer renderer = new Renderer();
-    /** the camera to use for the scene */
+    /**
+     * the camera to use for the scene
+     */
     protected Camera camera;
-    /** represents if the application has begun updating yet */
+    /**
+     * represents if the application has begun updating yet
+     */
     private boolean isRunning = false;
-    /** the list of game objects in the scene */
+    /**
+     * the list of game objects in the scene
+     */
     protected List<GameObject> gameObjects = new ArrayList<>();
-    /** if the level has been loaded yet */
+    /**
+     * if the level has been loaded yet
+     */
     protected boolean loadedLevel = false;
-    /** the game object you've selected in the inspector */
-    protected GameObject activeGameObject = null;
 
     /**
      * Optional default constructor.
      */
-    public Scene() {}
+    public Scene() {
+    }
 
     /**
      * Get the camera.
@@ -49,10 +57,21 @@ public abstract class Scene {
         return camera;
     }
 
+    public GameObject getGameObject(int gameObjectID) {
+        // TODO use collections
+        for (int i = 0; i < gameObjects.size(); i++) {
+            if (gameObjects.get(i).getUid() == gameObjectID) {
+                return gameObjects.get(i);
+            }
+        }
+        return null;
+    }
+
     /**
      * Optional method.
      */
-    public void init() {}
+    public void init() {
+    }
 
     /**
      * Begin rendering and running the scene.
@@ -88,33 +107,16 @@ public abstract class Scene {
     public abstract void update(float deltaTime);
 
     public abstract void render();
-    /**
-     *
-     */
-    // TODO what
-    public void sceneImgui(){
-        if (activeGameObject != null) {
-            ImGui.begin("Inspector");
-            activeGameObject.imgui();
-            ImGui.end();
-        }
 
-        imgui();
-    }
-
-    public void imgui(){
+    public void imgui() {
 
     }
 
     /**
      * Serialize objects
      */
-    public void saveExit(){
-        Gson gson = new GsonBuilder()
-                .setPrettyPrinting()
-                .registerTypeAdapter(Component.class, new ComponentTypeAdapter())
-                .registerTypeAdapter(GameObject.class, new GameObjectTypeAdapter())
-                .create();
+    public void saveExit() {
+        Gson gson = new GsonBuilder().setPrettyPrinting().registerTypeAdapter(Component.class, new ComponentTypeAdapter()).registerTypeAdapter(GameObject.class, new GameObjectTypeAdapter()).create();
 
         try {
             final String JUNK_FILE = "junk-level.txt";
@@ -122,7 +124,7 @@ public abstract class Scene {
             FileWriter writer = new FileWriter(FILE);
             writer.write(gson.toJson(gameObjects));
             writer.close();
-        } catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
@@ -130,12 +132,8 @@ public abstract class Scene {
     /**
      * Deserialize objects
      */
-    public void load(){
-        Gson gson = new GsonBuilder()
-                .setPrettyPrinting()
-                .registerTypeAdapter(Component.class, new ComponentTypeAdapter())
-                .registerTypeAdapter(GameObject.class, new GameObjectTypeAdapter())
-                .create();
+    public void load() {
+        Gson gson = new GsonBuilder().setPrettyPrinting().registerTypeAdapter(Component.class, new ComponentTypeAdapter()).registerTypeAdapter(GameObject.class, new GameObjectTypeAdapter()).create();
 
         String inFile = "";
         try {
@@ -153,12 +151,12 @@ public abstract class Scene {
                 addGameObjectToScene(g[i]);
 
                 // Find max IDs
-                for (Component c : g[i].getComponents()){
-                    if (c.getUid() > maxComponentID){
+                for (Component c : g[i].getComponents()) {
+                    if (c.getUid() > maxComponentID) {
                         maxComponentID = c.getUid();
                     }
                 }
-                if (g[i].getUid() > maxObjectID){
+                if (g[i].getUid() > maxObjectID) {
                     maxObjectID = g[i].getUid();
                 }
 
@@ -170,4 +168,5 @@ public abstract class Scene {
         }
 
     }
+
 }

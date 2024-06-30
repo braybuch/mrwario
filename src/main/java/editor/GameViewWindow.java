@@ -16,7 +16,7 @@ public class GameViewWindow {
     private static float topY;
     private static float bottomY;
 
-    public static void imgui(){
+    public void imgui(){
         // Create game viewport
         ImGui.begin("Game Viewport", ImGuiWindowFlags.NoScrollbar | ImGuiWindowFlags.NoScrollWithMouse);
         ImVec2 windowSize = getLargestSizeForViewport();
@@ -51,7 +51,7 @@ public class GameViewWindow {
      * @param aspectSize the aspect ratio of the viewport
      * @return the centered position for the viewport
      */
-    private static ImVec2 getCenteredPositionForViewport(ImVec2 aspectSize) {
+    private ImVec2 getCenteredPositionForViewport(ImVec2 aspectSize) {
         // Get window size containing the viewport
         ImVec2 windowSize = new ImVec2();
         ImGui.getContentRegionAvail(windowSize);
@@ -73,7 +73,7 @@ public class GameViewWindow {
      *
      * @return the ImGui vector 2 containing size
      */
-    private static ImVec2 getLargestSizeForViewport() {
+    private ImVec2 getLargestSizeForViewport() {
         // Get window size that contains the viewport
         ImVec2 windowSize = new ImVec2();
         ImGui.getContentRegionAvail(windowSize);
@@ -95,7 +95,7 @@ public class GameViewWindow {
         return new ImVec2(aspectWidth, aspectHeight);
     }
 
-    public static boolean getWantCaptureMouse() {
+    public boolean getWantCaptureMouse() {
         return (MouseListener.getX() >= leftX && MouseListener.getX() <= rightX && MouseListener.getY() >= bottomY && MouseListener.getY() >= topY);
     }
 }

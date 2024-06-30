@@ -240,15 +240,15 @@ public class Window {
         glEnable(GL_BLEND);
         glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
 
-        // Assign imgui layer
-        imguiLayer = new ImGuiLayer(windowPointer);
-        imguiLayer.initImGui();
-
         // Initiate frame buffer
         // TODO query for monitor size
         frameBuffer = new FrameBuffer(2240, 1400);
         pickingTexture = new PickingTexture(2240, 1400);
         glViewport(0, 0, 2240, 1400);
+
+        // Assign imgui layer
+        imguiLayer = new ImGuiLayer(windowPointer, pickingTexture);
+        imguiLayer.initImGui();
 
         Window.setScene(0);
     }
@@ -279,12 +279,6 @@ public class Window {
             glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
             Renderer.bindShader(pickingShader);
             currentScene.render();
-
-            if (MouseListener.mouseButtonDown(GLFW_MOUSE_BUTTON_LEFT)) {
-                int x = (int)MouseListener.getScreenX();
-                int y = (int)MouseListener.getScreenY();
-                System.out.println(pickingTexture.readPixel(x, y));
-            }
 
             pickingTexture.disableWriting();
             glEnable(GL_BLEND);

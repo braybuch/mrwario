@@ -30,13 +30,6 @@ public class LevelEditorScene extends Scene {
         SpriteRenderer obj1Sprite;
         sprites = AssetPool.getSpritesheet("assets/textures/sheet.png");
 
-        if (loadedLevel){
-            if (gameObjects.size() > 0){
-                activeGameObject = gameObjects.get(0);
-            }
-            return;
-        }
-
     }
 
     private void loadResources() {
