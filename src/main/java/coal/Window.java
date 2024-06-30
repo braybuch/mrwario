@@ -309,6 +309,9 @@ public class Window {
             // Swap shown frame buffer with last rendered buffer
             glfwSwapBuffers(windowPointer);
 
+            // Make zoom stop
+            MouseListener.endFrame();
+
             // Establish delta time
             endTime = (float) glfwGetTime();
             deltaTime = endTime - startTime;

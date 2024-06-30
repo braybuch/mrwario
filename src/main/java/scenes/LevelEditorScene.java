@@ -22,10 +22,11 @@ public class LevelEditorScene extends Scene {
 
     @Override
     public void init() {
+        camera = new Camera(new Vector2f());
         levelEditorStuff.addComponent(new MouseControls());
         levelEditorStuff.addComponent(new GridLines());
+        levelEditorStuff.addComponent(new EditorCamera(camera));
         loadResources();
-        camera = new Camera(new Vector2f());
         camera.adjustProjection();
         SpriteRenderer obj1Sprite;
         sprites = AssetPool.getSpritesheet("assets/textures/sheet.png");
@@ -53,6 +54,7 @@ public class LevelEditorScene extends Scene {
     @Override
     public void update(float deltaTime) {
         levelEditorStuff.update(deltaTime);
+        camera.adjustProjection();
 
         for (GameObject g : gameObjects) {
             g.update(deltaTime);

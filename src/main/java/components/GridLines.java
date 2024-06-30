@@ -19,19 +19,19 @@ public class GridLines extends Component {
         Vector2f projectionSize = camera.getProjectionSize();
 
         // Snap to corners
-        float firstX = ((int)Math.floor(cameraPos.x / Settings.GRID_WIDTH)) * Settings.GRID_HEIGHT;
-        float firstY = ((int)Math.floor(cameraPos.y / Settings.GRID_HEIGHT)) * Settings.GRID_HEIGHT;
+        float firstX = ((int)(cameraPos.x / Settings.GRID_WIDTH) - 1) * Settings.GRID_HEIGHT;
+        float firstY = ((int)(cameraPos.y / Settings.GRID_HEIGHT) - 1) * Settings.GRID_HEIGHT;
 
         // Check how many vertical lines fit
-        final int MAGIC_NUMBER_OF_LINES = 100;
-        int numVerticalLines = (int)(projectionSize.x / Settings.GRID_WIDTH) + MAGIC_NUMBER_OF_LINES;
+        final int MAGIC_NUMBER_OF_LINES = 64;
+        int numVerticalLines = (int)(projectionSize.x * camera.getZoom() / Settings.GRID_WIDTH) + MAGIC_NUMBER_OF_LINES;
 
         // Check how many horizontal lines fit
-        int numHorizontalLines = (int)(projectionSize.y / Settings.GRID_HEIGHT) + MAGIC_NUMBER_OF_LINES;
+        int numHorizontalLines = (int)(projectionSize.y * camera.getZoom() / Settings.GRID_HEIGHT) + MAGIC_NUMBER_OF_LINES;
 
         // Get integer value of projection size
-        int width = (int)projectionSize.x + Settings.GRID_WIDTH * 2;
-        int height =(int)projectionSize.y + Settings.GRID_HEIGHT * 2;
+        int width = (int)(projectionSize.x * camera.getZoom()) + Settings.GRID_WIDTH * 2;
+        int height =(int)(projectionSize.y * camera.getZoom()) + Settings.GRID_HEIGHT * 2;
 
         // Draw lines
         int maxLines = Math.max(numVerticalLines, numHorizontalLines);

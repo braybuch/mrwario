@@ -21,6 +21,8 @@ public class Camera {
     /** the size of the projection */
     private Vector2f projectionSize = new Vector2f(32.0f * 40.0f, 32.0f * 21.0f);
 
+    private float zoom = 1.0f;
+
     /**
      * Constructor initializes to the given position then handles the rest
      *
@@ -104,14 +106,27 @@ public class Camera {
         return projectionSize;
     }
 
+    public float getZoom() {
+        return zoom;
+    }
+
+    public void setZoom(float zoom) {
+        this.zoom = zoom;
+    }
+
+    public void adjustZoom(float value){
+        zoom += value;
+    }
+
     /**
      * Move projection
      */
     public void adjustProjection() {
         projectionMatrix.identity();
-        projectionMatrix.ortho(0.0f, projectionSize.x, 0.0f, projectionSize.y, 0.0f, 100.0f);
+        projectionMatrix.ortho(0.0f, projectionSize.x * zoom, 0.0f, projectionSize.y * zoom, 0.0f, 100.0f);
         projectionMatrix.invert(inverseProjectionMatrix);
     }
+
 
 
 }

@@ -35,10 +35,11 @@ public class MouseControls extends Component{
 
     @Override
     public void update(float deltaTime){
-        final int MOUSE_OFFSET = 16;
+        final int   MOUSE_OFFSET_X = 0,
+                    MOUSE_OFFSET_Y = 0;
         if (holdingObject != null){
-            holdingObject.transform.position.x = MouseListener.getOrthoX() - MOUSE_OFFSET;
-            holdingObject.transform.position.y = MouseListener.getOrthoY() - MOUSE_OFFSET;
+            holdingObject.transform.position.x = MouseListener.getOrthoX() - MOUSE_OFFSET_X;
+            holdingObject.transform.position.y = MouseListener.getOrthoY() - MOUSE_OFFSET_Y;
 
             // Snap position to grid
             holdingObject.transform.position.x = (int)(holdingObject.transform.position.x / Settings.GRID_WIDTH) * Settings.GRID_WIDTH;
