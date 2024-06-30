@@ -2,11 +2,11 @@ package coal;
 
 import org.lwjgl.glfw.GLFWErrorCallback;
 import org.lwjgl.opengl.GL;
-import renderer.DebugDraw;
-import renderer.FrameBuffer;
+import renderer.*;
 import scenes.LevelEditorScene;
 import scenes.LevelScene;
 import scenes.Scene;
+import util.AssetPool;
 
 import static org.lwjgl.glfw.Callbacks.glfwFreeCallbacks;
 import static org.lwjgl.glfw.GLFW.*;
@@ -48,8 +48,9 @@ public class Window {
     /**
      * The frame buffer object
      */
-    private static FrameBuffer frameBuffer;
+    private FrameBuffer frameBuffer;
 
+    private PickingTexture pickingTexture;
     /**
      * Default constructor sets up window with standard settings.
      */
@@ -246,6 +247,7 @@ public class Window {
         // Initiate frame buffer
         // TODO query for monitor size
         frameBuffer = new FrameBuffer(2240, 1400);
+        pickingTexture = new PickingTexture(2240, 1400);
         glViewport(0, 0, 2240, 1400);
 
         Window.setScene(0);
@@ -261,10 +263,33 @@ public class Window {
         float endTime;
         float deltaTime = -1.0f;
 
+        Shader defaultShader = AssetPool.getShader("assets/shaders/default.glsl");
+        Shader pickingShader = AssetPool.getShader("assets/shaders/picking.glsl");
+
         // Do until close window event
         while (!glfwWindowShouldClose(windowPointer)) {
             // Poll events
             glfwPollEvents();
+
+            // Render pass 1: Picking texture
+            glDisable(GL_BLEND);
+            pickingTexture.enableWriting();
+            glViewport(0, 0, 2240, 1400);
+            glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+            glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+            Renderer.bindShader(pickingShader);
+            currentScene.render();
+
+            if (MouseListener.mouseButtonDown(GLFW_MOUSE_BUTTON_LEFT)) {
+                int x = (int)MouseListener.getScreenX();
+                int y = (int)MouseListener.getScreenY();
+                System.out.println(pickingTexture.readPixel(x, y));
+            }
+
+            pickingTexture.disableWriting();
+            glEnable(GL_BLEND);
+
+            // Render pass 2: Render the game
 
             // Clean debug lines
             DebugDraw.beginFrame();
@@ -277,9 +302,10 @@ public class Window {
 
             // Update scene
             if (deltaTime >= 0.0f) {
-                currentScene.update(deltaTime);
-                // Draw debug lines
                 DebugDraw.draw();
+                Renderer.bindShader(defaultShader);
+                currentScene.update(deltaTime);
+                currentScene.render();
             }
             frameBuffer.unbind();
 

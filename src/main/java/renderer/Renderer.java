@@ -15,12 +15,17 @@ public class Renderer {
     private final int MAX_BATCH_SIZE = 1000;
     /** The list of batches to render */
     private final List<RenderBatch> batches;
+    private static Shader currentShader;
 
     /**
      * Constructor initializes default fields
      */
     public Renderer() {
         batches = new ArrayList<>();
+    }
+
+    public static void bindShader(PickingTexture pickingTexture) {
+
     }
 
     /**
@@ -67,10 +72,19 @@ public class Renderer {
         }
     }
 
+    public static void bindShader(Shader shader) {
+        currentShader = shader;
+    }
+
+    public static Shader getBoundShader(){
+        return currentShader;
+    }
+
     /**
      * Render each batch
      */
     public void render() {
+        currentShader.use();
         for (RenderBatch b : batches){
             b.render();
         }

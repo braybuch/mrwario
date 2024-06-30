@@ -65,6 +65,10 @@ public class LevelEditorScene extends Scene {
             g.update(deltaTime);
         }
 
+    }
+
+    @Override
+    public void render() {
         renderer.render();
     }
 

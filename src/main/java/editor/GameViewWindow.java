@@ -33,7 +33,6 @@ public class GameViewWindow {
         rightX = topLeft.x + windowSize.x;
         topY = topLeft.y + windowSize.y;
 
-
         // Get texture id for frame buffer
         int textureID = Window.get().getFrameBuffer().getTexture().getID();
         ImGui.image(textureID, windowSize.x, windowSize.y, 0, 1, 1, 0);
