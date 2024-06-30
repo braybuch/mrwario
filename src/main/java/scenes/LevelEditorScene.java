@@ -35,7 +35,7 @@ public class LevelEditorScene extends Scene {
 
     private void loadResources() {
         AssetPool.getShader("assets/shaders/default.glsl");
-        AssetPool.addSpritesheet("assets/textures/sheet.png", new Spritesheet(AssetPool.getTexture("assets/textures/sheet.png"), 12, 14, 70, 0));
+        AssetPool.addSpritesheet("assets/textures/sheet.png", new Spritesheet(AssetPool.getTexture("assets/textures/sheet.png"), 16, 16, 70, 0));
         AssetPool.addSpritesheet(Settings.TRANSLATE_TEXTURE, new Spritesheet(AssetPool.getTexture(Settings.TRANSLATE_TEXTURE), 12, 14, 1, 0));
 
         // Clear extra textures

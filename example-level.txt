@@ -22,63 +22,6 @@
             },
             "textureCoords": [
               {
-                "x": 0.3,
-                "y": 0.42857143
-              },
-              {
-                "x": 0.3,
-                "y": 0.2857143
-              },
-              {
-                "x": 0.2,
-                "y": 0.2857143
-              },
-              {
-                "x": 0.2,
-                "y": 0.42857143
-              }
-            ],
-            "uid": -1
-          },
-          "uid": 3
-        }
-      }
-    ],
-    "transform": {
-      "position": {
-        "x": -704.0,
-        "y": 832.0
-      },
-      "scale": {
-        "x": 32.0,
-        "y": 32.0
-      }
-    },
-    "zIndex": 0
-  },
-  {
-    "uid": 2,
-    "name": "Sprite_Object_Gen",
-    "components": [
-      {
-        "type": "components.SpriteRenderer",
-        "properties": {
-          "colour": {
-            "x": 1.0,
-            "y": 1.0,
-            "z": 1.0,
-            "w": 1.0
-          },
-          "sprite": {
-            "width": 16.0,
-            "height": 16.0,
-            "texture": {
-              "filepath": "assets/textures/sheet.png",
-              "width": 160,
-              "height": 112
-            },
-            "textureCoords": [
-              {
                 "x": 0.1,
                 "y": 1.0
               },
@@ -92,120 +35,6 @@
               },
               {
                 "x": 0.0,
-                "y": 1.0
-              }
-            ],
-            "uid": -1
-          },
-          "uid": 4
-        }
-      }
-    ],
-    "transform": {
-      "position": {
-        "x": 0.0,
-        "y": 0.0
-      },
-      "scale": {
-        "x": 32.0,
-        "y": 32.0
-      }
-    },
-    "zIndex": 0
-  },
-  {
-    "uid": 3,
-    "name": "Sprite_Object_Gen",
-    "components": [
-      {
-        "type": "components.SpriteRenderer",
-        "properties": {
-          "colour": {
-            "x": 1.0,
-            "y": 1.0,
-            "z": 1.0,
-            "w": 1.0
-          },
-          "sprite": {
-            "width": 16.0,
-            "height": 16.0,
-            "texture": {
-              "filepath": "assets/textures/sheet.png",
-              "width": 160,
-              "height": 112
-            },
-            "textureCoords": [
-              {
-                "x": 0.2,
-                "y": 1.0
-              },
-              {
-                "x": 0.2,
-                "y": 0.85714287
-              },
-              {
-                "x": 0.1,
-                "y": 0.85714287
-              },
-              {
-                "x": 0.1,
-                "y": 1.0
-              }
-            ],
-            "uid": -1
-          },
-          "uid": 5
-        }
-      }
-    ],
-    "transform": {
-      "position": {
-        "x": 32.0,
-        "y": 0.0
-      },
-      "scale": {
-        "x": 32.0,
-        "y": 32.0
-      }
-    },
-    "zIndex": 0
-  },
-  {
-    "uid": 4,
-    "name": "Sprite_Object_Gen",
-    "components": [
-      {
-        "type": "components.SpriteRenderer",
-        "properties": {
-          "colour": {
-            "x": 1.0,
-            "y": 1.0,
-            "z": 1.0,
-            "w": 1.0
-          },
-          "sprite": {
-            "width": 16.0,
-            "height": 16.0,
-            "texture": {
-              "filepath": "assets/textures/sheet.png",
-              "width": 160,
-              "height": 112
-            },
-            "textureCoords": [
-              {
-                "x": 0.2,
-                "y": 1.0
-              },
-              {
-                "x": 0.2,
-                "y": 0.85714287
-              },
-              {
-                "x": 0.1,
-                "y": 0.85714287
-              },
-              {
-                "x": 0.1,
                 "y": 1.0
               }
             ],
@@ -217,18 +46,20 @@
     ],
     "transform": {
       "position": {
-        "x": 64.0,
+        "x": 0.0,
         "y": 0.0
       },
       "scale": {
         "x": 32.0,
         "y": 32.0
-      }
+      },
+      "rotation": 0.0
     },
-    "zIndex": 0
+    "zIndex": 0,
+    "doSerialize": true
   },
   {
-    "uid": 5,
+    "uid": 2,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -274,18 +105,20 @@
     ],
     "transform": {
       "position": {
-        "x": 96.0,
+        "x": 32.0,
         "y": 0.0
       },
       "scale": {
         "x": 32.0,
         "y": 32.0
-      }
+      },
+      "rotation": 0.0
     },
-    "zIndex": 0
+    "zIndex": 0,
+    "doSerialize": true
   },
   {
-    "uid": 6,
+    "uid": 3,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -331,15 +164,194 @@
     ],
     "transform": {
       "position": {
+        "x": 64.0,
+        "y": 0.0
+      },
+      "scale": {
+        "x": 32.0,
+        "y": 32.0
+      },
+      "rotation": 0.0
+    },
+    "zIndex": 0,
+    "doSerialize": true
+  },
+  {
+    "uid": 4,
+    "name": "Sprite_Object_Gen",
+    "components": [
+      {
+        "type": "components.SpriteRenderer",
+        "properties": {
+          "colour": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 16.0,
+            "height": 16.0,
+            "texture": {
+              "filepath": "assets/textures/sheet.png",
+              "width": 160,
+              "height": 112
+            },
+            "textureCoords": [
+              {
+                "x": 0.2,
+                "y": 1.0
+              },
+              {
+                "x": 0.2,
+                "y": 0.85714287
+              },
+              {
+                "x": 0.1,
+                "y": 0.85714287
+              },
+              {
+                "x": 0.1,
+                "y": 1.0
+              }
+            ],
+            "uid": -1
+          },
+          "uid": 9
+        }
+      }
+    ],
+    "transform": {
+      "position": {
+        "x": 96.0,
+        "y": 0.0
+      },
+      "scale": {
+        "x": 32.0,
+        "y": 32.0
+      },
+      "rotation": 0.0
+    },
+    "zIndex": 0,
+    "doSerialize": true
+  },
+  {
+    "uid": 5,
+    "name": "Sprite_Object_Gen",
+    "components": [
+      {
+        "type": "components.SpriteRenderer",
+        "properties": {
+          "colour": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 16.0,
+            "height": 16.0,
+            "texture": {
+              "filepath": "assets/textures/sheet.png",
+              "width": 160,
+              "height": 112
+            },
+            "textureCoords": [
+              {
+                "x": 0.2,
+                "y": 1.0
+              },
+              {
+                "x": 0.2,
+                "y": 0.85714287
+              },
+              {
+                "x": 0.1,
+                "y": 0.85714287
+              },
+              {
+                "x": 0.1,
+                "y": 1.0
+              }
+            ],
+            "uid": -1
+          },
+          "uid": 10
+        }
+      }
+    ],
+    "transform": {
+      "position": {
         "x": 128.0,
         "y": 0.0
       },
       "scale": {
         "x": 32.0,
         "y": 32.0
-      }
+      },
+      "rotation": 0.0
     },
-    "zIndex": 0
+    "zIndex": 0,
+    "doSerialize": true
+  },
+  {
+    "uid": 6,
+    "name": "Sprite_Object_Gen",
+    "components": [
+      {
+        "type": "components.SpriteRenderer",
+        "properties": {
+          "colour": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 16.0,
+            "height": 16.0,
+            "texture": {
+              "filepath": "assets/textures/sheet.png",
+              "width": 160,
+              "height": 112
+            },
+            "textureCoords": [
+              {
+                "x": 0.1,
+                "y": 0.85714287
+              },
+              {
+                "x": 0.1,
+                "y": 0.71428573
+              },
+              {
+                "x": 0.0,
+                "y": 0.71428573
+              },
+              {
+                "x": 0.0,
+                "y": 0.85714287
+              }
+            ],
+            "uid": -1
+          },
+          "uid": 11
+        }
+      }
+    ],
+    "transform": {
+      "position": {
+        "x": 192.0,
+        "y": 0.0
+      },
+      "scale": {
+        "x": 32.0,
+        "y": 32.0
+      },
+      "rotation": 0.0
+    },
+    "zIndex": 0,
+    "doSerialize": true
   },
   {
     "uid": 7,
@@ -382,7 +394,7 @@
             ],
             "uid": -1
           },
-          "uid": 9
+          "uid": 12
         }
       }
     ],
@@ -394,9 +406,11 @@
       "scale": {
         "x": 32.0,
         "y": 32.0
-      }
+      },
+      "rotation": 0.0
     },
-    "zIndex": 0
+    "zIndex": 0,
+    "doSerialize": true
   },
   {
     "uid": 8,
@@ -421,39 +435,41 @@
             },
             "textureCoords": [
               {
-                "x": 0.1,
+                "x": 0.4,
                 "y": 0.85714287
               },
               {
-                "x": 0.1,
+                "x": 0.4,
                 "y": 0.71428573
               },
               {
-                "x": 0.0,
+                "x": 0.3,
                 "y": 0.71428573
               },
               {
-                "x": 0.0,
+                "x": 0.3,
                 "y": 0.85714287
               }
             ],
             "uid": -1
           },
-          "uid": 10
+          "uid": 13
         }
       }
     ],
     "transform": {
       "position": {
         "x": 192.0,
-        "y": 0.0
+        "y": 32.0
       },
       "scale": {
         "x": 32.0,
         "y": 32.0
-      }
+      },
+      "rotation": 0.0
     },
-    "zIndex": 0
+    "zIndex": 0,
+    "doSerialize": true
   },
   {
     "uid": 9,
@@ -479,38 +495,40 @@
             "textureCoords": [
               {
                 "x": 0.4,
-                "y": 1.0
+                "y": 0.85714287
               },
               {
                 "x": 0.4,
-                "y": 0.85714287
+                "y": 0.71428573
+              },
+              {
+                "x": 0.3,
+                "y": 0.71428573
               },
               {
                 "x": 0.3,
                 "y": 0.85714287
-              },
-              {
-                "x": 0.3,
-                "y": 1.0
               }
             ],
             "uid": -1
           },
-          "uid": 11
+          "uid": 14
         }
       }
     ],
     "transform": {
       "position": {
         "x": 192.0,
-        "y": 32.0
+        "y": 64.0
       },
       "scale": {
         "x": 32.0,
         "y": 32.0
-      }
+      },
+      "rotation": 0.0
     },
-    "zIndex": 0
+    "zIndex": 0,
+    "doSerialize": true
   },
   {
     "uid": 10,
@@ -536,38 +554,40 @@
             "textureCoords": [
               {
                 "x": 0.4,
-                "y": 0.85714287
+                "y": 1.0
               },
               {
                 "x": 0.4,
-                "y": 0.71428573
-              },
-              {
-                "x": 0.3,
-                "y": 0.71428573
+                "y": 0.85714287
               },
               {
                 "x": 0.3,
                 "y": 0.85714287
+              },
+              {
+                "x": 0.3,
+                "y": 1.0
               }
             ],
             "uid": -1
           },
-          "uid": 12
+          "uid": 15
         }
       }
     ],
     "transform": {
       "position": {
-        "x": -416.0,
-        "y": 832.0
+        "x": 192.0,
+        "y": 96.0
       },
       "scale": {
         "x": 32.0,
         "y": 32.0
-      }
+      },
+      "rotation": 0.0
     },
-    "zIndex": 0
+    "zIndex": 0,
+    "doSerialize": true
   },
   {
     "uid": 11,
@@ -610,21 +630,23 @@
             ],
             "uid": -1
           },
-          "uid": 13
+          "uid": 16
         }
       }
     ],
     "transform": {
       "position": {
         "x": 224.0,
-        "y": 32.0
+        "y": 96.0
       },
       "scale": {
         "x": 32.0,
         "y": 32.0
-      }
+      },
+      "rotation": 0.0
     },
-    "zIndex": 0
+    "zIndex": 0,
+    "doSerialize": true
   },
   {
     "uid": 12,
@@ -667,21 +689,23 @@
             ],
             "uid": -1
           },
-          "uid": 14
+          "uid": 17
         }
       }
     ],
     "transform": {
       "position": {
         "x": 256.0,
-        "y": 32.0
+        "y": 96.0
       },
       "scale": {
         "x": 32.0,
         "y": 32.0
-      }
+      },
+      "rotation": 0.0
     },
-    "zIndex": 0
+    "zIndex": 0,
+    "doSerialize": true
   },
   {
     "uid": 13,
@@ -724,21 +748,23 @@
             ],
             "uid": -1
           },
-          "uid": 15
+          "uid": 18
         }
       }
     ],
     "transform": {
       "position": {
         "x": 224.0,
-        "y": 0.0
+        "y": 64.0
       },
       "scale": {
         "x": 32.0,
         "y": 32.0
-      }
+      },
+      "rotation": 0.0
     },
-    "zIndex": 0
+    "zIndex": 0,
+    "doSerialize": true
   },
   {
     "uid": 14,
@@ -781,21 +807,23 @@
             ],
             "uid": -1
           },
-          "uid": 16
+          "uid": 19
         }
       }
     ],
     "transform": {
       "position": {
-        "x": 256.0,
-        "y": 0.0
+        "x": 224.0,
+        "y": 32.0
       },
       "scale": {
         "x": 32.0,
         "y": 32.0
-      }
+      },
+      "rotation": 0.0
     },
-    "zIndex": 0
+    "zIndex": 0,
+    "doSerialize": true
   },
   {
     "uid": 15,
@@ -820,39 +848,41 @@
             },
             "textureCoords": [
               {
-                "x": 0.6,
-                "y": 1.0
-              },
-              {
-                "x": 0.6,
+                "x": 0.1,
                 "y": 0.85714287
               },
               {
-                "x": 0.5,
-                "y": 0.85714287
+                "x": 0.1,
+                "y": 0.71428573
               },
               {
-                "x": 0.5,
-                "y": 1.0
+                "x": 0.0,
+                "y": 0.71428573
+              },
+              {
+                "x": 0.0,
+                "y": 0.85714287
               }
             ],
             "uid": -1
           },
-          "uid": 17
+          "uid": 20
         }
       }
     ],
     "transform": {
       "position": {
-        "x": 288.0,
+        "x": 256.0,
         "y": 32.0
       },
       "scale": {
         "x": 32.0,
         "y": 32.0
-      }
+      },
+      "rotation": 0.0
     },
-    "zIndex": 0
+    "zIndex": 0,
+    "doSerialize": true
   },
   {
     "uid": 16,
@@ -877,39 +907,41 @@
             },
             "textureCoords": [
               {
-                "x": 0.7,
+                "x": 0.5,
                 "y": 0.85714287
               },
               {
-                "x": 0.7,
+                "x": 0.5,
                 "y": 0.71428573
               },
               {
-                "x": 0.6,
+                "x": 0.4,
                 "y": 0.71428573
               },
               {
-                "x": 0.6,
+                "x": 0.4,
                 "y": 0.85714287
               }
             ],
             "uid": -1
           },
-          "uid": 18
+          "uid": 21
         }
       }
     ],
     "transform": {
       "position": {
-        "x": 288.0,
+        "x": 224.0,
         "y": 0.0
       },
       "scale": {
         "x": 32.0,
         "y": 32.0
-      }
+      },
+      "rotation": 0.0
     },
-    "zIndex": 0
+    "zIndex": 0,
+    "doSerialize": true
   },
   {
     "uid": 17,
@@ -934,39 +966,41 @@
             },
             "textureCoords": [
               {
-                "x": 0.6,
+                "x": 0.5,
                 "y": 0.85714287
               },
               {
-                "x": 0.6,
-                "y": 0.71428573
-              },
-              {
                 "x": 0.5,
                 "y": 0.71428573
               },
               {
-                "x": 0.5,
+                "x": 0.4,
+                "y": 0.71428573
+              },
+              {
+                "x": 0.4,
                 "y": 0.85714287
               }
             ],
             "uid": -1
           },
-          "uid": 19
+          "uid": 22
         }
       }
     ],
     "transform": {
       "position": {
-        "x": 288.0,
+        "x": 256.0,
         "y": 0.0
       },
       "scale": {
         "x": 32.0,
         "y": 32.0
-      }
+      },
+      "rotation": 0.0
     },
-    "zIndex": 0
+    "zIndex": 0,
+    "doSerialize": true
   },
   {
     "uid": 18,
@@ -991,25 +1025,25 @@
             },
             "textureCoords": [
               {
-                "x": 0.1,
-                "y": 0.14285715
+                "x": 0.5,
+                "y": 0.85714287
               },
               {
-                "x": 0.1,
-                "y": 0.0
+                "x": 0.5,
+                "y": 0.71428573
               },
               {
-                "x": 0.0,
-                "y": 0.0
+                "x": 0.4,
+                "y": 0.71428573
               },
               {
-                "x": 0.0,
-                "y": 0.14285715
+                "x": 0.4,
+                "y": 0.85714287
               }
             ],
             "uid": -1
           },
-          "uid": 20
+          "uid": 23
         }
       }
     ],
@@ -1021,9 +1055,11 @@
       "scale": {
         "x": 32.0,
         "y": 32.0
-      }
+      },
+      "rotation": 0.0
     },
-    "zIndex": 0
+    "zIndex": 0,
+    "doSerialize": true
   },
   {
     "uid": 19,
@@ -1049,38 +1085,40 @@
             "textureCoords": [
               {
                 "x": 0.1,
-                "y": 0.2857143
+                "y": 0.14285715
               },
               {
                 "x": 0.1,
-                "y": 0.14285715
+                "y": 0.0
+              },
+              {
+                "x": 0.0,
+                "y": 0.0
               },
               {
                 "x": 0.0,
                 "y": 0.14285715
-              },
-              {
-                "x": 0.0,
-                "y": 0.2857143
               }
             ],
             "uid": -1
           },
-          "uid": 21
+          "uid": 24
         }
       }
     ],
     "transform": {
       "position": {
-        "x": 256.0,
-        "y": 96.0
+        "x": 160.0,
+        "y": 32.0
       },
       "scale": {
         "x": 32.0,
         "y": 32.0
-      }
+      },
+      "rotation": 0.0
     },
-    "zIndex": 0
+    "zIndex": 0,
+    "doSerialize": true
   },
   {
     "uid": 20,
@@ -1106,38 +1144,40 @@
             "textureCoords": [
               {
                 "x": 0.1,
-                "y": 0.42857143
+                "y": 0.2857143
               },
               {
                 "x": 0.1,
-                "y": 0.2857143
+                "y": 0.14285715
+              },
+              {
+                "x": 0.0,
+                "y": 0.14285715
               },
               {
                 "x": 0.0,
                 "y": 0.2857143
-              },
-              {
-                "x": 0.0,
-                "y": 0.42857143
               }
             ],
             "uid": -1
           },
-          "uid": 22
+          "uid": 25
         }
       }
     ],
     "transform": {
       "position": {
-        "x": 256.0,
-        "y": 128.0
+        "x": 160.0,
+        "y": 64.0
       },
       "scale": {
         "x": 32.0,
         "y": 32.0
-      }
+      },
+      "rotation": 0.0
     },
-    "zIndex": 0
+    "zIndex": 0,
+    "doSerialize": true
   },
   {
     "uid": 21,
@@ -1162,39 +1202,41 @@
             },
             "textureCoords": [
               {
-                "x": 0.6,
+                "x": 0.1,
                 "y": 0.42857143
               },
               {
-                "x": 0.6,
+                "x": 0.1,
                 "y": 0.2857143
               },
               {
-                "x": 0.5,
+                "x": 0.0,
                 "y": 0.2857143
               },
               {
-                "x": 0.5,
+                "x": 0.0,
                 "y": 0.42857143
               }
             ],
             "uid": -1
           },
-          "uid": 23
+          "uid": 26
         }
       }
     ],
     "transform": {
       "position": {
-        "x": 224.0,
-        "y": 128.0
+        "x": 160.0,
+        "y": 96.0
       },
       "scale": {
         "x": 32.0,
         "y": 32.0
-      }
+      },
+      "rotation": 0.0
     },
-    "zIndex": 0
+    "zIndex": 0,
+    "doSerialize": true
   },
   {
     "uid": 22,
@@ -1219,39 +1261,41 @@
             },
             "textureCoords": [
               {
-                "x": 0.6,
+                "x": 0.5,
                 "y": 0.42857143
               },
               {
-                "x": 0.6,
-                "y": 0.2857143
-              },
-              {
                 "x": 0.5,
                 "y": 0.2857143
               },
               {
-                "x": 0.5,
+                "x": 0.4,
+                "y": 0.2857143
+              },
+              {
+                "x": 0.4,
                 "y": 0.42857143
               }
             ],
             "uid": -1
           },
-          "uid": 24
+          "uid": 27
         }
       }
     ],
     "transform": {
       "position": {
-        "x": 288.0,
-        "y": 128.0
+        "x": 352.0,
+        "y": 160.0
       },
       "scale": {
         "x": 32.0,
         "y": 32.0
-      }
+      },
+      "rotation": 0.0
     },
-    "zIndex": 0
+    "zIndex": 0,
+    "doSerialize": true
   },
   {
     "uid": 23,
@@ -1276,39 +1320,41 @@
             },
             "textureCoords": [
               {
-                "x": 0.5,
-                "y": 0.42857143
-              },
-              {
-                "x": 0.5,
-                "y": 0.2857143
-              },
-              {
                 "x": 0.4,
                 "y": 0.2857143
               },
               {
                 "x": 0.4,
-                "y": 0.42857143
+                "y": 0.14285715
+              },
+              {
+                "x": 0.3,
+                "y": 0.14285715
+              },
+              {
+                "x": 0.3,
+                "y": 0.2857143
               }
             ],
             "uid": -1
           },
-          "uid": 25
+          "uid": 28
         }
       }
     ],
     "transform": {
       "position": {
-        "x": 192.0,
-        "y": 128.0
+        "x": -160.0,
+        "y": 192.0
       },
       "scale": {
         "x": 32.0,
         "y": 32.0
-      }
+      },
+      "rotation": 0.0
     },
-    "zIndex": 0
+    "zIndex": 0,
+    "doSerialize": true
   },
   {
     "uid": 24,
@@ -1333,39 +1379,41 @@
             },
             "textureCoords": [
               {
-                "x": 0.7,
-                "y": 0.42857143
-              },
-              {
-                "x": 0.7,
+                "x": 0.5,
                 "y": 0.2857143
               },
               {
-                "x": 0.6,
-                "y": 0.2857143
+                "x": 0.5,
+                "y": 0.14285715
               },
               {
-                "x": 0.6,
-                "y": 0.42857143
+                "x": 0.4,
+                "y": 0.14285715
+              },
+              {
+                "x": 0.4,
+                "y": 0.2857143
               }
             ],
             "uid": -1
           },
-          "uid": 26
+          "uid": 29
         }
       }
     ],
     "transform": {
       "position": {
-        "x": 320.0,
+        "x": 352.0,
         "y": 128.0
       },
       "scale": {
         "x": 32.0,
         "y": 32.0
-      }
+      },
+      "rotation": 0.0
     },
-    "zIndex": 0
+    "zIndex": 0,
+    "doSerialize": true
   },
   {
     "uid": 25,
@@ -1391,38 +1439,40 @@
             "textureCoords": [
               {
                 "x": 0.5,
-                "y": 0.2857143
+                "y": 0.14285715
               },
               {
                 "x": 0.5,
-                "y": 0.14285715
+                "y": 0.0
+              },
+              {
+                "x": 0.4,
+                "y": 0.0
               },
               {
                 "x": 0.4,
                 "y": 0.14285715
-              },
-              {
-                "x": 0.4,
-                "y": 0.2857143
               }
             ],
             "uid": -1
           },
-          "uid": 27
+          "uid": 30
         }
       }
     ],
     "transform": {
       "position": {
-        "x": 192.0,
+        "x": 352.0,
         "y": 96.0
       },
       "scale": {
         "x": 32.0,
         "y": 32.0
-      }
+      },
+      "rotation": 0.0
     },
-    "zIndex": 0
+    "zIndex": 0,
+    "doSerialize": true
   },
   {
     "uid": 26,
@@ -1447,39 +1497,41 @@
             },
             "textureCoords": [
               {
+                "x": 0.6,
+                "y": 0.14285715
+              },
+              {
+                "x": 0.6,
+                "y": 0.0
+              },
+              {
                 "x": 0.5,
-                "y": 0.2857143
+                "y": 0.0
               },
               {
                 "x": 0.5,
                 "y": 0.14285715
-              },
-              {
-                "x": 0.4,
-                "y": 0.14285715
-              },
-              {
-                "x": 0.4,
-                "y": 0.2857143
               }
             ],
             "uid": -1
           },
-          "uid": 28
+          "uid": 31
         }
       }
     ],
     "transform": {
       "position": {
-        "x": 192.0,
-        "y": 64.0
+        "x": 384.0,
+        "y": 96.0
       },
       "scale": {
         "x": 32.0,
         "y": 32.0
-      }
+      },
+      "rotation": 0.0
     },
-    "zIndex": 0
+    "zIndex": 0,
+    "doSerialize": true
   },
   {
     "uid": 27,
@@ -1504,39 +1556,41 @@
             },
             "textureCoords": [
               {
+                "x": 0.7,
+                "y": 0.14285715
+              },
+              {
+                "x": 0.7,
+                "y": 0.0
+              },
+              {
                 "x": 0.6,
-                "y": 0.2857143
+                "y": 0.0
               },
               {
                 "x": 0.6,
                 "y": 0.14285715
-              },
-              {
-                "x": 0.5,
-                "y": 0.14285715
-              },
-              {
-                "x": 0.5,
-                "y": 0.2857143
               }
             ],
             "uid": -1
           },
-          "uid": 29
+          "uid": 32
         }
       }
     ],
     "transform": {
       "position": {
-        "x": 224.0,
+        "x": 416.0,
         "y": 96.0
       },
       "scale": {
         "x": 32.0,
         "y": 32.0
-      }
+      },
+      "rotation": 0.0
     },
-    "zIndex": 0
+    "zIndex": 0,
+    "doSerialize": true
   },
   {
     "uid": 28,
@@ -1561,39 +1615,41 @@
             },
             "textureCoords": [
               {
-                "x": 0.6,
+                "x": 0.7,
                 "y": 0.2857143
               },
               {
+                "x": 0.7,
+                "y": 0.14285715
+              },
+              {
                 "x": 0.6,
                 "y": 0.14285715
               },
               {
-                "x": 0.5,
-                "y": 0.14285715
-              },
-              {
-                "x": 0.5,
+                "x": 0.6,
                 "y": 0.2857143
               }
             ],
             "uid": -1
           },
-          "uid": 30
+          "uid": 33
         }
       }
     ],
     "transform": {
       "position": {
-        "x": 224.0,
-        "y": 96.0
+        "x": 416.0,
+        "y": 128.0
       },
       "scale": {
         "x": 32.0,
         "y": 32.0
-      }
+      },
+      "rotation": 0.0
     },
-    "zIndex": 0
+    "zIndex": 0,
+    "doSerialize": true
   },
   {
     "uid": 29,
@@ -1618,39 +1674,41 @@
             },
             "textureCoords": [
               {
+                "x": 0.7,
+                "y": 0.42857143
+              },
+              {
+                "x": 0.7,
+                "y": 0.2857143
+              },
+              {
                 "x": 0.6,
                 "y": 0.2857143
               },
               {
                 "x": 0.6,
-                "y": 0.14285715
-              },
-              {
-                "x": 0.5,
-                "y": 0.14285715
-              },
-              {
-                "x": 0.5,
-                "y": 0.2857143
+                "y": 0.42857143
               }
             ],
             "uid": -1
           },
-          "uid": 31
+          "uid": 34
         }
       }
     ],
     "transform": {
       "position": {
-        "x": 224.0,
-        "y": 64.0
+        "x": 416.0,
+        "y": 160.0
       },
       "scale": {
         "x": 32.0,
         "y": 32.0
-      }
+      },
+      "rotation": 0.0
     },
-    "zIndex": 0
+    "zIndex": 0,
+    "doSerialize": true
   },
   {
     "uid": 30,
@@ -1676,190 +1734,19 @@
             "textureCoords": [
               {
                 "x": 0.6,
-                "y": 0.2857143
+                "y": 0.42857143
               },
               {
                 "x": 0.6,
-                "y": 0.14285715
-              },
-              {
-                "x": 0.5,
-                "y": 0.14285715
+                "y": 0.2857143
               },
               {
                 "x": 0.5,
                 "y": 0.2857143
-              }
-            ],
-            "uid": -1
-          },
-          "uid": 32
-        }
-      }
-    ],
-    "transform": {
-      "position": {
-        "x": 256.0,
-        "y": 96.0
-      },
-      "scale": {
-        "x": 32.0,
-        "y": 32.0
-      }
-    },
-    "zIndex": 0
-  },
-  {
-    "uid": 31,
-    "name": "Sprite_Object_Gen",
-    "components": [
-      {
-        "type": "components.SpriteRenderer",
-        "properties": {
-          "colour": {
-            "x": 1.0,
-            "y": 1.0,
-            "z": 1.0,
-            "w": 1.0
-          },
-          "sprite": {
-            "width": 16.0,
-            "height": 16.0,
-            "texture": {
-              "filepath": "assets/textures/sheet.png",
-              "width": 160,
-              "height": 112
-            },
-            "textureCoords": [
-              {
-                "x": 0.6,
-                "y": 0.2857143
-              },
-              {
-                "x": 0.6,
-                "y": 0.14285715
               },
               {
                 "x": 0.5,
-                "y": 0.14285715
-              },
-              {
-                "x": 0.5,
-                "y": 0.2857143
-              }
-            ],
-            "uid": -1
-          },
-          "uid": 33
-        }
-      }
-    ],
-    "transform": {
-      "position": {
-        "x": 256.0,
-        "y": 64.0
-      },
-      "scale": {
-        "x": 32.0,
-        "y": 32.0
-      }
-    },
-    "zIndex": 0
-  },
-  {
-    "uid": 32,
-    "name": "Sprite_Object_Gen",
-    "components": [
-      {
-        "type": "components.SpriteRenderer",
-        "properties": {
-          "colour": {
-            "x": 1.0,
-            "y": 1.0,
-            "z": 1.0,
-            "w": 1.0
-          },
-          "sprite": {
-            "width": 16.0,
-            "height": 16.0,
-            "texture": {
-              "filepath": "assets/textures/sheet.png",
-              "width": 160,
-              "height": 112
-            },
-            "textureCoords": [
-              {
-                "x": 0.1,
-                "y": 0.2857143
-              },
-              {
-                "x": 0.1,
-                "y": 0.14285715
-              },
-              {
-                "x": 0.0,
-                "y": 0.14285715
-              },
-              {
-                "x": 0.0,
-                "y": 0.2857143
-              }
-            ],
-            "uid": -1
-          },
-          "uid": 34
-        }
-      }
-    ],
-    "transform": {
-      "position": {
-        "x": 256.0,
-        "y": 96.0
-      },
-      "scale": {
-        "x": 32.0,
-        "y": 32.0
-      }
-    },
-    "zIndex": 0
-  },
-  {
-    "uid": 33,
-    "name": "Sprite_Object_Gen",
-    "components": [
-      {
-        "type": "components.SpriteRenderer",
-        "properties": {
-          "colour": {
-            "x": 1.0,
-            "y": 1.0,
-            "z": 1.0,
-            "w": 1.0
-          },
-          "sprite": {
-            "width": 16.0,
-            "height": 16.0,
-            "texture": {
-              "filepath": "assets/textures/sheet.png",
-              "width": 160,
-              "height": 112
-            },
-            "textureCoords": [
-              {
-                "x": 0.1,
-                "y": 0.14285715
-              },
-              {
-                "x": 0.1,
-                "y": 0.0
-              },
-              {
-                "x": 0.0,
-                "y": 0.0
-              },
-              {
-                "x": 0.0,
-                "y": 0.14285715
+                "y": 0.42857143
               }
             ],
             "uid": -1
@@ -1870,18 +1757,20 @@
     ],
     "transform": {
       "position": {
-        "x": 256.0,
-        "y": 64.0
+        "x": 384.0,
+        "y": 160.0
       },
       "scale": {
         "x": 32.0,
         "y": 32.0
-      }
+      },
+      "rotation": 0.0
     },
-    "zIndex": 0
+    "zIndex": 0,
+    "doSerialize": true
   },
   {
-    "uid": 34,
+    "uid": 31,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -1927,15 +1816,194 @@
     ],
     "transform": {
       "position": {
+        "x": 384.0,
+        "y": 128.0
+      },
+      "scale": {
+        "x": 32.0,
+        "y": 32.0
+      },
+      "rotation": 0.0
+    },
+    "zIndex": 0,
+    "doSerialize": true
+  },
+  {
+    "uid": 32,
+    "name": "Sprite_Object_Gen",
+    "components": [
+      {
+        "type": "components.SpriteRenderer",
+        "properties": {
+          "colour": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 16.0,
+            "height": 16.0,
+            "texture": {
+              "filepath": "assets/textures/sheet.png",
+              "width": 160,
+              "height": 112
+            },
+            "textureCoords": [
+              {
+                "x": 0.9,
+                "y": 0.2857143
+              },
+              {
+                "x": 0.9,
+                "y": 0.14285715
+              },
+              {
+                "x": 0.8,
+                "y": 0.14285715
+              },
+              {
+                "x": 0.8,
+                "y": 0.2857143
+              }
+            ],
+            "uid": -1
+          },
+          "uid": 37
+        }
+      }
+    ],
+    "transform": {
+      "position": {
+        "x": 64.0,
+        "y": 32.0
+      },
+      "scale": {
+        "x": 32.0,
+        "y": 32.0
+      },
+      "rotation": 0.0
+    },
+    "zIndex": 0,
+    "doSerialize": true
+  },
+  {
+    "uid": 33,
+    "name": "Sprite_Object_Gen",
+    "components": [
+      {
+        "type": "components.SpriteRenderer",
+        "properties": {
+          "colour": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 16.0,
+            "height": 16.0,
+            "texture": {
+              "filepath": "assets/textures/sheet.png",
+              "width": 160,
+              "height": 112
+            },
+            "textureCoords": [
+              {
+                "x": 1.0,
+                "y": 0.2857143
+              },
+              {
+                "x": 1.0,
+                "y": 0.14285715
+              },
+              {
+                "x": 0.9,
+                "y": 0.14285715
+              },
+              {
+                "x": 0.9,
+                "y": 0.2857143
+              }
+            ],
+            "uid": -1
+          },
+          "uid": 38
+        }
+      }
+    ],
+    "transform": {
+      "position": {
+        "x": 96.0,
+        "y": 32.0
+      },
+      "scale": {
+        "x": 32.0,
+        "y": 32.0
+      },
+      "rotation": 0.0
+    },
+    "zIndex": 0,
+    "doSerialize": true
+  },
+  {
+    "uid": 34,
+    "name": "Sprite_Object_Gen",
+    "components": [
+      {
+        "type": "components.SpriteRenderer",
+        "properties": {
+          "colour": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 16.0,
+            "height": 16.0,
+            "texture": {
+              "filepath": "assets/textures/sheet.png",
+              "width": 160,
+              "height": 112
+            },
+            "textureCoords": [
+              {
+                "x": 0.8,
+                "y": 0.85714287
+              },
+              {
+                "x": 0.8,
+                "y": 0.71428573
+              },
+              {
+                "x": 0.7,
+                "y": 0.71428573
+              },
+              {
+                "x": 0.7,
+                "y": 0.85714287
+              }
+            ],
+            "uid": -1
+          },
+          "uid": 39
+        }
+      }
+    ],
+    "transform": {
+      "position": {
         "x": 256.0,
         "y": 128.0
       },
       "scale": {
         "x": 32.0,
         "y": 32.0
-      }
+      },
+      "rotation": 0.0
     },
-    "zIndex": 0
+    "zIndex": 0,
+    "doSerialize": true
   },
   {
     "uid": 35,
@@ -1960,39 +2028,41 @@
             },
             "textureCoords": [
               {
-                "x": 0.1,
+                "x": 0.5,
+                "y": 0.5714286
+              },
+              {
+                "x": 0.5,
                 "y": 0.42857143
               },
               {
-                "x": 0.1,
-                "y": 0.2857143
-              },
-              {
-                "x": 0.0,
-                "y": 0.2857143
-              },
-              {
-                "x": 0.0,
+                "x": 0.4,
                 "y": 0.42857143
+              },
+              {
+                "x": 0.4,
+                "y": 0.5714286
               }
             ],
             "uid": -1
           },
-          "uid": 37
+          "uid": 40
         }
       }
     ],
     "transform": {
       "position": {
-        "x": 256.0,
-        "y": 128.0
+        "x": 128.0,
+        "y": 32.0
       },
       "scale": {
         "x": 32.0,
         "y": 32.0
-      }
+      },
+      "rotation": 0.0
     },
-    "zIndex": 0
+    "zIndex": 0,
+    "doSerialize": true
   },
   {
     "uid": 36,
@@ -2017,39 +2087,41 @@
             },
             "textureCoords": [
               {
-                "x": 0.6,
+                "x": 1.0,
                 "y": 0.2857143
               },
               {
-                "x": 0.6,
+                "x": 1.0,
                 "y": 0.14285715
               },
               {
-                "x": 0.5,
+                "x": 0.9,
                 "y": 0.14285715
               },
               {
-                "x": 0.5,
+                "x": 0.9,
                 "y": 0.2857143
               }
             ],
             "uid": -1
           },
-          "uid": 38
+          "uid": 41
         }
       }
     ],
     "transform": {
       "position": {
-        "x": 288.0,
-        "y": 96.0
+        "x": -288.0,
+        "y": 0.0
       },
       "scale": {
         "x": 32.0,
         "y": 32.0
-      }
+      },
+      "rotation": 0.0
     },
-    "zIndex": 0
+    "zIndex": 0,
+    "doSerialize": true
   },
   {
     "uid": 37,
@@ -2074,39 +2146,41 @@
             },
             "textureCoords": [
               {
-                "x": 0.6,
+                "x": 0.2,
+                "y": 0.42857143
+              },
+              {
+                "x": 0.2,
                 "y": 0.2857143
               },
               {
-                "x": 0.6,
-                "y": 0.14285715
-              },
-              {
-                "x": 0.5,
-                "y": 0.14285715
-              },
-              {
-                "x": 0.5,
+                "x": 0.1,
                 "y": 0.2857143
+              },
+              {
+                "x": 0.1,
+                "y": 0.42857143
               }
             ],
             "uid": -1
           },
-          "uid": 39
+          "uid": 42
         }
       }
     ],
     "transform": {
       "position": {
-        "x": 256.0,
-        "y": 64.0
+        "x": 192.0,
+        "y": 192.0
       },
       "scale": {
         "x": 32.0,
         "y": 32.0
-      }
+      },
+      "rotation": 0.0
     },
-    "zIndex": 0
+    "zIndex": 0,
+    "doSerialize": true
   },
   {
     "uid": 38,
@@ -2131,39 +2205,41 @@
             },
             "textureCoords": [
               {
-                "x": 0.6,
+                "x": 0.2,
                 "y": 0.2857143
               },
               {
-                "x": 0.6,
+                "x": 0.2,
                 "y": 0.14285715
               },
               {
-                "x": 0.5,
+                "x": 0.1,
                 "y": 0.14285715
               },
               {
-                "x": 0.5,
+                "x": 0.1,
                 "y": 0.2857143
               }
             ],
             "uid": -1
           },
-          "uid": 40
+          "uid": 43
         }
       }
     ],
     "transform": {
       "position": {
         "x": 288.0,
-        "y": 64.0
+        "y": 32.0
       },
       "scale": {
         "x": 32.0,
         "y": 32.0
-      }
+      },
+      "rotation": 0.0
     },
-    "zIndex": 0
+    "zIndex": 0,
+    "doSerialize": true
   },
   {
     "uid": 39,
@@ -2188,39 +2264,41 @@
             },
             "textureCoords": [
               {
-                "x": 0.7,
+                "x": 0.2,
                 "y": 0.2857143
               },
               {
-                "x": 0.7,
+                "x": 0.2,
                 "y": 0.14285715
               },
               {
-                "x": 0.6,
+                "x": 0.1,
                 "y": 0.14285715
               },
               {
-                "x": 0.6,
+                "x": 0.1,
                 "y": 0.2857143
               }
             ],
             "uid": -1
           },
-          "uid": 41
+          "uid": 44
         }
       }
     ],
     "transform": {
       "position": {
         "x": 320.0,
-        "y": 96.0
+        "y": 32.0
       },
       "scale": {
         "x": 32.0,
         "y": 32.0
-      }
+      },
+      "rotation": 0.0
     },
-    "zIndex": 0
+    "zIndex": 0,
+    "doSerialize": true
   },
   {
     "uid": 40,
@@ -2245,39 +2323,41 @@
             },
             "textureCoords": [
               {
-                "x": 0.7,
+                "x": 0.2,
                 "y": 0.2857143
               },
               {
-                "x": 0.7,
+                "x": 0.2,
                 "y": 0.14285715
               },
               {
-                "x": 0.6,
+                "x": 0.1,
                 "y": 0.14285715
               },
               {
-                "x": 0.6,
+                "x": 0.1,
                 "y": 0.2857143
               }
             ],
             "uid": -1
           },
-          "uid": 42
+          "uid": 45
         }
       }
     ],
     "transform": {
       "position": {
-        "x": 320.0,
-        "y": 64.0
+        "x": 352.0,
+        "y": 32.0
       },
       "scale": {
         "x": 32.0,
         "y": 32.0
-      }
+      },
+      "rotation": 0.0
     },
-    "zIndex": 0
+    "zIndex": 0,
+    "doSerialize": true
   },
   {
     "uid": 41,
@@ -2302,39 +2382,41 @@
             },
             "textureCoords": [
               {
-                "x": 0.7,
-                "y": 0.2857143
-              },
-              {
-                "x": 0.7,
-                "y": 0.14285715
+                "x": 0.6,
+                "y": 1.0
               },
               {
                 "x": 0.6,
-                "y": 0.14285715
+                "y": 0.85714287
               },
               {
-                "x": 0.6,
-                "y": 0.2857143
+                "x": 0.5,
+                "y": 0.85714287
+              },
+              {
+                "x": 0.5,
+                "y": 1.0
               }
             ],
             "uid": -1
           },
-          "uid": 43
+          "uid": 46
         }
       }
     ],
     "transform": {
       "position": {
-        "x": 320.0,
-        "y": 32.0
+        "x": 288.0,
+        "y": 96.0
       },
       "scale": {
         "x": 32.0,
         "y": 32.0
-      }
+      },
+      "rotation": 0.0
     },
-    "zIndex": 0
+    "zIndex": 0,
+    "doSerialize": true
   },
   {
     "uid": 42,
@@ -2359,39 +2441,41 @@
             },
             "textureCoords": [
               {
-                "x": 0.7,
-                "y": 0.2857143
-              },
-              {
-                "x": 0.7,
-                "y": 0.14285715
+                "x": 0.6,
+                "y": 0.85714287
               },
               {
                 "x": 0.6,
-                "y": 0.14285715
+                "y": 0.71428573
               },
               {
-                "x": 0.6,
-                "y": 0.2857143
+                "x": 0.5,
+                "y": 0.71428573
+              },
+              {
+                "x": 0.5,
+                "y": 0.85714287
               }
             ],
             "uid": -1
           },
-          "uid": 44
+          "uid": 47
         }
       }
     ],
     "transform": {
       "position": {
-        "x": 320.0,
-        "y": 0.0
+        "x": 288.0,
+        "y": 64.0
       },
       "scale": {
         "x": 32.0,
         "y": 32.0
-      }
+      },
+      "rotation": 0.0
     },
-    "zIndex": 0
+    "zIndex": 0,
+    "doSerialize": true
   },
   {
     "uid": 43,
@@ -2417,24 +2501,24 @@
             "textureCoords": [
               {
                 "x": 0.6,
-                "y": 0.2857143
+                "y": 0.85714287
               },
               {
                 "x": 0.6,
-                "y": 0.14285715
+                "y": 0.71428573
               },
               {
                 "x": 0.5,
-                "y": 0.14285715
+                "y": 0.71428573
               },
               {
                 "x": 0.5,
-                "y": 0.2857143
+                "y": 0.85714287
               }
             ],
             "uid": -1
           },
-          "uid": 45
+          "uid": 48
         }
       }
     ],
@@ -2446,9 +2530,11 @@
       "scale": {
         "x": 32.0,
         "y": 32.0
-      }
+      },
+      "rotation": 0.0
     },
-    "zIndex": 0
+    "zIndex": 0,
+    "doSerialize": true
   },
   {
     "uid": 44,
@@ -2474,38 +2560,40 @@
             "textureCoords": [
               {
                 "x": 0.6,
-                "y": 0.2857143
+                "y": 0.5714286
               },
               {
                 "x": 0.6,
-                "y": 0.14285715
+                "y": 0.42857143
               },
               {
                 "x": 0.5,
-                "y": 0.14285715
+                "y": 0.42857143
               },
               {
                 "x": 0.5,
-                "y": 0.2857143
+                "y": 0.5714286
               }
             ],
             "uid": -1
           },
-          "uid": 46
+          "uid": 49
         }
       }
     ],
     "transform": {
       "position": {
         "x": 288.0,
-        "y": 0.0
+        "y": 32.0
       },
       "scale": {
         "x": 32.0,
         "y": 32.0
-      }
+      },
+      "rotation": 0.0
     },
-    "zIndex": 0
+    "zIndex": 0,
+    "doSerialize": true
   },
   {
     "uid": 45,
@@ -2530,39 +2618,41 @@
             },
             "textureCoords": [
               {
-                "x": 0.5,
-                "y": 1.0
+                "x": 0.6,
+                "y": 0.5714286
+              },
+              {
+                "x": 0.6,
+                "y": 0.42857143
               },
               {
                 "x": 0.5,
-                "y": 0.85714287
+                "y": 0.42857143
               },
               {
-                "x": 0.4,
-                "y": 0.85714287
-              },
-              {
-                "x": 0.4,
-                "y": 1.0
+                "x": 0.5,
+                "y": 0.5714286
               }
             ],
             "uid": -1
           },
-          "uid": 47
+          "uid": 50
         }
       }
     ],
     "transform": {
       "position": {
         "x": 288.0,
-        "y": 32.0
+        "y": 0.0
       },
       "scale": {
         "x": 32.0,
         "y": 32.0
-      }
+      },
+      "rotation": 0.0
     },
-    "zIndex": 0
+    "zIndex": 0,
+    "doSerialize": true
   },
   {
     "uid": 46,
@@ -2587,39 +2677,41 @@
             },
             "textureCoords": [
               {
-                "x": 0.6,
-                "y": 1.0
+                "x": 0.2,
+                "y": 0.14285715
               },
               {
-                "x": 0.6,
-                "y": 0.85714287
+                "x": 0.2,
+                "y": 0.0
               },
               {
-                "x": 0.5,
-                "y": 0.85714287
+                "x": 0.1,
+                "y": 0.0
               },
               {
-                "x": 0.5,
-                "y": 1.0
+                "x": 0.1,
+                "y": 0.14285715
               }
             ],
             "uid": -1
           },
-          "uid": 48
+          "uid": 51
         }
       }
     ],
     "transform": {
       "position": {
         "x": 288.0,
-        "y": 32.0
+        "y": 0.0
       },
       "scale": {
         "x": 32.0,
         "y": 32.0
-      }
+      },
+      "rotation": 0.0
     },
-    "zIndex": 0
+    "zIndex": 0,
+    "doSerialize": true
   },
   {
     "uid": 47,
@@ -2644,39 +2736,41 @@
             },
             "textureCoords": [
               {
-                "x": 0.6,
-                "y": 0.85714287
+                "x": 0.2,
+                "y": 0.14285715
               },
               {
-                "x": 0.6,
-                "y": 0.71428573
+                "x": 0.2,
+                "y": 0.0
               },
               {
-                "x": 0.5,
-                "y": 0.71428573
+                "x": 0.1,
+                "y": 0.0
               },
               {
-                "x": 0.5,
-                "y": 0.85714287
+                "x": 0.1,
+                "y": 0.14285715
               }
             ],
             "uid": -1
           },
-          "uid": 49
+          "uid": 52
         }
       }
     ],
     "transform": {
       "position": {
-        "x": 288.0,
+        "x": 320.0,
         "y": 0.0
       },
       "scale": {
         "x": 32.0,
         "y": 32.0
-      }
+      },
+      "rotation": 0.0
     },
-    "zIndex": 0
+    "zIndex": 0,
+    "doSerialize": true
   },
   {
     "uid": 48,
@@ -2701,39 +2795,41 @@
             },
             "textureCoords": [
               {
-                "x": 0.9,
+                "x": 0.2,
                 "y": 0.14285715
               },
               {
-                "x": 0.9,
+                "x": 0.2,
                 "y": 0.0
               },
               {
-                "x": 0.8,
+                "x": 0.1,
                 "y": 0.0
               },
               {
-                "x": 0.8,
+                "x": 0.1,
                 "y": 0.14285715
               }
             ],
             "uid": -1
           },
-          "uid": 50
+          "uid": 53
         }
       }
     ],
     "transform": {
       "position": {
-        "x": 224.0,
-        "y": 64.0
+        "x": 352.0,
+        "y": 0.0
       },
       "scale": {
         "x": 32.0,
         "y": 32.0
-      }
+      },
+      "rotation": 0.0
     },
-    "zIndex": 0
+    "zIndex": 0,
+    "doSerialize": true
   },
   {
     "uid": 49,
@@ -2758,42 +2854,339 @@
             },
             "textureCoords": [
               {
-                "x": 1.0,
+                "x": 0.2,
                 "y": 0.2857143
               },
               {
-                "x": 1.0,
+                "x": 0.2,
                 "y": 0.14285715
               },
               {
-                "x": 0.9,
+                "x": 0.1,
                 "y": 0.14285715
               },
               {
-                "x": 0.9,
+                "x": 0.1,
                 "y": 0.2857143
               }
             ],
             "uid": -1
           },
-          "uid": 51
+          "uid": 54
         }
       }
     ],
     "transform": {
       "position": {
-        "x": 288.0,
-        "y": 64.0
+        "x": 384.0,
+        "y": 32.0
       },
       "scale": {
         "x": 32.0,
         "y": 32.0
-      }
+      },
+      "rotation": 0.0
     },
-    "zIndex": 0
+    "zIndex": 0,
+    "doSerialize": true
   },
   {
     "uid": 50,
+    "name": "Sprite_Object_Gen",
+    "components": [
+      {
+        "type": "components.SpriteRenderer",
+        "properties": {
+          "colour": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 16.0,
+            "height": 16.0,
+            "texture": {
+              "filepath": "assets/textures/sheet.png",
+              "width": 160,
+              "height": 112
+            },
+            "textureCoords": [
+              {
+                "x": 0.2,
+                "y": 0.2857143
+              },
+              {
+                "x": 0.2,
+                "y": 0.14285715
+              },
+              {
+                "x": 0.1,
+                "y": 0.14285715
+              },
+              {
+                "x": 0.1,
+                "y": 0.2857143
+              }
+            ],
+            "uid": -1
+          },
+          "uid": 55
+        }
+      }
+    ],
+    "transform": {
+      "position": {
+        "x": 416.0,
+        "y": 32.0
+      },
+      "scale": {
+        "x": 32.0,
+        "y": 32.0
+      },
+      "rotation": 0.0
+    },
+    "zIndex": 0,
+    "doSerialize": true
+  },
+  {
+    "uid": 51,
+    "name": "Sprite_Object_Gen",
+    "components": [
+      {
+        "type": "components.SpriteRenderer",
+        "properties": {
+          "colour": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 16.0,
+            "height": 16.0,
+            "texture": {
+              "filepath": "assets/textures/sheet.png",
+              "width": 160,
+              "height": 112
+            },
+            "textureCoords": [
+              {
+                "x": 0.2,
+                "y": 0.2857143
+              },
+              {
+                "x": 0.2,
+                "y": 0.14285715
+              },
+              {
+                "x": 0.1,
+                "y": 0.14285715
+              },
+              {
+                "x": 0.1,
+                "y": 0.2857143
+              }
+            ],
+            "uid": -1
+          },
+          "uid": 56
+        }
+      }
+    ],
+    "transform": {
+      "position": {
+        "x": 448.0,
+        "y": 32.0
+      },
+      "scale": {
+        "x": 32.0,
+        "y": 32.0
+      },
+      "rotation": 0.0
+    },
+    "zIndex": 0,
+    "doSerialize": true
+  },
+  {
+    "uid": 52,
+    "name": "Sprite_Object_Gen",
+    "components": [
+      {
+        "type": "components.SpriteRenderer",
+        "properties": {
+          "colour": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 16.0,
+            "height": 16.0,
+            "texture": {
+              "filepath": "assets/textures/sheet.png",
+              "width": 160,
+              "height": 112
+            },
+            "textureCoords": [
+              {
+                "x": 0.2,
+                "y": 0.14285715
+              },
+              {
+                "x": 0.2,
+                "y": 0.0
+              },
+              {
+                "x": 0.1,
+                "y": 0.0
+              },
+              {
+                "x": 0.1,
+                "y": 0.14285715
+              }
+            ],
+            "uid": -1
+          },
+          "uid": 57
+        }
+      }
+    ],
+    "transform": {
+      "position": {
+        "x": 384.0,
+        "y": 0.0
+      },
+      "scale": {
+        "x": 32.0,
+        "y": 32.0
+      },
+      "rotation": 0.0
+    },
+    "zIndex": 0,
+    "doSerialize": true
+  },
+  {
+    "uid": 53,
+    "name": "Sprite_Object_Gen",
+    "components": [
+      {
+        "type": "components.SpriteRenderer",
+        "properties": {
+          "colour": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 16.0,
+            "height": 16.0,
+            "texture": {
+              "filepath": "assets/textures/sheet.png",
+              "width": 160,
+              "height": 112
+            },
+            "textureCoords": [
+              {
+                "x": 0.2,
+                "y": 0.14285715
+              },
+              {
+                "x": 0.2,
+                "y": 0.0
+              },
+              {
+                "x": 0.1,
+                "y": 0.0
+              },
+              {
+                "x": 0.1,
+                "y": 0.14285715
+              }
+            ],
+            "uid": -1
+          },
+          "uid": 58
+        }
+      }
+    ],
+    "transform": {
+      "position": {
+        "x": 416.0,
+        "y": 0.0
+      },
+      "scale": {
+        "x": 32.0,
+        "y": 32.0
+      },
+      "rotation": 0.0
+    },
+    "zIndex": 0,
+    "doSerialize": true
+  },
+  {
+    "uid": 54,
+    "name": "Sprite_Object_Gen",
+    "components": [
+      {
+        "type": "components.SpriteRenderer",
+        "properties": {
+          "colour": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 16.0,
+            "height": 16.0,
+            "texture": {
+              "filepath": "assets/textures/sheet.png",
+              "width": 160,
+              "height": 112
+            },
+            "textureCoords": [
+              {
+                "x": 0.2,
+                "y": 0.14285715
+              },
+              {
+                "x": 0.2,
+                "y": 0.0
+              },
+              {
+                "x": 0.1,
+                "y": 0.0
+              },
+              {
+                "x": 0.1,
+                "y": 0.14285715
+              }
+            ],
+            "uid": -1
+          },
+          "uid": 59
+        }
+      }
+    ],
+    "transform": {
+      "position": {
+        "x": 448.0,
+        "y": 0.0
+      },
+      "scale": {
+        "x": 32.0,
+        "y": 32.0
+      },
+      "rotation": 0.0
+    },
+    "zIndex": 0,
+    "doSerialize": true
+  },
+  {
+    "uid": 55,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -2833,20 +3226,258 @@
             ],
             "uid": -1
           },
-          "uid": 52
+          "uid": 60
+        }
+      }
+    ],
+    "transform": {
+      "position": {
+        "x": -288.0,
+        "y": 192.0
+      },
+      "scale": {
+        "x": 32.0,
+        "y": 32.0
+      },
+      "rotation": 0.0
+    },
+    "zIndex": 0,
+    "doSerialize": true
+  },
+  {
+    "uid": 56,
+    "name": "Sprite_Object_Gen",
+    "components": [
+      {
+        "type": "components.SpriteRenderer",
+        "properties": {
+          "colour": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 16.0,
+            "height": 16.0,
+            "texture": {
+              "filepath": "assets/textures/sheet.png",
+              "width": 160,
+              "height": 112
+            },
+            "textureCoords": [
+              {
+                "x": 0.1,
+                "y": 0.2857143
+              },
+              {
+                "x": 0.1,
+                "y": 0.14285715
+              },
+              {
+                "x": 0.0,
+                "y": 0.14285715
+              },
+              {
+                "x": 0.0,
+                "y": 0.2857143
+              }
+            ],
+            "uid": -1
+          },
+          "uid": 61
+        }
+      }
+    ],
+    "transform": {
+      "position": {
+        "x": 320.0,
+        "y": 64.0
+      },
+      "scale": {
+        "x": 32.0,
+        "y": 32.0
+      },
+      "rotation": 0.0
+    },
+    "zIndex": 0,
+    "doSerialize": true
+  },
+  {
+    "uid": 57,
+    "name": "Sprite_Object_Gen",
+    "components": [
+      {
+        "type": "components.SpriteRenderer",
+        "properties": {
+          "colour": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 16.0,
+            "height": 16.0,
+            "texture": {
+              "filepath": "assets/textures/sheet.png",
+              "width": 160,
+              "height": 112
+            },
+            "textureCoords": [
+              {
+                "x": 0.1,
+                "y": 0.42857143
+              },
+              {
+                "x": 0.1,
+                "y": 0.2857143
+              },
+              {
+                "x": 0.0,
+                "y": 0.2857143
+              },
+              {
+                "x": 0.0,
+                "y": 0.42857143
+              }
+            ],
+            "uid": -1
+          },
+          "uid": 62
+        }
+      }
+    ],
+    "transform": {
+      "position": {
+        "x": 320.0,
+        "y": 96.0
+      },
+      "scale": {
+        "x": 32.0,
+        "y": 32.0
+      },
+      "rotation": 0.0
+    },
+    "zIndex": 0,
+    "doSerialize": true
+  },
+  {
+    "uid": 58,
+    "name": "Sprite_Object_Gen",
+    "components": [
+      {
+        "type": "components.SpriteRenderer",
+        "properties": {
+          "colour": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 16.0,
+            "height": 16.0,
+            "texture": {
+              "filepath": "assets/textures/sheet.png",
+              "width": 160,
+              "height": 112
+            },
+            "textureCoords": [
+              {
+                "x": 0.2,
+                "y": 0.42857143
+              },
+              {
+                "x": 0.2,
+                "y": 0.2857143
+              },
+              {
+                "x": 0.1,
+                "y": 0.2857143
+              },
+              {
+                "x": 0.1,
+                "y": 0.42857143
+              }
+            ],
+            "uid": -1
+          },
+          "uid": 63
+        }
+      }
+    ],
+    "transform": {
+      "position": {
+        "x": 224.0,
+        "y": 192.0
+      },
+      "scale": {
+        "x": 32.0,
+        "y": 32.0
+      },
+      "rotation": 0.0
+    },
+    "zIndex": 0,
+    "doSerialize": true
+  },
+  {
+    "uid": 59,
+    "name": "Sprite_Object_Gen",
+    "components": [
+      {
+        "type": "components.SpriteRenderer",
+        "properties": {
+          "colour": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 16.0,
+            "height": 16.0,
+            "texture": {
+              "filepath": "assets/textures/sheet.png",
+              "width": 160,
+              "height": 112
+            },
+            "textureCoords": [
+              {
+                "x": 0.2,
+                "y": 0.42857143
+              },
+              {
+                "x": 0.2,
+                "y": 0.2857143
+              },
+              {
+                "x": 0.1,
+                "y": 0.2857143
+              },
+              {
+                "x": 0.1,
+                "y": 0.42857143
+              }
+            ],
+            "uid": -1
+          },
+          "uid": 64
         }
       }
     ],
     "transform": {
       "position": {
         "x": 256.0,
-        "y": 64.0
+        "y": 192.0
       },
       "scale": {
         "x": 32.0,
         "y": 32.0
-      }
+      },
+      "rotation": 0.0
     },
-    "zIndex": 0
+    "zIndex": 0,
+    "doSerialize": true
   }
 ]
