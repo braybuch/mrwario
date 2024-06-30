@@ -634,9 +634,9 @@
         "type": "components.SpriteRenderer",
         "properties": {
           "colour": {
-            "x": 0.8661785,
-            "y": 1.0,
-            "z": 0.20599252,
+            "x": 0.7785212,
+            "y": 0.9363296,
+            "z": 0.0,
             "w": 1.0
           },
           "sprite": {
